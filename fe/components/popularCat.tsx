@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 
 const PopularCat = (): any => {
@@ -34,20 +34,30 @@ const PopularCat = (): any => {
       slogan: "",
     },
   ];
+
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        width: "100%",
-        // backgroundColor: "grey",
-        height: "400px",
-        gap: "20px",
+        // width: "100vw",
+        gap: "10px",
+        // backgroundColor: "black",
       }}
     >
       <Box sx={{ backgroundColor: "white" }}>
-        <Typography variant="h4">Most Popular Category</Typography>
+        <Typography
+          sx={{
+            fontSize: {
+              xs: "1.8rem",
+              sm: "calc(1.7456vw + .8rem)",
+              lg: "1.8rem",
+            },
+          }}
+        >
+          Most popular categories
+        </Typography>
       </Box>
       <Box
         sx={{
@@ -58,7 +68,7 @@ const PopularCat = (): any => {
         }}
       >
         {data.map((e) => (
-          <Box sx={{ position: "relative" }}>
+          <Box key={e.title} sx={{ position: "relative" }}>
             <Box
               sx={{
                 width: "220px",
@@ -70,7 +80,7 @@ const PopularCat = (): any => {
             >
               <img
                 src={e.src}
-                alt="img"
+                alt={e.src}
                 className="h-full w-full brightness-75 "
               />
             </Box>
@@ -97,8 +107,29 @@ const PopularCat = (): any => {
           </Box>
         ))}
       </Box>
-      <Box sx={{}}>
-        <Typography variant="body1">ALL CATEGORIES &rarr;</Typography>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "150px",
+          borderRadius: "5px",
+          padding: "5px",
+          "&:hover": {
+            backgroundColor: "rgba(100,100,100,0.15)",
+          },
+        }}
+      >
+        <Typography
+          variant="body1"
+          sx={{
+            fontSize: "0.9rem",
+            fontWeight: "600",
+            color: "#1bc49c",
+          }}
+        >
+          ALL CATEGORIES &rarr;
+        </Typography>
       </Box>
     </Box>
   );

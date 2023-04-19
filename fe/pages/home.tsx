@@ -1,12 +1,8 @@
-import PopularCat from "@/components/popularCat";
+import { Box } from "@mui/material";
 import React from "react";
 
 const Home = () => {
-  return (
-    <div className="w-3/4 bg-slate-50 m-auto h-screen">
-      <PopularCat />
-    </div>
-  );
+  return <Box sx={{ width: { xs: "95%", xl: "75%" }, margin: "auto" }}></Box>;
 };
 
 export default Home;
