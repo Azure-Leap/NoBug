@@ -6,9 +6,10 @@ interface IClient {
   email: string;
   password: string;
   avatar?: string;
-  skills: string[];
   company_name: string;
-  industry: string;
+  industry: {
+    skills: string[];
+  };
   created_at: Date;
   updated_at: Date;
 }

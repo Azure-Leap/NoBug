@@ -1,11 +1,13 @@
+import Navbar from "@/components/navbar";
 import PopularCat from "@/components/popularCat";
+import { Box } from "@mui/material";
 import React from "react";
 
 const Home = () => {
   return (
-    <div className="w-3/4 bg-slate-50 m-auto h-screen">
+    <Box sx={{ width: { xs: "95%", xl: "75%" }, margin: "auto" }}>
       <PopularCat />
-    </div>
+    </Box>
   );
 };
 
