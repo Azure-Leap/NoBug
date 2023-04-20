@@ -1,3 +1,4 @@
+import ExpertFreelancer from "@/components/expertFreelander";
 import { Box } from "@mui/material";
 import React from "react";
 

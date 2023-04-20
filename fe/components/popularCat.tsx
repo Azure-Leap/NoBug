@@ -1,4 +1,14 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination, Navigation } from "swiper";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
+// import "./styles.css";
 import { Box, Typography } from "@mui/material";
 
 const PopularCat = (): any => {
@@ -33,7 +43,59 @@ const PopularCat = (): any => {
       title: "Illustration & drawing",
       slogan: "",
     },
+    {
+      src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+      title: "Illustration & drawing",
+      slogan: "",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+      title: "Illustration & drawing",
+      slogan: "",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+      title: "Illustration & drawing",
+      slogan: "",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+      title: "Illustration & drawing",
+      slogan: "",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+      title: "Illustration & drawing",
+      slogan: "",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+      title: "Illustration & drawing",
+      slogan: "",
+    },
   ];
+  const [width, setWidth] = useState(Number);
+
+  // spw = Slides Per View for swiper
+  const [spw, setSpw] = useState(Number);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      console.log(window.innerHeight, window.innerWidth);
+      setWidth(innerWidth);
+      if (innerWidth >= 1171) {
+        setSpw(5);
+      } else if (innerWidth >= 950) {
+        setSpw(4);
+      } else if (innerWidth >= 705) {
+        setSpw(3);
+      } else if (innerWidth >= 470) {
+        setSpw(3);
+      } else if (innerWidth < 470) {
+        setSpw(2);
+      }
+    });
+  }, []);
 
   return (
     <Box
@@ -41,9 +103,7 @@ const PopularCat = (): any => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        // width: "100vw",
         gap: "10px",
-        // backgroundColor: "black",
       }}
     >
       <Box sx={{ backgroundColor: "white" }}>
@@ -61,51 +121,63 @@ const PopularCat = (): any => {
       </Box>
       <Box
         sx={{
-          display: "flex",
-          gap: "10px",
           width: "100%",
-          overflowX: "scroll",
         }}
       >
-        {data.map((e) => (
-          <Box key={e.title} sx={{ position: "relative" }}>
-            <Box
-              sx={{
-                width: "220px",
-                aspectRatio: "3/4",
-                objectFit: "cover",
-                overflow: "hidden",
-                borderRadius: "5px",
-              }}
-            >
-              <img
-                src={e.src}
-                alt={e.src}
-                className="h-full w-full brightness-75 "
-              />
-            </Box>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "5px",
-                position: "absolute",
-                top: "1px",
-                p: 3,
-              }}
-            >
-              <Typography
-                variant="body1"
-                sx={{ color: "#D0D0D0", fontSize: "12px" }}
-              >
-                Engage your community
-              </Typography>
-              <Typography variant="h6" sx={{ color: "#f5f5f5" }}>
-                {e.title}
-              </Typography>
-            </Box>
-          </Box>
-        ))}
+        <Swiper
+          slidesPerView={spw}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Autoplay, Navigation]}
+          className="mySwiper"
+        >
+          {data.map((e: any, index) => (
+            <SwiperSlide key={index}>
+              <Box sx={{ position: "relative" }}>
+                <Box
+                  sx={{
+                    width: { xs: "150px", sm: "220px" },
+                    aspectRatio: "3/4",
+                    objectFit: "cover",
+                    overflow: "hidden",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <img
+                    src={e.src}
+                    alt={e.src}
+                    className="h-full w-full brightness-75 "
+                  />
+                </Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "5px",
+                    position: "absolute",
+                    top: "1px",
+                    p: { xs: 1, sm: 3 },
+                  }}
+                >
+                  <Typography
+                    variant="body1"
+                    sx={{ color: "#D0D0D0", fontSize: "12px" }}
+                  >
+                    Engage your community
+                  </Typography>
+                  <Typography variant="h6" sx={{ color: "#f5f5f5" }}>
+                    {e.title}
+                  </Typography>
+                </Box>
+              </Box>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </Box>
       <Box
         sx={{
