@@ -69,16 +69,10 @@ const uptadeService = async (req: Request, res: Response, next: NextFunction) =>
     }
 };
   const deleteService = async (req: Request, res: Response, next: NextFunction) => {
-    const { title, description, skills_required, budget, deadline, client_id } = req.body;
+    const {id} = req.params;
   
     try {
-      if (!title || !description || !skills_required || !budget || !deadline || !client_id ) {
-        res.status(201).json({
-          success: false,
-          message: "description, skills_required, budget, deadline, client_id хоосон байна.",
-        });
-      }
-      const service = await Service.findByIdAndDelete({ title, description, skills_required, budget, deadline, client_id });
+      const service = await Service.findByIdAndDelete(id);
       res.status(201).json({
         success: true,
         message: "Сервис амжилттай устлаа.",
