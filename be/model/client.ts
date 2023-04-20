@@ -1,21 +1,33 @@
-import { Schema, model } from "mongoose";
+// import { Schema, model } from "mongoose";
 
-interface IClient {
-  id: number;
-  name: string;
-  email: string;
-  password: string;
-  avatar?: string;
-  company_name: string;
-  industry: {
-    skills: string[];
-  };
-  created_at: Date;
-  updated_at: Date;
-}
+// interface IClient {
+//   name: string;
+//   email: string;
+//   password: string;
+//   avatar?: string;
+//   company_name: string;
+//   industry: {
+//     skills: string[];
+//   };
+//   created_at: Date;
+//   updated_at: Date;
+// }
 
-const clientSchema = new Schema<IClient>({});
+// const clientSchema = new Schema({
+//   name: {
+//     type:String,
+//     required: true
+//   }
+//   email:{type: String,required:true, unique:true},
+//   password: string;
+//   avatar?: string;
+//   company_name: string;
+//   industry: {
+//     skills: string[];
+//   },
+//   {timestamps:true}
+// });
 
-const client = model("Client", clientSchema);
+// const client = model("Client", clientSchema);
 
-export default client;
+// export default client;
