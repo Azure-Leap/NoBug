@@ -1,9 +1,12 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
-import connectDB from "./confiq/db";
+import connectDB from "./config/db";
 import dotenv from "dotenv";
 dotenv.config();
-import userRoues from "./routes/user";
+import error from "./middlewares/error";
+
+import userRoutes from "./routes/user";
+import freelancerRoutes from "./routes/freelancer";
 import { connect } from "mongoose";
 const app = express();
 
@@ -12,7 +15,8 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use("/users", userRoues);
+app.use("/users", userRoutes);
+app.use("/freelancer", freelancerRoutes);
 
 // ENV
 const MONGO_URI = process.env.MONGO_URI || "";
@@ -21,6 +25,8 @@ const PORT = process.env.PORT;
 app.get("/", (req: Request, res: Response) => {
   res.send("hello skill hive be");
 });
+
+app.use(error);
 
 connectDB(MONGO_URI);
 
