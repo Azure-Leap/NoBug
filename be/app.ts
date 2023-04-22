@@ -8,6 +8,7 @@ import error from "./middlewares/error";
 import userRoutes from "./routes/user";
 import serviceRoutes from "./routes/service";
 import freelancerRoutes from "./routes/freelancer";
+import categoryRoutes from "./routes/category";
 import { connect } from "mongoose";
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(cors());
 app.use("/users", userRoutes);
 app.use("/freelancer", freelancerRoutes);
 app.use("/services", serviceRoutes);
+app.use("/categories", categoryRoutes);
 
 // ENV
 const MONGO_URI = process.env.MONGO_URI || "";

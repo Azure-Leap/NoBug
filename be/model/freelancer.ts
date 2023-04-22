@@ -1,3 +1,4 @@
+import { timeStamp } from "console";
 import { Schema, model } from "mongoose";
 
 interface IFreelancer {
@@ -10,8 +11,6 @@ interface IFreelancer {
   skills: string[];
   hourly_rate: number;
   availability: string;
-  // created_at: Date;
-  // updated_at: Date;
 }
 const freelancerSchema = new Schema(
   {
