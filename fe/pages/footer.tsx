@@ -95,11 +95,13 @@ const Footer = () => {
             >
               {footerMenu.map((footerItem, index) => (
                 <Box
+                  key={index}
                   sx={{ display: "flex", flexDirection: "column", gap: "15px" }}
                 >
                   <Typography variant="h6">{footerItem.title}</Typography>
-                  {footerItem.item.map((i) => (
+                  {footerItem.item.map((i, index) => (
                     <Typography
+                      key={index}
                       sx={{
                         color: "gray",
                         fontSize: "15px",
