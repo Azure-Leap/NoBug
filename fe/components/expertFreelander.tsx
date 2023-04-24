@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/effect-cards";
 
 // import "./styles.css";
 
@@ -14,7 +15,31 @@ import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 
 export default function ExpertFreelancer({ data }: any) {
-  console.log("asdf", data);
+  const [ml, setMl] = useState(Number);
+  const [spw, setSpw] = useState(4);
+  const [width, setWidth] = useState("85%");
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      console.log(window.innerHeight, window.innerWidth);
+      if (innerWidth >= 1270) {
+        setSpw(4);
+        setMl(0);
+      } else if (innerWidth >= 977) {
+        setSpw(3);
+        setMl(0);
+      } else if (innerWidth >= 650) {
+        setSpw(2);
+        setMl(0);
+        setWidth("80%");
+      } else if (innerWidth >= 450) {
+        setSpw(1);
+        setWidth("350px");
+        setMl(5);
+      }
+    });
+  }, []);
+
   // const data = [
   //   {
   //     src: "https://images.unsplash.com/photo-1589820675999-b1fc94f318a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
@@ -113,46 +138,52 @@ export default function ExpertFreelancer({ data }: any) {
         </Box>
         <Box>
           <Swiper
-            // slidesPerView={5}
+            slidesPerView={spw}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
             }}
-            // pagination={{
-            //   clickable: true,
-            // }}
+            pagination={{
+              clickable: true,
+            }}
             // breakpoints={{
-            //   "@0.00": {
+            //   "0.00": {
             //     slidesPerView: 1,
             //     spaceBetween: 10,
             //   },
             //   "@0.75": {
             //     slidesPerView: 2,
-            //     spaceBetween: 20,
+            //     // spaceBetween: 20,
+            //   },
+            //   "@0.9": {
+            //     slidesPerView: 2,
+            //     // spaceBetween: 20,
             //   },
             //   "@1.00": {
-            //     slidesPerView: 3,
-            //     spaceBetween: 40,
+            //     slidesPerView: 4,
+            //     // spaceBetween: 40,
             //   },
             //   "@1.50": {
             //     slidesPerView: 4,
-            //     spaceBetween: 30,
+            //     // spaceBetween: 30,
             //   },
             // }}
-            effect={"cards"}
-            grabCursor={true}
-            modules={[EffectCards]}
-            className="mySwiper"
+            // centeredSlides={true}
+            // modules={[EffectCards, Autoplay]}
+            modules={[Pagination]}
+            className="mySwiper "
           >
             {data.map((e: any, index: any) => (
               <SwiperSlide key={index}>
                 <Box
                   sx={{
-                    width: "350px",
+                    maxWidth: width,
                     aspectRatio: "3/5",
                     // backgroundColor: "grey",
                     borderRadius: "10px",
                     overflow: "hidden",
+                    mx: "auto",
+                    // p: 5,
                   }}
                 >
                   <Box
