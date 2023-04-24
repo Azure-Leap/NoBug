@@ -164,8 +164,11 @@ const Footer = () => {
               flexWrap: "wrap",
             }}
           >
-            {footerBottom.map((i) => (
-              <Typography sx={{ "&:hover": { scale: "1.05", color: "white" } }}>
+            {footerBottom.map((i, index) => (
+              <Typography
+                key={index}
+                sx={{ "&:hover": { scale: "1.05", color: "white" } }}
+              >
                 {i}
               </Typography>
             ))}
