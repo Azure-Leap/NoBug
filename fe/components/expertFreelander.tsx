@@ -105,7 +105,6 @@ export default function ExpertFreelancer({ data }: any) {
   return (
     <Box
       sx={{
-        position: "absolute",
         left: "0px",
         width: "100vw",
         py: 5,

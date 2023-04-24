@@ -38,7 +38,14 @@ const Footer = () => {
     "2023 People Per Hour Ltd",
   ];
   return (
-    <Box sx={{ backgroundColor: "#152238", color: "white", paddingY: "30px" }}>
+    <Box
+      sx={{
+        position: "relative",
+        backgroundColor: "#152238",
+        color: "white",
+        paddingY: "30px",
+      }}
+    >
       <Box className="w-3/4 m-auto">
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Box

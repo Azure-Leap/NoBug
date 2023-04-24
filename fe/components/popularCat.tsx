@@ -104,6 +104,8 @@ const PopularCat = (): any => {
         flexDirection: "column",
         justifyContent: "space-between",
         gap: "10px",
+        width: { xs: "95%", xl: "75%" },
+        marginX: "auto",
       }}
     >
       <Box sx={{ backgroundColor: "white" }}>
