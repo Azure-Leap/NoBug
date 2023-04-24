@@ -16,7 +16,6 @@ const freelancerSchema = new Schema(
   {
     name: {
       type: String,
-      unique: true,
       required: [true, "Хэрэглэгчийн нэрийг заавал бөглөнө үү!!!"],
     },
     email: {
