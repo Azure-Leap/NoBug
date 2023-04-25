@@ -32,9 +32,9 @@ export default function ExpertFreelancer({ data }: any) {
         setSpw(2);
         setMl(0);
         setWidth("80%");
-      } else if (innerWidth >= 450) {
+      } else if (innerWidth >= 390) {
         setSpw(1);
-        setWidth("350px");
+        setWidth("300px");
         setMl(5);
       }
     });
@@ -105,7 +105,6 @@ export default function ExpertFreelancer({ data }: any) {
   return (
     <Box
       sx={{
-        position: "absolute",
         left: "0px",
         width: "100vw",
         py: 5,

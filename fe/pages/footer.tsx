@@ -38,7 +38,14 @@ const Footer = () => {
     "2023 People Per Hour Ltd",
   ];
   return (
-    <Box sx={{ backgroundColor: "#152238", color: "white", paddingY: "30px" }}>
+    <Box
+      sx={{
+        position: "relative",
+        backgroundColor: "#152238",
+        color: "white",
+        paddingY: "30px",
+      }}
+    >
       <Box className="w-3/4 m-auto">
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Box
@@ -88,11 +95,13 @@ const Footer = () => {
             >
               {footerMenu.map((footerItem, index) => (
                 <Box
+                  key={index}
                   sx={{ display: "flex", flexDirection: "column", gap: "15px" }}
                 >
                   <Typography variant="h6">{footerItem.title}</Typography>
-                  {footerItem.item.map((i) => (
+                  {footerItem.item.map((i, index) => (
                     <Typography
+                      key={index}
                       sx={{
                         color: "gray",
                         fontSize: "15px",
@@ -155,8 +164,11 @@ const Footer = () => {
               flexWrap: "wrap",
             }}
           >
-            {footerBottom.map((i) => (
-              <Typography sx={{ "&:hover": { scale: "1.05", color: "white" } }}>
+            {footerBottom.map((i, index) => (
+              <Typography
+                key={index}
+                sx={{ "&:hover": { scale: "1.05", color: "white" } }}
+              >
                 {i}
               </Typography>
             ))}
