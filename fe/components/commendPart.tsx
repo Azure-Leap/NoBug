@@ -22,45 +22,47 @@ const CommendPart = () => {
     },
   ];
   return (
-    <Box
-      sx={{
-        width: "100%",
-        backgroundColor: "white",
-        display: "flex",
-        justifyContent: "space-between",
-        flexDirection: {
-          xs: "column",
-          md: "row",
-        },
-        gap: { xs: "20px", sm: "20px" },
-      }}
-    >
-      {commend.map((i, index) => (
-        <Box
-          key={index}
-          sx={{
-            width: { xs: "100%", sm: "100%" },
-            backgroundColor: "#F0F8FF",
-            borderRadius: "15px",
-            padding: { xs: "1.5rem", md: "2.25rem" },
-            fontWeight: "500",
-            fontSize: "22px",
-          }}
-        >
-          <Typography variant="h6" sx={{ marginBottom: "20px" }}>
-            {i.description}
-          </Typography>
-          <Box sx={{ display: "flex", gap: "15px" }}>
-            <img className="w-28 h-28 rounded-full" src={i.imgURL}></img>
-            <Box sx={{ display: "flex", flexDirection: "column" }}>
-              <Typography variant="h6">{i.name}</Typography>
-              <Typography variant="h6" sx={{ color: "gray" }}>
-                {i.company_name}
-              </Typography>
+    <Box sx={{ width: { xs: "95%", xl: "75%" }, margin: "auto" }}>
+      <Box
+        sx={{
+          width: "100%",
+          backgroundColor: "white",
+          display: "flex",
+          justifyContent: "space-between",
+          flexDirection: {
+            xs: "column",
+            md: "row",
+          },
+          gap: { xs: "20px", sm: "20px" },
+        }}
+      >
+        {commend.map((i, index) => (
+          <Box
+            key={index}
+            sx={{
+              width: { xs: "100%", sm: "100%" },
+              backgroundColor: "#F0F8FF",
+              borderRadius: "15px",
+              padding: { xs: "1.5rem", md: "2.25rem" },
+              fontWeight: "500",
+              fontSize: "22px",
+            }}
+          >
+            <Typography variant="h6" sx={{ marginBottom: "20px" }}>
+              {i.description}
+            </Typography>
+            <Box sx={{ display: "flex", gap: "15px" }}>
+              <img className="w-28 h-28 rounded-full" src={i.imgURL}></img>
+              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                <Typography variant="h6">{i.name}</Typography>
+                <Typography variant="h6" sx={{ color: "gray" }}>
+                  {i.company_name}
+                </Typography>
+              </Box>
             </Box>
           </Box>
-        </Box>
-      ))}
+        ))}
+      </Box>
     </Box>
   );
 };
