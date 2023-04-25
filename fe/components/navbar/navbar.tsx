@@ -21,16 +21,18 @@ const NavBar = () => {
   return (
     <Box>
       <React.Fragment>
-        <AppBar sx={{ background: "black" }}>
+        <AppBar sx={{ background: "#1A202A" }}>
           <Toolbar>
-            <img src="logo.png" alt="" width={200} height={50} />
+            <img src="logo2.png" alt="" width={200} height={50} />
             {isMatch ? (
               <>
                 <Typography
-                  sx={{ fontSize: "2rem", paddingLeft: "10%", color: "black" }}
-                >
-                  Skill Hive
-                </Typography>
+                  sx={{
+                    fontSize: "2rem",
+                    paddingLeft: "10%",
+                    color: "#9EA4B4",
+                  }}
+                ></Typography>
                 <DrawerComp />
               </>
             ) : (
@@ -42,7 +44,7 @@ const NavBar = () => {
                 >
                   <Tab
                     sx={{
-                      color: "#FFEA00",
+                      color: "#9EA4B4",
                       ":hover": { color: "white" },
                     }}
                     label="POST MOMENT"
@@ -50,17 +52,17 @@ const NavBar = () => {
 
                   <Tab
                     sx={{
-                      color: "#FFEA00",
+                      color: "#9EA4B4",
                       ":hover": { color: "white" },
                     }}
                     label="HOW IT WORK"
                   />
                   <Tab
-                    sx={{ color: "#FFEA00", ":hover": { color: "white" } }}
+                    sx={{ color: "#9EA4B4", ":hover": { color: "white" } }}
                     label="LOG IN"
                   />
                   <Tab
-                    sx={{ color: "#FFEA00", ":hover": { color: "white" } }}
+                    sx={{ color: "#9EA4B4", ":hover": { color: "white" } }}
                     label="SIGN UP"
                   />
                 </Tabs>
