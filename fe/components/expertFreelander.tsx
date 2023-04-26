@@ -192,8 +192,9 @@ export default function ExpertFreelancer({ data }: any) {
                       <StarIcon sx={{ scale: "0.7", color: "#CCB200" }} />
                     </Box>
                     <Box sx={{ display: "flex", gap: "10px" }}>
-                      {e.skills.map((e: any) => (
+                      {e.skills.map((e: any, index: any) => (
                         <Box
+                          key={index}
                           sx={{
                             paddingX: "5px",
                             backgroundColor: "#E5EBFF",
