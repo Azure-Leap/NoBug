@@ -12,15 +12,16 @@ export default function Home({ data }: any) {
   return (
     <>
       <NavBar />
-      {/* <Box
+      <Box
         sx={{
-          width: { xs: "95%", xl: "75%" },
-          marginX: "auto",
+          mt: 10,
+          // width: { xs: "95%", xl: "75%" },
+          // marginX: "auto",
         }}
-      > */}
-      <PopularCat />
-      <ExpertFreelancer data={data.freelancer} />
-      {/* </Box> */}
+      >
+        <PopularCat />
+        <ExpertFreelancer data={data.freelancer} />
+      </Box>
       <Footer />
     </>
   );
