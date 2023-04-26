@@ -11,97 +11,13 @@ import "swiper/css/effect-cards";
 
 // import required modules
 import { Autoplay, Pagination, EffectCards } from "swiper";
+
+// Mui
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
+import StarIcon from "@mui/icons-material/Star";
 
 export default function ExpertFreelancer({ data }: any) {
-  const [ml, setMl] = useState(Number);
-  const [spw, setSpw] = useState(4);
-  const [width, setWidth] = useState("85%");
-
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      console.log(window.innerHeight, window.innerWidth);
-      if (innerWidth >= 1270) {
-        setSpw(4);
-        setMl(0);
-      } else if (innerWidth >= 977) {
-        setSpw(3);
-        setMl(0);
-      } else if (innerWidth >= 650) {
-        setSpw(2);
-        setMl(0);
-        setWidth("80%");
-      } else if (innerWidth >= 390) {
-        setSpw(1);
-        setWidth("300px");
-        setMl(5);
-      }
-    });
-  }, []);
-
-  // const data = [
-  //   {
-  //     src: "https://images.unsplash.com/photo-1589820675999-b1fc94f318a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Content writing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://plus.unsplash.com/premium_photo-1661678263122-e443e90f320c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "SEO",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Website Development",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1608377205656-a5a7ac5777d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Logo Design",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1638389747564-c7cc1c9f7a49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80",
-  //     title: "Voice Over",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  // ];
   return (
     <Box
       sx={{
@@ -119,7 +35,7 @@ export default function ExpertFreelancer({ data }: any) {
           margin: "auto",
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <Box sx={{ display: "flex", flexDirection: "column", mb: 4 }}>
           <Typography
             sx={{
               fontSize: {
@@ -137,38 +53,32 @@ export default function ExpertFreelancer({ data }: any) {
         </Box>
         <Box>
           <Swiper
-            slidesPerView={spw}
+            slidesPerView={1}
             autoplay={{
-              delay: 2500,
+              delay: 4000,
               disableOnInteraction: false,
             }}
             pagination={{
               clickable: true,
             }}
-            // breakpoints={{
-            //   "0.00": {
-            //     slidesPerView: 1,
-            //     spaceBetween: 10,
-            //   },
-            //   "@0.75": {
-            //     slidesPerView: 2,
-            //     // spaceBetween: 20,
-            //   },
-            //   "@0.9": {
-            //     slidesPerView: 2,
-            //     // spaceBetween: 20,
-            //   },
-            //   "@1.00": {
-            //     slidesPerView: 4,
-            //     // spaceBetween: 40,
-            //   },
-            //   "@1.50": {
-            //     slidesPerView: 4,
-            //     // spaceBetween: 30,
-            //   },
-            // }}
-            // centeredSlides={true}
-            // modules={[EffectCards, Autoplay]}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              600: {
+                slidesPerView: 2,
+                // spaceBetween: 20,
+              },
+              900: {
+                slidesPerView: 3,
+                // spaceBetween: 20,
+              },
+              1200: {
+                slidesPerView: 4,
+                // spaceBetween: 40,
+              },
+            }}
             modules={[Pagination]}
             className="mySwiper "
           >
@@ -176,18 +86,17 @@ export default function ExpertFreelancer({ data }: any) {
               <SwiperSlide key={index}>
                 <Box
                   sx={{
-                    maxWidth: width,
-                    aspectRatio: "3/5",
-                    // backgroundColor: "grey",
+                    maxWidth: { xs: "300px" },
+                    height: "450px",
+                    // aspectRatio: "3/5",
                     borderRadius: "10px",
                     overflow: "hidden",
                     mx: "auto",
-                    // p: 5,
                   }}
                 >
                   <Box
                     sx={{
-                      height: "70%",
+                      height: "75%",
                       width: "100%",
                       backgroundColor: "#e7e7e7",
                       overflow: "hidden",
@@ -211,7 +120,11 @@ export default function ExpertFreelancer({ data }: any) {
                           overflow: "hidden",
                         }}
                       >
-                        <img src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"></img>
+                        <img
+                          src={e.avatar}
+                          alt={e.name}
+                          className="w-full h-full object-cover"
+                        />
                       </Box>
                       <Typography
                         sx={{
@@ -220,7 +133,7 @@ export default function ExpertFreelancer({ data }: any) {
                           color: "#7d7d7d",
                         }}
                       >
-                        Hero SEO
+                        {e.name}
                       </Typography>
                     </Box>
                     <Box sx={{ height: "40%", px: 3, pb: 4 }}>
@@ -261,14 +174,36 @@ export default function ExpertFreelancer({ data }: any) {
                     sx={{
                       display: "flex",
                       flexDirection: "column",
-                      height: "30%",
+                      justifyContent: "space-between",
+                      height: "25%",
                       width: "100%",
                       backgroundColor: "white",
-                      p: 3,
+                      px: 3,
+                      py: 2,
                     }}
                   >
-                    <Box sx={{}}>
-                      <Typography> ad design</Typography>
+                    <Box>
+                      <StarIcon sx={{ scale: "0.7", color: "#CCB200" }} />
+                    </Box>
+                    <Box sx={{ display: "flex", gap: "10px" }}>
+                      {e.skills.map((e: any) => (
+                        <Box
+                          sx={{
+                            paddingX: "5px",
+                            backgroundColor: "#E5EBFF",
+                            borderRadius: "5px",
+                          }}
+                        >
+                          <Typography
+                            sx={{
+                              fontSize: "12px",
+                              color: "#6C7DC5",
+                            }}
+                          >
+                            {e}
+                          </Typography>
+                        </Box>
+                      ))}
                     </Box>
                     <Box
                       sx={{ display: "flex", justifyContent: "space-between" }}

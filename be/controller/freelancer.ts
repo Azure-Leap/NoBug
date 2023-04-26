@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import Freelancer from "../model/Freelancer";
+import Freelancer from "../model/freelancer";
 
 const getFreelancers = async (
   req: Request,
