@@ -30,12 +30,16 @@ const DrawerComp = () => {
             </ListItemButton>
           ))}
         </List>
-        <Button sx={{ mt: 65 }} variant="outlined" color="success">
-          Success
+        <Button
+          sx={{ mt: 65, color: "#9EA4B4" }}
+          variant="contained"
+          color="success"
+        >
+          POST PROJECT
         </Button>
       </Drawer>
       <IconButton
-        sx={{ color: "white", marginLeft: "auto" }}
+        sx={{ marginLeft: "auto" }}
         onClick={() => setOpenDrawer(!openDrawer)}
       >
         <MenuIcon sx={{ color: "white" }} />
