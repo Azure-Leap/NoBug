@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 
 // import "./styles.css";
 import { Box, Typography } from "@mui/material";
+import Image from "next/image";
 
 const PopularCat = (): any => {
   const data = [
@@ -155,7 +156,9 @@ const PopularCat = (): any => {
                   mx: "auto",
                 }}
               >
-                <img
+                <Image
+                  width={400}
+                  height={400}
                   src={e.src}
                   alt={e.src}
                   className="h-full w-full brightness-75 "

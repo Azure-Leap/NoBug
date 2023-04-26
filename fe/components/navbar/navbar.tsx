@@ -11,6 +11,7 @@ import {
   useTheme,
 } from "@mui/material";
 import DrawerComp from "./drawer";
+import Image from "next/image";
 const NavBar = () => {
   const [value, setValue] = useState();
   const theme = useTheme();
@@ -23,7 +24,7 @@ const NavBar = () => {
       <React.Fragment>
         <AppBar sx={{ background: "#1A202A" }}>
           <Toolbar>
-            <img src="logo2.png" alt="" width={200} height={50} />
+            <Image src="/logo2.png" alt="" width={200} height={50} />
             {isMatch ? (
               <>
                 <Typography

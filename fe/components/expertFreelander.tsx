@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import Image from "next/image";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -120,7 +121,9 @@ export default function ExpertFreelancer({ data }: any) {
                           overflow: "hidden",
                         }}
                       >
-                        <img
+                        <Image
+                          width={400}
+                          height={400}
                           src={e.avatar}
                           alt={e.name}
                           className="w-full h-full object-cover"
@@ -161,7 +164,10 @@ export default function ExpertFreelancer({ data }: any) {
                             overflow: "hidden",
                           }}
                         >
-                          <img
+                          <Image
+                            width={400}
+                            height={400}
+                            alt="zurag"
                             className="object-cover	w-full h-full"
                             src="https://media.istockphoto.com/id/486407806/vector/union-jack.jpg?s=612x612&w=0&k=20&c=KPRndA_Czak9T0w_Eq3GnhRaNxERiEiw2cjZe5GBY-E="
                           />

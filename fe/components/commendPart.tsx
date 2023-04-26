@@ -1,6 +1,7 @@
 import React from "react";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
+import Image from "next/image";
 
 const CommendPart = () => {
   const commend = [
@@ -52,7 +53,13 @@ const CommendPart = () => {
               {i.description}
             </Typography>
             <Box sx={{ display: "flex", gap: "15px" }}>
-              <img className="w-28 h-28 rounded-full" src={i.imgURL}></img>
+              <Image
+                src={i.imgURL}
+                alt={i.imgURL}
+                width={400}
+                height={400}
+                className="w-28 h-28 rounded-full"
+              />
               <Box sx={{ display: "flex", flexDirection: "column" }}>
                 <Typography variant="h6">{i.name}</Typography>
                 <Typography variant="h6" sx={{ color: "gray" }}>
