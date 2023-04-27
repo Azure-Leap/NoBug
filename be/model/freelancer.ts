@@ -36,6 +36,27 @@ const freelancerSchema = new Schema(
     },
     skills: {
       type: [],
+      required: true,
+    },
+    rating: {
+      type: Number,
+      required: true,
+    },
+    hourly_rate: {
+      type: Number,
+      required: true,
+    },
+    availability: {
+      type: String,
+      required: true,
+    },
+    worked_projects: {
+      type: [],
+      required: true,
+    },
+    region: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }

@@ -15,9 +15,7 @@ import Image from "next/image";
 const NavBar = () => {
   const [value, setValue] = useState();
   const theme = useTheme();
-  console.log(theme);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-  console.log(isMatch);
 
   return (
     <Box>

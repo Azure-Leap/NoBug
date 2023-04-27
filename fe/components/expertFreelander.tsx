@@ -15,17 +15,18 @@ import { Autoplay, Pagination, EffectCards } from "swiper";
 
 // Mui
 import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
+import { Button, Typography } from "@mui/material";
 
 export default function ExpertFreelancer({ data }: any) {
+  console.log("dataa", data);
   return (
     <Box
       sx={{
+        mt: 4,
         left: "0px",
         width: "100vw",
         py: 5,
-        backgroundColor: "#F0F3F5",
+        backgroundColor: "#F6F7FA",
       }}
     >
       <Box
@@ -44,6 +45,7 @@ export default function ExpertFreelancer({ data }: any) {
                 sm: "calc(1.7456vw + .8rem)",
                 lg: "3rem",
               },
+              fontWeight: "bold",
             }}
           >
             Expert Bees
@@ -69,15 +71,12 @@ export default function ExpertFreelancer({ data }: any) {
               },
               600: {
                 slidesPerView: 2,
-                // spaceBetween: 20,
               },
               900: {
                 slidesPerView: 3,
-                // spaceBetween: 20,
               },
               1200: {
                 slidesPerView: 4,
-                // spaceBetween: 40,
               },
             }}
             modules={[Pagination]}
@@ -89,33 +88,38 @@ export default function ExpertFreelancer({ data }: any) {
                   sx={{
                     maxWidth: { xs: "300px" },
                     height: "450px",
-                    // aspectRatio: "3/5",
                     borderRadius: "10px",
                     overflow: "hidden",
                     mx: "auto",
+                    border: "1px solid #E5E5E5",
+                    backgroundColor: "white",
+                    px: 3,
                   }}
                 >
                   <Box
                     sx={{
-                      height: "75%",
-                      width: "100%",
-                      backgroundColor: "#e7e7e7",
-                      overflow: "hidden",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "10px",
+                      height: "45%",
                     }}
                   >
                     <Box
                       sx={{
                         display: "flex",
-                        flexDirection: "column",
                         alignItems: "center",
-                        gap: "5px",
                         justifyContent: "center",
-                        height: "60%",
+                        aspectRatio: "1/1",
+                        borderRadius: "50%",
+                        backgroundColor: "rgba(51, 162,191)",
+                        padding: "2.5px",
                       }}
                     >
                       <Box
                         sx={{
-                          width: "50%",
+                          width: "100px",
                           aspectRatio: "1/1",
                           borderRadius: "50%",
                           overflow: "hidden",
@@ -126,97 +130,173 @@ export default function ExpertFreelancer({ data }: any) {
                           height={400}
                           src={e.avatar}
                           alt={e.name}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover "
                         />
                       </Box>
-                      <Typography
-                        sx={{
-                          fontWeight: "500",
-                          fontSize: "20px",
-                          color: "#7d7d7d",
-                        }}
-                      >
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Typography sx={{ fontSize: "20px" }}>
                         {e.name}
                       </Typography>
+                      <Typography
+                        sx={{ fontSize: "15px", color: "rgb(130,130,130)" }}
+                      >
+                        {e.job_title}
+                      </Typography>
                     </Box>
-                    <Box sx={{ height: "40%", px: 3, pb: 4 }}>
-                      <Box sx={{ height: "80%" }}>
+                  </Box>
+                  <Box sx={{ height: "55%" }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        height: "20%",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          flexDirection: "column",
+                        }}
+                      >
                         <Typography
-                          sx={{ fontSize: "0.85rem", color: "#020d30" }}
+                          sx={{ fontSize: "13px", color: "rgb(130,130,130)" }}
                         >
-                          Big grid but feels proportionate | Dashboard design,
-                          Web design, App design
+                          Projects
+                        </Typography>
+                        <Typography>140</Typography>
+                      </Box>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <Typography
+                          sx={{ fontSize: "13px", color: "rgb(130,130,130)" }}
+                        >
+                          Rating
+                        </Typography>
+                        <Typography>5</Typography>
+                      </Box>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <Typography
+                          sx={{ fontSize: "13px", color: "rgb(130,130,130)" }}
+                        >
+                          Per Hour
+                        </Typography>
+                        <Typography>24$</Typography>
+                      </Box>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: "20px",
+                        height: "80%",
+                        pt: 2,
+                      }}
+                    >
+                      <Box>
+                        <Typography
+                          sx={{
+                            textAlign: "center",
+                            fontSize: "0.7rem",
+                            color: "rgb(130,130,130)",
+                          }}
+                        >
+                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Laudantium, veniam unde autem ea ipsum illo
+                          beatae
                         </Typography>
                       </Box>
                       <Box
                         sx={{
                           display: "flex",
-                          gap: "5px",
-                          height: "20%",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: "20px",
                         }}
                       >
                         <Box
                           sx={{
-                            maxWidth: "100px ",
-                            aspectRatio: "1/1",
-                            borderRadius: "50%",
-                            backgroundColor: "green",
-                            overflow: "hidden",
+                            width: "210px",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                            overflow: "scroll",
                           }}
                         >
-                          <Image
-                            width={400}
-                            height={400}
-                            alt="zurag"
-                            className="object-cover	w-full h-full"
-                            src="https://media.istockphoto.com/id/486407806/vector/union-jack.jpg?s=612x612&w=0&k=20&c=KPRndA_Czak9T0w_Eq3GnhRaNxERiEiw2cjZe5GBY-E="
-                          />
+                          {e.skills.map((el: any) => (
+                            <Typography
+                              sx={{
+                                padding: "4px",
+                                paddingX: "12px",
+                                borderRadius: "20px",
+                                textAlign: "center",
+                                fontSize: "0.8rem",
+                                color: "rgb(153,153,153)",
+                                border: "0.9px solid grey",
+                                ":hover": {
+                                  backgroundColor: "rgba(51, 162,191)",
+                                  color: "white",
+                                  boxShadow:
+                                    "0px 0px 100px -36px rgba(51, 162,191)",
+                                },
+                              }}
+                            >
+                              {el}
+                            </Typography>
+                          ))}
                         </Box>
-                        <Typography sx={{}}>United Kingdom</Typography>
-                      </Box>
-                    </Box>
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "space-between",
-                      height: "25%",
-                      width: "100%",
-                      backgroundColor: "white",
-                      px: 3,
-                      py: 2,
-                    }}
-                  >
-                    <Box>
-                      <StarIcon sx={{ scale: "0.7", color: "#CCB200" }} />
-                    </Box>
-                    <Box sx={{ display: "flex", gap: "10px" }}>
-                      {e.skills.map((e: any, index: any) => (
-                        <Box
-                          key={index}
+                        <Button
                           sx={{
-                            paddingX: "5px",
-                            backgroundColor: "#E5EBFF",
-                            borderRadius: "5px",
+                            width: "200px",
+                            textTransform: "capitalize",
+                            borderRadius: "40px",
+                            color: {
+                              xs: "white",
+                              md: "rgb(153,153,153)",
+                            },
+                            backgroundColor: {
+                              xs: "rgba(51, 162,191)!important",
+                              md: "white!important",
+                            },
+                            boxShadow: {
+                              xs: "0px 0px 35px 0px rgba(51,162,191,0.5)",
+                              md: "none",
+                            },
+                            border: "0.9px solid rgb(153,153,153)",
+                            ":hover": {
+                              color: "white",
+                              backgroundColor: "rgba(51, 162,191)!important",
+                              boxShadow:
+                                "0px 0px 35px 0px rgba(51,162,191,0.5)",
+                            },
                           }}
                         >
-                          <Typography
-                            sx={{
-                              fontSize: "12px",
-                              color: "#6C7DC5",
-                            }}
-                          >
-                            {e}
-                          </Typography>
-                        </Box>
-                      ))}
-                    </Box>
-                    <Box
-                      sx={{ display: "flex", justifyContent: "space-between" }}
-                    >
-                      <Typography>117 projects</Typography>
-                      <Typography>$12/hr</Typography>
+                          View Profile
+                        </Button>
+                      </Box>
                     </Box>
                   </Box>
                 </Box>
