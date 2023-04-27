@@ -1,5 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -18,7 +20,11 @@ import { Box } from "@mui/system";
 import { Button, Typography } from "@mui/material";
 
 export default function ExpertFreelancer({ data }: any) {
-  console.log("dataa", data);
+  const router = useRouter();
+  const handleClick = () => {
+    router.push(`/profile/2`);
+  };
+
   return (
     <Box
       sx={{
@@ -188,7 +194,7 @@ export default function ExpertFreelancer({ data }: any) {
                         >
                           Rating
                         </Typography>
-                        <Typography>5</Typography>
+                        <Typography>{e.rating}</Typography>
                       </Box>
                       <Box
                         sx={{
@@ -224,9 +230,9 @@ export default function ExpertFreelancer({ data }: any) {
                             color: "rgb(130,130,130)",
                           }}
                         >
-                          Lorem ipsum dolor sit amet consectetur adipisicing
+                          {`Lorem ipsum dolor sit amet consectetur adipisicing
                           elit. Laudantium, veniam unde autem ea ipsum illo
-                          beatae
+                          beatae`.substring(0, 120) + "..."}
                         </Typography>
                       </Box>
                       <Box
@@ -246,8 +252,9 @@ export default function ExpertFreelancer({ data }: any) {
                             overflow: "scroll",
                           }}
                         >
-                          {e.skills.map((el: any) => (
+                          {e.skills.map((el: any, index: any) => (
                             <Typography
+                              key={index}
                               sx={{
                                 padding: "4px",
                                 paddingX: "12px",
@@ -269,6 +276,7 @@ export default function ExpertFreelancer({ data }: any) {
                           ))}
                         </Box>
                         <Button
+                          onClick={handleClick}
                           sx={{
                             width: "200px",
                             textTransform: "capitalize",
