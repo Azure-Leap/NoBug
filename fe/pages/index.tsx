@@ -30,7 +30,7 @@ export default function Home({ data }: any) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch("https://skill-hive-1giq.onrender.com/freelancer");
+  const res = await fetch("http://localhost:8000/freelancer");
   const data = await res.json();
   return {
     props: {
@@ -38,3 +38,13 @@ export async function getServerSideProps() {
     },
   };
 }
+
+// export async function getServerSideProps() {
+//   const res = await fetch("https://skill-hive-1giq.onrender.com/freelancer");
+//   const data = await res.json();
+//   return {
+//     props: {
+//       data,
+//     },
+//   };
+// }

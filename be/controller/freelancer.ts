@@ -70,32 +70,9 @@ const createFreelancer = async (
     hourly_rate,
     availability,
   } = req.body;
-
+  console.log(req.body);
   try {
-    if (
-      !email ||
-      !name ||
-      !password ||
-      !job_title ||
-      !skills ||
-      !hourly_rate ||
-      !availability
-    ) {
-      res.status(201).json({
-        success: false,
-        message: "email, name, password ali neg nihooson baina",
-      });
-    }
-    const freelancer = await Freelancer.create({
-      email,
-      name,
-      password,
-      avatar,
-      job_title,
-      skills,
-      hourly_rate,
-      availability,
-    });
+    const freelancer = await Freelancer.create(req.body);
     res.status(201).json({
       success: true,
       message: "шинэ хэрэглэгч амжилттай үүслээ",
@@ -105,5 +82,30 @@ const createFreelancer = async (
     next(error);
   }
 };
+const editFreelancer = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = req.params;
+  console.log("id", id);
+  try {
+    const freelancer = await Freelancer.findByIdAndUpdate(id, req.body, {
+      new: true,
+    });
+    console.log(freelancer);
+    res
+      .status(201)
+      .json({ message: "freelancer Succesfully updated", freelancer });
+  } catch (error) {
+    next(error);
+  }
+};
 
-export { getFreelancers, getFreelancer, createFreelancer, deleteFreelancer };
+export {
+  getFreelancers,
+  getFreelancer,
+  createFreelancer,
+  deleteFreelancer,
+  editFreelancer,
+};
