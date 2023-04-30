@@ -21,8 +21,8 @@ import { Button, Typography } from "@mui/material";
 
 export default function ExpertFreelancer({ data }: any) {
   const router = useRouter();
-  const handleClick = () => {
-    router.push(`/profile/2`);
+  const handleClick = (e: any) => {
+    router.push(`/profile/${e._id}`);
   };
 
   return (
@@ -32,7 +32,6 @@ export default function ExpertFreelancer({ data }: any) {
         left: "0px",
         width: "100vw",
         py: 5,
-        backgroundColor: "#F6F7FA",
       }}
     >
       <Box
@@ -41,6 +40,12 @@ export default function ExpertFreelancer({ data }: any) {
           flexDirection: "column",
           width: { xs: "95%", xl: "75%" },
           margin: "auto",
+          borderRadius: "15px",
+          boxShadow: "0px 5px 11px 1px rgba(109,128,135,0.22)",
+          overflow: "hidden",
+          backgroundColor: "#F6F7FA",
+          py: 5,
+          px: 4,
         }}
       >
         <Box sx={{ display: "flex", flexDirection: "column", mb: 4 }}>
@@ -51,7 +56,7 @@ export default function ExpertFreelancer({ data }: any) {
                 sm: "calc(1.7456vw + .8rem)",
                 lg: "3rem",
               },
-              fontWeight: "bold",
+              fontWeight: "500",
             }}
           >
             Expert Bees
@@ -92,7 +97,7 @@ export default function ExpertFreelancer({ data }: any) {
               <SwiperSlide key={index}>
                 <Box
                   sx={{
-                    maxWidth: { xs: "300px" },
+                    maxWidth: { xs: "280px", lg: "300px" },
                     height: "450px",
                     borderRadius: "10px",
                     overflow: "hidden",
@@ -276,7 +281,9 @@ export default function ExpertFreelancer({ data }: any) {
                           ))}
                         </Box>
                         <Button
-                          onClick={handleClick}
+                          onClick={() => {
+                            handleClick(e);
+                          }}
                           sx={{
                             width: "200px",
                             textTransform: "capitalize",

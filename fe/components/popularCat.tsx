@@ -91,10 +91,11 @@ const PopularCat = (): any => {
       <Box sx={{ backgroundColor: "white" }}>
         <Typography
           sx={{
+            fontWeight: "500",
             fontSize: {
               xs: "1.8rem",
               sm: "calc(1.7456vw + .8rem)",
-              lg: "1.8rem",
+              lg: "2rem",
             },
           }}
         >
