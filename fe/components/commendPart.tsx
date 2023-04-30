@@ -47,6 +47,7 @@ const CommendPart = () => {
               padding: { xs: "1.5rem", md: "2.25rem" },
               fontWeight: "500",
               fontSize: "22px",
+              boxShadow: "0px 5px 11px 1px rgba(109,128,135,0.22)",
             }}
           >
             <Typography variant="h6" sx={{ marginBottom: "20px" }}>

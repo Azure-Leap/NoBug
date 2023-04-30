@@ -18,7 +18,7 @@ const NavBar = () => {
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <Box>
+    <Box sx={{ height: "70px", backgroundColor: "white" }}>
       <React.Fragment>
         <AppBar sx={{ background: "#1A202A" }}>
           <Toolbar>
