@@ -8,7 +8,7 @@ const OfferCard = () => {
   return (
     <Box
       sx={{
-        width: "280px",
+        width: { xs: "270px", sm: "280px" },
         height: "400px",
         border: "0.1px solid black",
         borderRadius: "10px",
@@ -40,7 +40,7 @@ const OfferCard = () => {
           }}
           className="title"
         >
-          Design your company's documents / report / brochure / booklet
+          Design your company`s documents / report / brochure / booklet
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <Box

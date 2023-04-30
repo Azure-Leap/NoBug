@@ -29,7 +29,7 @@ const SideBar = () => {
           display: "flex",
           flexDirection: "column",
           gap: "50px",
-          width: "100%",
+          width: { xs: "100%", md: "25%" },
           height: "500px",
           borderRadius: "15px",
           boxShadow: "0px 5px 11px 1px rgba(109,128,135,0.22)",

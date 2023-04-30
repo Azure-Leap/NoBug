@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 // mui
@@ -14,11 +15,24 @@ const ProfileCard = () => {
   const like = () => {
     setToggle(!toggle);
   };
+
+  const router = useRouter();
+
+  const handleCopyUrl = () => {
+    const textField = document.createElement("textarea");
+
+    textField.innerText = window.location.href;
+    document.body.appendChild(textField);
+    textField.select();
+    document.execCommand("copy");
+    textField.remove();
+  };
+
   return (
     <Box
       sx={{
-        width: "100%",
-        height: "500px",
+        width: { xs: "100%", md: "70%" },
+        height: { xs: "500px", sm: "500px" },
         borderRadius: "15px",
         boxShadow: "0px 5px 11px 1px rgba(109,128,135,0.22)",
         overflow: "hidden",
@@ -28,7 +42,7 @@ const ProfileCard = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: "45%",
+          height: { xs: "40%", md: "45%" },
           background: "linear-gradient(90deg, #2ce59c  0%, #64b3f4 100%)",
         }}
       >
@@ -36,7 +50,8 @@ const ProfileCard = () => {
           sx={{
             display: "flex",
             position: "absolute",
-            left: "80px",
+            left: { xs: "50%", sm: "80px" },
+            transform: { xs: "translate(-50%, 0)", sm: "translate(0, 0)" },
             bottom: "-90px",
             width: "180px",
             aspectRatio: "1/1",
@@ -69,13 +84,13 @@ const ProfileCard = () => {
 
       <Box
         sx={{
-          position: "relative",
-          paddingY: "100px",
-          px: 10,
           display: "flex",
           flexDirection: "column",
           width: "100%",
           height: "55%",
+          position: "relative",
+          paddingY: "100px",
+          px: { xs: 2, sm: 10 },
         }}
       >
         <MoreVertIcon
@@ -93,6 +108,7 @@ const ProfileCard = () => {
           sx={{
             display: "flex",
             flexDirection: "column",
+            alignItems: { xs: "center", sm: "flex-start" },
             gap: "10px",
           }}
         >
@@ -175,6 +191,7 @@ const ProfileCard = () => {
               Message
             </Button>
             <Button
+              onClick={handleCopyUrl}
               sx={{
                 textTransform: "capitalize",
                 backgroundColor: "rgba(43,92,243)!important",

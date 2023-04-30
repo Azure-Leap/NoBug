@@ -16,10 +16,10 @@ const Skills = () => {
         boxShadow: "0px 5px 11px 1px rgba(109,128,135,0.22)",
         overflow: "hidden",
         backgroundColor: "white",
-        pl: 10,
-        pr: 5,
-        pt: 5,
-        pb: 8,
+        pl: { xs: 4, md: 10 },
+        pr: { xs: 4, md: 5 },
+        pt: { xs: 5, md: 5 },
+        pb: { xs: 5, md: 8 },
       }}
     >
       <Typography sx={{ fontSize: "25px", fontWeight: "500" }}>

@@ -16,27 +16,34 @@ const Profile = () => {
     <Box
       sx={{
         display: "flex",
+        flexDirection: "column",
         p: 4,
-        gap: "40px",
+        gap: { xs: "0px", md: "40px" },
         backgroundColor: "rgba(249,250,251)",
       }}
     >
       <Box
         sx={{
           display: "flex",
-          minHeight: "100vh",
-          flexDirection: "column",
-          gap: "20px",
-          width: "70%",
+          flexDirection: { xs: "column", md: "row" },
+          justifyContent: "space-between",
+          gap: { xs: "40px", md: "20px" },
         }}
       >
         <ProfileCard />
+        <SideBar />
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "40px",
+          width: { xs: "100%", md: "70%" },
+        }}
+      >
         <Skills />
         <Portfolio />
         <Offers />
-      </Box>
-      <Box sx={{ width: "25%", height: "40vh" }}>
-        <SideBar />
       </Box>
     </Box>
   );
