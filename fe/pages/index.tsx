@@ -1,6 +1,5 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
-import Navbar from "@/components/navbar";
+import { Inter, Nabla } from "next/font/google";
 import NavBar from "@/components/navbar/navbar";
 import Hero from "@/components/hero section/hero";
 
