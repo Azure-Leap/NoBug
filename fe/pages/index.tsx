@@ -20,16 +20,33 @@ import NavBar from "../components/navbar/navbar";
 import { Inter } from "next/font/google";
 import NavBar from "@/components/navbar/navbar";
 import Hero from "@/components/hero section/hero";
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+import Category from "@/components/category";
+import HoverDropdown from "@/components/category";
+import Dropcat from "@/components/dropdown";
+import Drop from "@/components/drop";
+
 >>>>>>> Stashed changes
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
     <div>
+<<<<<<< Updated upstream
       <NavBar />
 <<<<<<< Updated upstream
       <Hero />
 =======
+>>>>>>> Stashed changes
+=======
+      {/* <NavBar />
+      <HoverDropdown /> */}
+      <Hero />
+      <HoverDropdown />
+      <Drop />
+      {/* {<Dropcat />} */}
 >>>>>>> Stashed changes
     </div>
   );
