@@ -9,34 +9,46 @@ import {
   colors,
   Button,
 } from "@mui/material";
+import NestedList from "./nestedlist";
+
 import MenuIcon from "@mui/icons-material/Menu";
-const pages = ["HOW IT WORKS", "LOG IN", "SIGN UP"];
+const pages = ["HOW IT WORKS", "LOG IN", "SIGN UP", "FREELANCER?"];
 const DrawerComp = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [open, setOpen] = React.useState(true);
 
+  const handleClick = () => {
+    setOpen(!open);
+  };
   return (
     <React.Fragment>
+      <div></div>
       <Drawer
         anchor="right"
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
       >
-        <List>
+        <List sx={{ padding: "12px" }}>
+          <NestedList />
           {pages.map((page, index) => (
-            <ListItemButton key={index}>
+            <ListItemButton
+              key={index}
+              sx={{ borderBottom: "1px solid black" }}
+            >
               <ListItemIcon>
-                <ListItemText sx={{}}>{page}</ListItemText>
+                <ListItemText>{page}</ListItemText>
               </ListItemIcon>
             </ListItemButton>
           ))}
+          <Button
+            sx={{ padding: "12px", color: "black" }}
+            className="mt-10 ml-5"
+            variant="contained"
+            color="warning"
+          >
+            POST PROJECT
+          </Button>
         </List>
-        <Button
-          sx={{ mt: 65, color: "#9EA4B4" }}
-          variant="contained"
-          color="success"
-        >
-          POST PROJECT
-        </Button>
       </Drawer>
       <IconButton
         sx={{ marginLeft: "auto" }}
