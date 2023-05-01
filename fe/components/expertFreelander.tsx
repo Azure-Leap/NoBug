@@ -1,4 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
+import Image from "next/image";
+import { useRouter } from "next/router";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -11,104 +14,24 @@ import "swiper/css/effect-cards";
 
 // import required modules
 import { Autoplay, Pagination, EffectCards } from "swiper";
+
+// Mui
 import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 
 export default function ExpertFreelancer({ data }: any) {
-  const [ml, setMl] = useState(Number);
-  const [spw, setSpw] = useState(4);
-  const [width, setWidth] = useState("85%");
+  const router = useRouter();
+  const handleClick = (e: any) => {
+    router.push(`/profile/${e._id}`);
+  };
 
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      console.log(window.innerHeight, window.innerWidth);
-      if (innerWidth >= 1270) {
-        setSpw(4);
-        setMl(0);
-      } else if (innerWidth >= 977) {
-        setSpw(3);
-        setMl(0);
-      } else if (innerWidth >= 650) {
-        setSpw(2);
-        setMl(0);
-        setWidth("80%");
-      } else if (innerWidth >= 390) {
-        setSpw(1);
-        setWidth("300px");
-        setMl(5);
-      }
-    });
-  }, []);
-
-  // const data = [
-  //   {
-  //     src: "https://images.unsplash.com/photo-1589820675999-b1fc94f318a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Content writing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://plus.unsplash.com/premium_photo-1661678263122-e443e90f320c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "SEO",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Website Development",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1608377205656-a5a7ac5777d2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Logo Design",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1638389747564-c7cc1c9f7a49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80",
-  //     title: "Voice Over",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  //   {
-  //     src: "https://images.unsplash.com/photo-1616627981347-315c73207041?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  //     title: "Illustration & drawing",
-  //     slogan: "",
-  //   },
-  // ];
   return (
     <Box
       sx={{
+        mt: 4,
         left: "0px",
         width: "100vw",
         py: 5,
-        backgroundColor: "#F0F3F5",
       }}
     >
       <Box
@@ -117,9 +40,15 @@ export default function ExpertFreelancer({ data }: any) {
           flexDirection: "column",
           width: { xs: "95%", xl: "75%" },
           margin: "auto",
+          borderRadius: "15px",
+          boxShadow: "0px 5px 11px 1px rgba(109,128,135,0.22)",
+          overflow: "hidden",
+          backgroundColor: "#F6F7FA",
+          py: 5,
+          px: 4,
         }}
       >
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <Box sx={{ display: "flex", flexDirection: "column", mb: 4 }}>
           <Typography
             sx={{
               fontSize: {
@@ -127,6 +56,7 @@ export default function ExpertFreelancer({ data }: any) {
                 sm: "calc(1.7456vw + .8rem)",
                 lg: "3rem",
               },
+              fontWeight: "500",
             }}
           >
             Expert Bees
@@ -137,38 +67,29 @@ export default function ExpertFreelancer({ data }: any) {
         </Box>
         <Box>
           <Swiper
-            slidesPerView={spw}
+            slidesPerView={1}
             autoplay={{
-              delay: 2500,
+              delay: 4000,
               disableOnInteraction: false,
             }}
             pagination={{
               clickable: true,
             }}
-            // breakpoints={{
-            //   "0.00": {
-            //     slidesPerView: 1,
-            //     spaceBetween: 10,
-            //   },
-            //   "@0.75": {
-            //     slidesPerView: 2,
-            //     // spaceBetween: 20,
-            //   },
-            //   "@0.9": {
-            //     slidesPerView: 2,
-            //     // spaceBetween: 20,
-            //   },
-            //   "@1.00": {
-            //     slidesPerView: 4,
-            //     // spaceBetween: 40,
-            //   },
-            //   "@1.50": {
-            //     slidesPerView: 4,
-            //     // spaceBetween: 30,
-            //   },
-            // }}
-            // centeredSlides={true}
-            // modules={[EffectCards, Autoplay]}
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              600: {
+                slidesPerView: 2,
+              },
+              900: {
+                slidesPerView: 3,
+              },
+              1200: {
+                slidesPerView: 4,
+              },
+            }}
             modules={[Pagination]}
             className="mySwiper "
           >
@@ -176,105 +97,221 @@ export default function ExpertFreelancer({ data }: any) {
               <SwiperSlide key={index}>
                 <Box
                   sx={{
-                    maxWidth: width,
-                    aspectRatio: "3/5",
-                    // backgroundColor: "grey",
+                    maxWidth: { xs: "280px", lg: "300px" },
+                    height: "450px",
                     borderRadius: "10px",
                     overflow: "hidden",
                     mx: "auto",
-                    // p: 5,
+                    border: "1px solid #E5E5E5",
+                    backgroundColor: "white",
+                    px: 3,
                   }}
                 >
                   <Box
                     sx={{
-                      height: "70%",
-                      width: "100%",
-                      backgroundColor: "#e7e7e7",
-                      overflow: "hidden",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      gap: "10px",
+                      height: "45%",
                     }}
                   >
                     <Box
                       sx={{
                         display: "flex",
-                        flexDirection: "column",
                         alignItems: "center",
-                        gap: "5px",
                         justifyContent: "center",
-                        height: "60%",
+                        aspectRatio: "1/1",
+                        borderRadius: "50%",
+                        backgroundColor: "rgba(51, 162,191)",
+                        padding: "2.5px",
                       }}
                     >
                       <Box
                         sx={{
-                          width: "50%",
+                          width: "100px",
                           aspectRatio: "1/1",
                           borderRadius: "50%",
                           overflow: "hidden",
                         }}
                       >
-                        <img src="https://images.unsplash.com/photo-1555952517-2e8e729e0b44?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1964&q=80"></img>
+                        <Image
+                          width={400}
+                          height={400}
+                          src={e.avatar}
+                          alt={e.name}
+                          className="w-full h-full object-cover "
+                        />
                       </Box>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Typography sx={{ fontSize: "20px" }}>
+                        {e.name}
+                      </Typography>
                       <Typography
-                        sx={{
-                          fontWeight: "500",
-                          fontSize: "20px",
-                          color: "#7d7d7d",
-                        }}
+                        sx={{ fontSize: "15px", color: "rgb(130,130,130)" }}
                       >
-                        Hero SEO
+                        {e.job_title}
                       </Typography>
                     </Box>
-                    <Box sx={{ height: "40%", px: 3, pb: 4 }}>
-                      <Box sx={{ height: "80%" }}>
+                  </Box>
+                  <Box sx={{ height: "55%" }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        height: "20%",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          flexDirection: "column",
+                        }}
+                      >
                         <Typography
-                          sx={{ fontSize: "0.85rem", color: "#020d30" }}
+                          sx={{ fontSize: "13px", color: "rgb(130,130,130)" }}
                         >
-                          Big grid but feels proportionate | Dashboard design,
-                          Web design, App design
+                          Projects
+                        </Typography>
+                        <Typography>140</Typography>
+                      </Box>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <Typography
+                          sx={{ fontSize: "13px", color: "rgb(130,130,130)" }}
+                        >
+                          Rating
+                        </Typography>
+                        <Typography>{e.rating}</Typography>
+                      </Box>
+                      <Box
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          flexDirection: "column",
+                        }}
+                      >
+                        <Typography
+                          sx={{ fontSize: "13px", color: "rgb(130,130,130)" }}
+                        >
+                          Per Hour
+                        </Typography>
+                        <Typography>24$</Typography>
+                      </Box>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        gap: "20px",
+                        height: "80%",
+                        pt: 2,
+                      }}
+                    >
+                      <Box>
+                        <Typography
+                          sx={{
+                            textAlign: "center",
+                            fontSize: "0.7rem",
+                            color: "rgb(130,130,130)",
+                          }}
+                        >
+                          {`Lorem ipsum dolor sit amet consectetur adipisicing
+                          elit. Laudantium, veniam unde autem ea ipsum illo
+                          beatae`.substring(0, 120) + "..."}
                         </Typography>
                       </Box>
                       <Box
                         sx={{
                           display: "flex",
-                          gap: "5px",
-                          height: "20%",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          gap: "20px",
                         }}
                       >
                         <Box
                           sx={{
-                            maxWidth: "100px ",
-                            aspectRatio: "1/1",
-                            borderRadius: "50%",
-                            backgroundColor: "green",
-                            overflow: "hidden",
+                            width: "210px",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "10px",
+                            overflow: "scroll",
                           }}
                         >
-                          <img
-                            className="object-cover	w-full h-full"
-                            src="https://media.istockphoto.com/id/486407806/vector/union-jack.jpg?s=612x612&w=0&k=20&c=KPRndA_Czak9T0w_Eq3GnhRaNxERiEiw2cjZe5GBY-E="
-                          />
+                          {e.skills.map((el: any, index: any) => (
+                            <Typography
+                              key={index}
+                              sx={{
+                                padding: "4px",
+                                paddingX: "12px",
+                                borderRadius: "20px",
+                                textAlign: "center",
+                                fontSize: "0.8rem",
+                                color: "rgb(153,153,153)",
+                                border: "0.9px solid grey",
+                                ":hover": {
+                                  backgroundColor: "rgba(51, 162,191)",
+                                  color: "white",
+                                  boxShadow:
+                                    "0px 0px 100px -36px rgba(51, 162,191)",
+                                },
+                              }}
+                            >
+                              {el}
+                            </Typography>
+                          ))}
                         </Box>
-                        <Typography sx={{}}>United Kingdom</Typography>
+                        <Button
+                          onClick={() => {
+                            handleClick(e);
+                          }}
+                          sx={{
+                            width: "200px",
+                            textTransform: "capitalize",
+                            borderRadius: "40px",
+                            color: {
+                              xs: "white",
+                              md: "rgb(153,153,153)",
+                            },
+                            backgroundColor: {
+                              xs: "rgba(51, 162,191)!important",
+                              md: "white!important",
+                            },
+                            boxShadow: {
+                              xs: "0px 0px 35px 0px rgba(51,162,191,0.5)",
+                              md: "none",
+                            },
+                            border: "0.9px solid rgb(153,153,153)",
+                            ":hover": {
+                              color: "white",
+                              backgroundColor: "rgba(51, 162,191)!important",
+                              boxShadow:
+                                "0px 0px 35px 0px rgba(51,162,191,0.5)",
+                            },
+                          }}
+                        >
+                          View Profile
+                        </Button>
                       </Box>
-                    </Box>
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      height: "30%",
-                      width: "100%",
-                      backgroundColor: "white",
-                      p: 3,
-                    }}
-                  >
-                    <Box sx={{}}>
-                      <Typography> ad design</Typography>
-                    </Box>
-                    <Box
-                      sx={{ display: "flex", justifyContent: "space-between" }}
-                    >
-                      <Typography>117 projects</Typography>
-                      <Typography>$12/hr</Typography>
                     </Box>
                   </Box>
                 </Box>

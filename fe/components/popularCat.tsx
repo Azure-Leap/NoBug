@@ -10,6 +10,7 @@ import "swiper/css/pagination";
 
 // import "./styles.css";
 import { Box, Typography } from "@mui/material";
+import Image from "next/image";
 
 const PopularCat = (): any => {
   const data = [
@@ -74,28 +75,6 @@ const PopularCat = (): any => {
       slogan: "",
     },
   ];
-  const [width, setWidth] = useState(Number);
-
-  // spw = Slides Per View for swiper
-  const [spw, setSpw] = useState(Number);
-
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      console.log(window.innerHeight, window.innerWidth);
-      setWidth(innerWidth);
-      if (innerWidth >= 1171) {
-        setSpw(5);
-      } else if (innerWidth >= 950) {
-        setSpw(4);
-      } else if (innerWidth >= 705) {
-        setSpw(3);
-      } else if (innerWidth >= 470) {
-        setSpw(3);
-      } else if (innerWidth < 470) {
-        setSpw(2);
-      }
-    });
-  }, []);
 
   return (
     <Box
@@ -106,15 +85,17 @@ const PopularCat = (): any => {
         gap: "10px",
         width: { xs: "95%", xl: "75%" },
         marginX: "auto",
+        py: 4,
       }}
     >
       <Box sx={{ backgroundColor: "white" }}>
         <Typography
           sx={{
+            fontWeight: "500",
             fontSize: {
               xs: "1.8rem",
               sm: "calc(1.7456vw + .8rem)",
-              lg: "1.8rem",
+              lg: "2rem",
             },
           }}
         >
@@ -122,40 +103,67 @@ const PopularCat = (): any => {
         </Typography>
       </Box>
       <Box
-        sx={{
-          width: "100%",
-        }}
+        sx={
+          {
+            // width: "100%",
+          }
+        }
       >
         <Swiper
-          slidesPerView={spw}
+          slidesPerView={1}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            450: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            690: {
+              slidesPerView: 3,
+              // spaceBetween: 20,
+            },
+            900: {
+              slidesPerView: 4,
+              // spaceBetween: 20,
+            },
+            1200: {
+              slidesPerView: 5,
+              // spaceBetween: 40,
+            },
+          }}
           autoplay={{
-            delay: 2500,
+            delay: 3000,
             disableOnInteraction: false,
           }}
           pagination={{
             clickable: true,
           }}
-          modules={[Autoplay, Navigation]}
-          className="mySwiper"
+          modules={[Navigation, Autoplay]}
+          className="mySwiper -0"
         >
           {data.map((e: any, index) => (
             <SwiperSlide key={index}>
-              <Box sx={{ position: "relative" }}>
-                <Box
-                  sx={{
-                    width: { xs: "150px", sm: "220px" },
-                    aspectRatio: "3/4",
-                    objectFit: "cover",
-                    overflow: "hidden",
-                    borderRadius: "5px",
-                  }}
-                >
-                  <img
-                    src={e.src}
-                    alt={e.src}
-                    className="h-full w-full brightness-75 "
-                  />
-                </Box>
+              <Box
+                sx={{
+                  display: "block",
+                  position: "relative",
+                  width: { xs: "240px" },
+                  aspectRatio: "3/4",
+                  objectFit: "cover",
+                  overflow: "hidden",
+                  borderRadius: "5px",
+                  mx: "auto",
+                }}
+              >
+                <Image
+                  width={400}
+                  height={400}
+                  src={e.src}
+                  alt={e.src}
+                  className="h-full w-full brightness-75 "
+                />
                 <Box
                   sx={{
                     display: "flex",
@@ -163,12 +171,16 @@ const PopularCat = (): any => {
                     gap: "5px",
                     position: "absolute",
                     top: "1px",
+                    left: "0px",
                     p: { xs: 1, sm: 3 },
                   }}
                 >
                   <Typography
                     variant="body1"
-                    sx={{ color: "#D0D0D0", fontSize: "12px" }}
+                    sx={{
+                      color: "#D0D0D0",
+                      fontSize: "12px",
+                    }}
                   >
                     Engage your community
                   </Typography>
