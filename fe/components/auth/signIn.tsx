@@ -40,7 +40,7 @@ function SignInForm() {
   return (
     <div className={`${styles.formContainer} ${styles.signInContainer}`}>
       <form onSubmit={handleOnSubmit} className={styles.form}>
-        <h1 className={styles.head1}>Sign in</h1>
+        <h1 className={styles.head1}>Нэвтрэх</h1>
         <div className={styles.socialContainer}>
           <a>
             <FcGoogle
@@ -60,10 +60,10 @@ function SignInForm() {
             />
           </a>
         </div>
-        <span className={styles.span1}>or use your account</span>
+        <span className={styles.span1}>Бусад бүртгэлээр нэвтрэх</span>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="И-мейл"
           name="email"
           value={state.email}
           onChange={handleChange}
@@ -72,15 +72,15 @@ function SignInForm() {
         <input
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Нууц үг"
           value={state.password}
           onChange={handleChange}
           className={styles.input}
         />
         <a href="#" className={styles.aLink}>
-          Forgot your password?
+          Нууц үг сэргээх?
         </a>
-        <button className={styles.btn}>Sign In</button>
+        <button className={styles.btn}>Нэвтрэх</button>
       </form>
     </div>
   );

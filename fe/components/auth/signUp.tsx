@@ -41,7 +41,7 @@ function SignUpForm() {
   return (
     <div className={`${styles.formContainer} ${styles.signUpContainer}`}>
       <form onSubmit={handleOnSubmit} className={styles.form}>
-        <h1 className={styles.head1}>Create Account</h1>
+        <h1 className={styles.head1}>Бүртгэл үүсгэх</h1>
         <div className={styles.socialContainer}>
           <a className={`${styles.social} ${styles.aLink}`}>
             <FcGoogle
@@ -61,13 +61,13 @@ function SignUpForm() {
             />
           </a>
         </div>
-        <span className={styles.span1}>or use your email for registration</span>
+        <span className={styles.span1}>Эсвэл и-мейл ашиглан бүртгүүлэх</span>
         <input
           type="text"
           name="name"
           value={state.name}
           onChange={handleChange}
-          placeholder="Name"
+          placeholder="Нэр"
           className={styles.input}
         />
         <input
@@ -75,7 +75,7 @@ function SignUpForm() {
           name="email"
           value={state.email}
           onChange={handleChange}
-          placeholder="Email"
+          placeholder="И-мейл"
           className={styles.input}
         />
         <input
@@ -83,10 +83,10 @@ function SignUpForm() {
           name="password"
           value={state.password}
           onChange={handleChange}
-          placeholder="Password"
+          placeholder="Нууц үг"
           className={styles.input}
         />
-        <button className={styles.btn}>Sign Up</button>
+        <button className={styles.btn}>Бүртгүүлэх</button>
       </form>
     </div>
   );

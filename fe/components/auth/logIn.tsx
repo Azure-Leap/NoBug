@@ -37,8 +37,24 @@ export default function App() {
                 id="signIn"
                 onClick={() => handleOnClick("signIn")}
               >
-                Sign In
+                Нэвтрэх
               </button>
+              <div className={styles.switchBtn}>
+                <button
+                  className={`${styles.ghost} ${styles.btn1}`}
+                  id="signIn"
+                  onClick={() => handleOnClick("signIn")}
+                >
+                  Зөгий
+                </button>
+                <button
+                  className={`${styles.ghost} ${styles.btn1}`}
+                  id="signIn"
+                  onClick={() => handleOnClick("signIn")}
+                >
+                  Зөгийчин
+                </button>
+              </div>
             </div>
             <div className={`${styles.overlayPanel} ${styles.overlayRight}`}>
               <h1 className={styles.head1}>Hello, Friend!</h1>
@@ -50,7 +66,7 @@ export default function App() {
                 id="signUp"
                 onClick={() => handleOnClick("signUp")}
               >
-                Sign Up
+                Бүртгүүлэх
               </button>
             </div>
           </div>
