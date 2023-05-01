@@ -10,6 +10,8 @@ import {
   Typography,
   useMediaQuery,
   useTheme,
+  Container,
+  InputAdornment,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import TextField from "@mui/material/TextField";
@@ -22,21 +24,31 @@ const Hero = () => {
   console.log(theme);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   console.log(isMatch);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
   return (
     <React.Fragment>
       <Grid
-        sx={{ backgroundColor: "#C5C5C5", marginTop: "63px" }}
+        sx={{
+          backgroundColor: "#4A4E69",
+          marginTop: "63px",
+          alignItems: "center",
+        }}
         container
         rowSpacing={1}
-        // columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
       >
         <Grid xs={12} sm={6}>
-          <Box>
-            <Typography variant="h2" sx={{ color: "red" }}>
+          <Box sx={{ paddingLeft: "60px" }}>
+            <Typography variant="h2" sx={{ color: "#1A202A" }}>
               Make bright ideas happen
             </Typography>
-            <Typography variant="h4" sx={{ color: "" }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            <Typography variant="h4" sx={{ color: "#1A202A" }}>
+              Access global talent on the freelancer website trusted by over 1
+              million businesses worldwide.
             </Typography>
             <Box
               sx={{
@@ -44,19 +56,26 @@ const Hero = () => {
                 maxWidth: "100%",
               }}
             >
-              <TextField
-                sx={{ backgroundColor: "white", borderRadius: "7px" }}
-                id="standard-name"
-                label=""
-                value=""
-                InputProps={{
-                  endAdornment: (
-                    <Button sx={{}}>
-                      <SearchIcon />
-                    </Button>
-                  ),
-                }}
-              />
+              <Container maxWidth="md" sx={{ mt: 10, marginLeft: "-20px" }}>
+                <TextField
+                  id="search"
+                  type="search"
+                  value={searchTerm}
+                  onChange={handleChange}
+                  sx={{
+                    width: 600,
+                    backgroundColor: "#9EA4B4",
+                    borderRadius: "7px",
+                  }}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <SearchIcon />
+                      </InputAdornment>
+                    ),
+                  }}
+                />
+              </Container>
             </Box>
           </Box>
         </Grid>

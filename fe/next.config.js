@@ -4,3 +4,8 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+module.exports = {
+  images: {
+    domains: ["images.unsplash.com", "dw3i9sxi97owk.cloudfront.net", "dw3i9sxi97owk.cloudfront.net","png.pngtree.com"],
+  },
+}
