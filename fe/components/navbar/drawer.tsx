@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NestedList from "./nestedlist";
 import {
   Drawer,
   IconButton,
@@ -9,46 +10,35 @@ import {
   colors,
   Button,
 } from "@mui/material";
-import NestedList from "./nestedlist";
-
 import MenuIcon from "@mui/icons-material/Menu";
-const pages = ["HOW IT WORKS", "LOG IN", "SIGN UP", "FREELANCER?"];
+const pages = ["HOW IT WORKS", "LOG IN", "SIGN UP"];
 const DrawerComp = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [open, setOpen] = React.useState(true);
 
-  const handleClick = () => {
-    setOpen(!open);
-  };
   return (
     <React.Fragment>
-      <div></div>
       <Drawer
         anchor="right"
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
       >
-        <List sx={{ padding: "12px" }}>
-          <NestedList />
+        <NestedList />
+        <List>
           {pages.map((page, index) => (
-            <ListItemButton
-              key={index}
-              sx={{ borderBottom: "1px solid black" }}
-            >
+            <ListItemButton key={index}>
               <ListItemIcon>
-                <ListItemText>{page}</ListItemText>
+                <ListItemText sx={{}}>{page}</ListItemText>
               </ListItemIcon>
             </ListItemButton>
           ))}
-          <Button
-            sx={{ padding: "12px", color: "black" }}
-            className="mt-10 ml-5"
-            variant="contained"
-            color="warning"
-          >
-            POST PROJECT
-          </Button>
         </List>
+        <Button
+          sx={{ mt: 65, color: "#9EA4B4" }}
+          variant="contained"
+          color="success"
+        >
+          POST PROJECT
+        </Button>
       </Drawer>
       <IconButton
         sx={{ marginLeft: "auto" }}
@@ -56,6 +46,7 @@ const DrawerComp = () => {
       >
         <MenuIcon sx={{ color: "white" }} />
       </IconButton>
+      ds
     </React.Fragment>
   );
 };

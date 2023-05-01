@@ -26,7 +26,7 @@ const Hero = () => {
   console.log(isMatch);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const handleChange = (event) => {
+  const handleChange = (event: any) => {
     setSearchTerm(event.target.value);
   };
   return (
