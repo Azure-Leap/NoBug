@@ -21,7 +21,7 @@ const NavBar = () => {
   return (
     <Box>
       <React.Fragment>
-        <AppBar sx={{ background: "#1A202A" }}>
+        <AppBar sx={{ background: "#1A202A", paddingLeft: "30px" }}>
           <Toolbar>
             <img src="logo2.png" alt="" width={200} height={50} />
             {isMatch ? (
@@ -38,7 +38,7 @@ const NavBar = () => {
             ) : (
               <>
                 <Tabs
-                  sx={{ marginLeft: "auto" }}
+                  sx={{ marginLeft: "auto", marginRight: "40px" }}
                   value={value}
                   onChange={(e, value) => setValue(value)}
                 >
