@@ -27,6 +27,10 @@ const freelancerSchema = new Schema(
       type: String,
       required: [true, "Хэрэглэгчийн password ийг заавал бөглөнө үү!!!"],
     },
+    phone: {
+      type: String,
+      required: [true, "Хэрэглэгчийн утасны дугаарыг ийг заавал бөглөнө үү!!!"],
+    },
     avatar: {
       type: String,
     },

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { UserContext } from "@/context/userContext";
+import React, { useContext, useState } from "react";
 
 import SignInForm from "./signIn";
 import SignUpForm from "./signUp";
@@ -6,6 +7,8 @@ import SignUpForm from "./signUp";
 import styles from "./styles.module.css";
 
 export default function App() {
+  const { whatRole, signUpData }: any = useContext(UserContext);
+
   const [type, setType] = useState("signIn");
 
   const handleOnClick = (text: string) => {
@@ -42,15 +45,30 @@ export default function App() {
               <div className={styles.switchBtn}>
                 <button
                   className={`${styles.ghost} ${styles.btn1}`}
-                  id="signIn"
-                  onClick={() => handleOnClick("signIn")}
+                  id="freelancer"
+                  onClick={() => {
+                    whatRole("Freelancer");
+                  }}
+                  style={{
+                    backgroundColor:
+                      signUpData.role === "Freelancer" ? "white" : "#ff4b2b",
+                    color:
+                      signUpData.role === "Freelancer" ? "#ff4b2b" : "white",
+                  }}
                 >
                   Зөгий
                 </button>
                 <button
                   className={`${styles.ghost} ${styles.btn1}`}
-                  id="signIn"
-                  onClick={() => handleOnClick("signIn")}
+                  id="client"
+                  style={{
+                    backgroundColor:
+                      signUpData.role === "Client" ? "white" : "#ff4b2b",
+                    color: signUpData.role === "Client" ? "#ff4b2b" : "white",
+                  }}
+                  onClick={() => {
+                    whatRole("Client");
+                  }}
                 >
                   Зөгийчин
                 </button>
