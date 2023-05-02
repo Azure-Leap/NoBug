@@ -14,8 +14,8 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-      <HoverDropdown />
       <Hero />
+      <HoverDropdown />
     </div>
   );
 }
