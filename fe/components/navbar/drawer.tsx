@@ -9,6 +9,7 @@ import {
   ListItemText,
   colors,
   Button,
+  Box,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 const pages = ["HOW IT WORKS", "LOG IN", "SIGN UP"];
@@ -18,27 +19,34 @@ const DrawerComp = () => {
   return (
     <React.Fragment>
       <Drawer
+        PaperProps={{
+          sx: {
+            width: 240,
+            backgroundColor: "#E3FDFD",
+          },
+        }}
         anchor="right"
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
       >
         <NestedList />
-        <List>
+        <List sx={{ padding: "1rem" }}>
           {pages.map((page, index) => (
-            <ListItemButton key={index}>
-              <ListItemIcon>
-                <ListItemText sx={{}}>{page}</ListItemText>
-              </ListItemIcon>
+            <ListItemButton
+              sx={{ borderBottom: "1px solid black" }}
+              key={index}
+            >
+              <ListItemText sx={{ color: "#555555" }}>{page}</ListItemText>
             </ListItemButton>
           ))}
+          <Button
+            sx={{ mt: 3, color: "#555555", ml: 4, bgcolor: "red" }}
+            variant="contained"
+            color="warning"
+          >
+            POST PROJECT
+          </Button>
         </List>
-        <Button
-          sx={{ mt: 65, color: "#9EA4B4" }}
-          variant="contained"
-          color="success"
-        >
-          POST PROJECT
-        </Button>
       </Drawer>
       <IconButton
         sx={{ marginLeft: "auto" }}

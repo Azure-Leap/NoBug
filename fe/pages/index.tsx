@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-      <Hero />
+      {/* <Hero /> */}
       <HoverDropdown />
     </div>
   );

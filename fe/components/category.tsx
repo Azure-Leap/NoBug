@@ -65,7 +65,7 @@ export default function HoverDropdown() {
   ];
 
   return (
-    <div className="bg-slate-100">
+    <div className="bg-slate-100 mt-14">
       <div className="max-w-screen-xl flex  items-center p-4 ">
         <div onMouseLeave={() => setOpen(false)} className="flex">
           {categoryData.map((categoryData, index) => (

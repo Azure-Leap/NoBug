@@ -18,36 +18,48 @@ export default function NestedList() {
 
   return (
     <List
-      sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+      sx={{ width: "100%", maxWidth: 360, bgcolor: "#E3FDFD" }}
       component="nav"
       aria-labelledby="nested-list-subheader"
     >
       <ListItemButton onClick={handleClick}>
         <ListItemIcon>
-          <SearchIcon />
+          <SearchIcon sx={{ color: "#067BC2" }} />
         </ListItemIcon>
-        <ListItemText sx={{ color: "#9EA4B4" }} primary="SEARCH" />
+        <ListItemText sx={{ color: "#067BC2" }} primary="SEARCH" />
         {open ? <ExpandLess /> : <ExpandMore />}
       </ListItemButton>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{}}>
+          <ListItemButton>
             <ListItemText
-              sx={{ color: "#9EA4B4" }}
+              sx={{
+                color: "#067BC2",
+                borderBottom: "1px solid black",
+                paddingLeft: "1rem",
+              }}
               primary="Search offer"
               secondary="to buy now"
             />
           </ListItemButton>
-          <ListItemButton sx={{ color: "#9EA4B4" }}>
+          <ListItemButton sx={{ color: "#067BC2" }}>
             <ListItemText
-              sx={{ color: "#9EA4B4" }}
+              sx={{
+                color: "#067BC2",
+                borderBottom: "1px solid black",
+                paddingLeft: "1rem",
+              }}
               primary="Search Freelancer"
               secondary="to request a"
             />
           </ListItemButton>
           <ListItemButton sx={{}}>
             <ListItemText
-              sx={{ color: "#9EA4B4" }}
+              sx={{
+                color: "#067BC2",
+                borderBottom: "1px solid black",
+                paddingLeft: "1rem",
+              }}
               primary="Search Project"
               secondary="to quite on"
             />
