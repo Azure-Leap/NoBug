@@ -4,12 +4,12 @@ import connectDB from "./config/db";
 import dotenv from "dotenv";
 dotenv.config();
 import error from "./middlewares/error";
-
 import userRoutes from "./routes/user";
 import serviceRoutes from "./routes/service";
 import freelancerRoutes from "./routes/freelancer";
 import categoryRoutes from "./routes/category";
-import { connect } from "mongoose";
+import authRoutes from "./routes/auth";
+
 const app = express();
 
 // middlewares
@@ -21,6 +21,7 @@ app.use("/users", userRoutes);
 app.use("/freelancer", freelancerRoutes);
 app.use("/services", serviceRoutes);
 app.use("/categories", categoryRoutes);
+app.use("/auth", authRoutes);
 
 // ENV
 const MONGO_URI = process.env.MONGO_URI || "";

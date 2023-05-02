@@ -1,23 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
+import { UserContext } from "@/context/userContext";
 import styles from "./styles.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
 function SignUpForm() {
-  const router = useRouter();
+  const { signUpData, setSignUpData, signUp, role }: any =
+    useContext(UserContext);
 
+  const router = useRouter();
   const routeTo = (url: string) => {
     router.replace(url);
   };
-  const [state, setState] = React.useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  // const [state, setState] = React.useState({
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  //   role: "freelancer",
+  // });
   const handleChange = (evt: any) => {
     const value = evt.target.value;
-    setState({
-      ...state,
+    setSignUpData({
+      ...signUpData,
       [evt.target.name]: value,
     });
   };
@@ -25,14 +29,14 @@ function SignUpForm() {
   const handleOnSubmit = (evt: any) => {
     evt.preventDefault();
 
-    const { name, email, password } = state;
+    const { name, email, password } = signUpData;
     alert(
       `You are sign up with name: ${name} email: ${email} and password: ${password}`
     );
 
-    for (const key in state) {
-      setState({
-        ...state,
+    for (const key in signUpData) {
+      setSignUpData({
+        ...signUpData,
         [key]: "",
       });
     }
@@ -65,7 +69,7 @@ function SignUpForm() {
         <input
           type="text"
           name="name"
-          value={state.name}
+          value={signUpData.name}
           onChange={handleChange}
           placeholder="Нэр"
           className={styles.input}
@@ -73,7 +77,7 @@ function SignUpForm() {
         <input
           type="email"
           name="email"
-          value={state.email}
+          value={signUpData.email}
           onChange={handleChange}
           placeholder="И-мейл"
           className={styles.input}
@@ -81,12 +85,14 @@ function SignUpForm() {
         <input
           type="password"
           name="password"
-          value={state.password}
+          value={signUpData.password}
           onChange={handleChange}
           placeholder="Нууц үг"
           className={styles.input}
         />
-        <button className={styles.btn}>Бүртгүүлэх</button>
+        <button onClick={signUp} className={styles.btn}>
+          Бүртгүүлэх
+        </button>
       </form>
     </div>
   );

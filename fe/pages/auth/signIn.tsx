@@ -1,45 +1,47 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useRouter } from "next/router";
 import styles from "./styles.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { BsFacebook } from "react-icons/bs";
+import { UserContext } from "@/context/userContext";
 
 function SignInForm() {
+  const { signIn, signInData, setSignInData }: any = useContext(UserContext);
+
   const router = useRouter();
 
   const routeTo = (url: string) => {
     router.replace(url);
   };
-  const [state, setState] = React.useState({
-    email: "",
-    password: "",
-  });
+
   const handleChange = (evt: any) => {
     const value = evt.target.value;
-    setState({
-      ...state,
+    setSignInData({
+      ...signInData,
       [evt.target.name]: value,
     });
   };
 
-  console.log("state", state);
-  const handleOnSubmit = (evt: any) => {
-    evt.preventDefault();
+  console.log("state", signInData);
 
-    const { email, password } = state;
-    alert(`You are login with email: ${email} and password: ${password}`);
-
-    for (const key in state) {
-      setState({
-        ...state,
-        [key]: "",
-      });
-    }
-  };
+  // const handleOnSubmit = (evt: any) => {
+  //   signIn();
+  //   evt.preventDefault();
+  //   const { email, password } = signInData;
+  //   for (const key in signInData) {
+  //     setSignInData({
+  //       ...signInData,
+  //       [key]: "",
+  //     });
+  //   }
+  // };
 
   return (
     <div className={`${styles.formContainer} ${styles.signInContainer}`}>
-      <form onSubmit={handleOnSubmit} className={styles.form}>
+      <form
+        //  onSubmit={handleOnSubmit}
+        className={styles.form}
+      >
         <h1 className={styles.head1}>Нэвтрэх</h1>
         <div className={styles.socialContainer}>
           <a>
@@ -65,7 +67,7 @@ function SignInForm() {
           type="email"
           placeholder="И-мейл"
           name="email"
-          value={state.email}
+          value={signInData.email}
           onChange={handleChange}
           className={styles.input}
         />
@@ -73,14 +75,16 @@ function SignInForm() {
           type="password"
           name="password"
           placeholder="Нууц үг"
-          value={state.password}
+          value={signInData.password}
           onChange={handleChange}
           className={styles.input}
         />
         <a href="#" className={styles.aLink}>
           Нууц үг сэргээх?
         </a>
-        <button className={styles.btn}>Нэвтрэх</button>
+        <button onClick={signIn} className={styles.btn}>
+          Нэвтрэх
+        </button>
       </form>
     </div>
   );
