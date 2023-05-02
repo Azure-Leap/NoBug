@@ -46,7 +46,6 @@ const DrawerComp = () => {
       >
         <MenuIcon sx={{ color: "white" }} />
       </IconButton>
-      ds
     </React.Fragment>
   );
 };
