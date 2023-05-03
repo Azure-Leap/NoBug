@@ -20,7 +20,13 @@ const NavBar = () => {
   return (
     <Box sx={{ height: "70px", backgroundColor: "white" }}>
       <React.Fragment>
-        <AppBar sx={{ background: "#1A202A" }}>
+        <AppBar
+          sx={{
+            background: "#B9CDDA",
+            paddingLeft: "30px",
+            borderBottom: "1px solid #555555",
+          }}
+        >
           <Toolbar>
             <Image src="/logo2.png" alt="" width={200} height={50} />
             {isMatch ? (
@@ -29,7 +35,7 @@ const NavBar = () => {
                   sx={{
                     fontSize: "2rem",
                     paddingLeft: "10%",
-                    color: "#9EA4B4",
+                    color: "#212A3E",
                   }}
                 ></Typography>
                 <DrawerComp />
@@ -37,31 +43,30 @@ const NavBar = () => {
             ) : (
               <>
                 <Tabs
-                  sx={{ marginLeft: "auto" }}
+                  sx={{ marginLeft: "auto", marginRight: "40px" }}
                   value={value}
                   onChange={(e, value) => setValue(value)}
                 >
                   <Tab
                     sx={{
-                      color: "#9EA4B4",
+                      color: "#212A3E",
                       ":hover": { color: "white" },
                     }}
                     label="POST MOMENT"
                   />
-
                   <Tab
                     sx={{
-                      color: "#9EA4B4",
+                      color: "#212A3E",
                       ":hover": { color: "white" },
                     }}
                     label="HOW IT WORK"
                   />
                   <Tab
-                    sx={{ color: "#9EA4B4", ":hover": { color: "white" } }}
+                    sx={{ color: "#212A3E", ":hover": { color: "white" } }}
                     label="LOG IN"
                   />
                   <Tab
-                    sx={{ color: "#9EA4B4", ":hover": { color: "white" } }}
+                    sx={{ color: "#212A3E", ":hover": { color: "white" } }}
                     label="SIGN UP"
                   />
                 </Tabs>
