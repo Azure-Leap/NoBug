@@ -65,7 +65,7 @@ export default function HoverDropdown() {
   ];
 
   return (
-    <div className="bg-slate-100 mt-14">
+    <div className="bg-slate-100 -mt-4">
       <div className="max-w-screen-xl flex  items-center p-4 ">
         <div onMouseLeave={() => setOpen(false)} className="flex">
           {categoryData.map((categoryData, index) => (
@@ -83,11 +83,11 @@ export default function HoverDropdown() {
               {categoryData.title}
             </Link>
           ))}
-          <p className="hidden md:block">Text to hide on small screens</p>
-          <p className="hidden xl:block">Text to hide on big screens</p>
+          {/* <p className="hidden md:block">Text to hide on small screens</p>
+          <p className="hidden xl:block">Text to hide on big screens</p> */}
 
           <ul
-            className={`absolute  flex  w-full mt-12 p-3  font-medium justify-between rounded-b-xl bg-slate-200 -ml-4   ${
+            className={`absolute mt-14 flex  w-full  p-3  font-medium justify-between rounded-b-xl bg-slate-200 -ml-4   ${
               open ? "block" : "hidden"
             }`}
           >
