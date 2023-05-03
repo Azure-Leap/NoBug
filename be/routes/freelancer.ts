@@ -4,11 +4,16 @@ import {
   getFreelancer,
   createFreelancer,
   deleteFreelancer,
+  editFreelancer,
 } from "../controller/freelancer";
 
 const router = Router();
 
 router.route("/").get(getFreelancers).post(createFreelancer);
-router.route("/:id").get(getFreelancer).delete(deleteFreelancer);
+router
+  .route("/:id")
+  .get(getFreelancer)
+  .delete(deleteFreelancer)
+  .put(editFreelancer);
 
 export default router;

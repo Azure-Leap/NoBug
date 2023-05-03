@@ -5,9 +5,9 @@ import React from "react";
 const Home = ({ data }: any) => {
   console.log(data.freelancer);
   return (
-    <Box sx={{ width: { xs: "95%", xl: "75%" }, margin: "auto" }}>
-      <ExpertFreelancer data={data.freelancer} />
-    </Box>
+    // <Box sx={{ width: { xs: "95%", xl: "75%" }, margin: "auto" }}>
+    <ExpertFreelancer data={data.freelancer} />
+    // </Box>
   );
 };
 
