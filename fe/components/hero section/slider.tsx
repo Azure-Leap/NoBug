@@ -39,29 +39,26 @@ export default function ImgSlider() {
       >
         <SwiperSlide>
           <Image
-            src="https://images.unsplash.com/photo-1613909207039-6b173b755cc1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8ZnJlZWxhbmNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
+            src="https://img.freepik.com/free-vector/back-back-concept-illustration_114360-5999.jpg?size=626&ext=jpg&ga=GA1.2.717425339.1682860137&semt=robertav1_2_sidr"
             alt="Picture of the author"
             width={500}
             height={500}
           />
-          <img
-            className="object-cover h-100 w-100"
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
+            src="https://assets.website-files.com/5d5e2ff58f10c53dcffd8683/5db1e0e7e74e34610bcb4951_sprinting.gif"
+            alt="Picture of the author"
+            width={500}
+            height={500}
+          />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Image
             src="https://images.unsplash.com/photo-1613909207039-6b173b755cc1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8ZnJlZWxhbmNlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60"
-            alt=""
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            className="object-cover h-100 w-100"
-            src="https://media.istockphoto.com/id/1466961863/photo/asian-soho-designer.jpg?b=1&s=170667a&w=0&k=20&c=6Tc4OZaVNr8hLRQIhyV4SH-vd7ETm5s2xAuuiuE2HOI="
-            alt=""
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            className="object-cover h-100 w-100"
-            src="https://media.istockphoto.com/id/1153675389/photo/working-at-home.jpg?b=1&s=170667a&w=0&k=20&c=wKnVLAL_0s80ip8yAhYv5193cZLdk_Jqs-KIoNhD9go="
-            alt=""
+            alt="Picture of the author"
+            width={500}
+            height={500}
           />
         </SwiperSlide>
       </Swiper>

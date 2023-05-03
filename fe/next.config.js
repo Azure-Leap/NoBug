@@ -15,6 +15,7 @@ const nextConfig = {
       "maqe-com-4-media-uploads.s3.ap-southeast-1.amazonaws.com",
       "blog.flipsnack.com",
       "elements-cover-images-0.imgix.net",
+      "assets.website-files.com",
     ],
   },
 };
