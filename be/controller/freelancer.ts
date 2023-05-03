@@ -7,7 +7,7 @@ const getFreelancers = async (
   next: NextFunction
 ) => {
   try {
-    const freelancer = await Freelancer.find();
+    const freelancer = await Freelancer.find().populate("user");
 
     res.status(201).json({
       success: true,
@@ -25,7 +25,7 @@ const getFreelancer = async (
   next: NextFunction
 ) => {
   const { id } = req.params;
-  const freelancer = await Freelancer.findById(id);
+  const freelancer = await Freelancer.findById(id).populate("user");
   try {
     res.status(201).json({
       success: true,
