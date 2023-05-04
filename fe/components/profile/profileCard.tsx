@@ -4,28 +4,43 @@ import React, { useState } from "react";
 
 // mui
 import { Box, Button, Typography } from "@mui/material";
+import Popover from "@mui/material/Popover";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CircleIcon from "@mui/icons-material/Circle";
 
 const ProfileCard = () => {
+  // Popover start
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [popoverText, setPopOverText] = useState<String>("Copy Profile");
+
+  const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setPopOverText("Copy Profile");
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handlePopoverClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  // Popover end
+
+  const router = useRouter();
   const [toggle, setToggle] = useState(false);
 
   const like = () => {
     setToggle(!toggle);
   };
 
-  const router = useRouter();
-
-  const handleCopyUrl = () => {
-    const textField = document.createElement("textarea");
-
-    textField.innerText = window.location.href;
-    document.body.appendChild(textField);
-    textField.select();
-    document.execCommand("copy");
-    textField.remove();
+  const handleCopyUrl = async () => {
+    try {
+      setPopOverText("Copied!");
+      await navigator.clipboard.writeText(window.location.href);
+    } catch (err: any) {
+      setPopOverText(err);
+    }
   };
 
   return (
@@ -192,6 +207,8 @@ const ProfileCard = () => {
             </Button>
             <Button
               onClick={handleCopyUrl}
+              onMouseEnter={handlePopoverOpen}
+              onMouseLeave={handlePopoverClose}
               sx={{
                 textTransform: "capitalize",
                 backgroundColor: "rgba(43,92,243)!important",
@@ -203,6 +220,33 @@ const ProfileCard = () => {
             >
               Share Profile
             </Button>
+            <Popover
+              id="mouse-over-popover"
+              sx={{
+                pointerEvents: "none",
+              }}
+              open={open}
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "right",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              onClose={handlePopoverClose}
+              disableRestoreFocus
+            >
+              <Typography
+                sx={{
+                  fontSize: "10px",
+                  p: 1,
+                }}
+              >
+                {popoverText}
+              </Typography>
+            </Popover>
           </Box>
         </Box>
       </Box>
