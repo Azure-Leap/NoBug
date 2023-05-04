@@ -13,10 +13,12 @@ import {
 import DrawerComp from "./drawer";
 import Image from "next/image";
 import HoverDropdown from "../category";
+import { useRouter } from "next/router";
 const NavBar = () => {
   const [value, setValue] = useState();
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+  const router = useRouter();
 
   return (
     <>
@@ -30,7 +32,13 @@ const NavBar = () => {
             }}
           >
             <Toolbar>
-              <Image src="/logo2.png" alt="" width={200} height={50} />
+              <Image
+                onClick={() => router.push("/")}
+                src="/logo2.png"
+                alt=""
+                width={200}
+                height={50}
+              />
               {isMatch ? (
                 <>
                   <Typography
@@ -64,10 +72,12 @@ const NavBar = () => {
                       label="HOW IT WORK"
                     />
                     <Tab
+                      onClick={() => router.push("/auth/login")}
                       sx={{ color: "#212A3E", ":hover": { color: "white" } }}
                       label="LOG IN"
                     />
                     <Tab
+                      onClick={() => router.push("/auth/signup")}
                       sx={{ color: "#212A3E", ":hover": { color: "white" } }}
                       label="SIGN UP"
                     />
