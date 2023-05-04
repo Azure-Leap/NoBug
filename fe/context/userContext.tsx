@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { createContext } from "react";
+import { useRouter } from "next/router";
 import axios from "axios";
 export const UserContext = createContext({});
 
 const UserProvider = ({ children }: any) => {
+  const router = useRouter();
   const [userData, setUserData] = useState<{}>();
   const [signUpData, setSignUpData] = useState({
     name: "",
@@ -43,7 +45,8 @@ const UserProvider = ({ children }: any) => {
       );
 
       console.log(res);
-      window.location.href = "/";
+      router.push("/");
+      // window.location.href = "/";
     } catch (err) {
       console.log("err", err);
     }
