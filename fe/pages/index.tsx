@@ -3,6 +3,7 @@ import { Box } from "@mui/system";
 import ExpertFreelancer from "@/components/expertFreelander";
 import PopularCat from "@/components/popularCat";
 import CommendPart from "@/components/commendPart";
+import Hero from "@/components/hero section/hero";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,6 +18,7 @@ export default function Home({ data }: any) {
           }
         }
       >
+        <Hero />
         <PopularCat />
         <CommendPart />
         <ExpertFreelancer data={data.freelancer} />

@@ -16,6 +16,7 @@ import {
 import Grid from "@mui/material/Unstable_Grid2";
 import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search";
+import Image from "next/image";
 
 const Hero = () => {
   //   const [value2, setValue2] = useState();
@@ -32,57 +33,59 @@ const Hero = () => {
   return (
     <React.Fragment>
       <Grid
-        sx={{
-          backgroundColor: "#4A4E69",
-          marginTop: "63px",
-          alignItems: "center",
-        }}
         container
-        rowSpacing={1}
-        columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        style={{ minHeight: "50vh" }}
       >
-        <Grid xs={12} sm={6}>
-          <Box sx={{ paddingLeft: "60px" }}>
-            <Typography variant="h2" sx={{ color: "#1A202A" }}>
-              Make bright ideas happen
-            </Typography>
-            <Typography variant="h4" sx={{ color: "#1A202A" }}>
-              Access global talent on the freelancer website trusted by over 1
-              million businesses worldwide.
-            </Typography>
-            <Box
-              sx={{
-                width: 500,
-                maxWidth: "100%",
-              }}
-            >
-              <Container maxWidth="md" sx={{ mt: 10, marginLeft: "-20px" }}>
-                <TextField
-                  id="search"
-                  type="search"
-                  value={searchTerm}
-                  onChange={handleChange}
-                  sx={{
-                    width: 600,
-                    backgroundColor: "#9EA4B4",
-                    borderRadius: "7px",
-                  }}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <SearchIcon />
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </Container>
-            </Box>
-          </Box>
+        <div
+          style={{
+            zIndex: -1,
+            position: "absolute",
+            width: "100vw",
+            height: "100vh",
+          }}
+        >
+          <Image
+            src="/back.jpg"
+            alt="Mountains with snow"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <Typography variant="h3">
+          Монголын анхны Фрийлансерийн цогц платформ
+        </Typography>
+        <Grid
+          sx={{ maxWidth: "75vw", marginTop: "2rem", marginBottom: "2rem" }}
+        >
+          <Typography variant="h4">
+            Access global talent on the freelancer website trusted by over 1
+            million businesses world.
+          </Typography>
         </Grid>
-        <Grid xs={12} sm={6}>
-          <Box>
-            <ImgSlider />
-          </Box>
+        <Grid xs={3}>
+          <TextField
+            id="search"
+            type="search"
+            value={searchTerm}
+            onChange={handleChange}
+            sx={{
+              maxWidth: "400px",
+              minWidth: "400px",
+              backgroundColor: "#ECF2FF",
+              borderRadius: "7px",
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+          />
         </Grid>
       </Grid>
     </React.Fragment>

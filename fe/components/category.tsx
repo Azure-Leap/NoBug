@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Typography, Grid, Link } from "@mui/material";
+import { Typography, Grid, Link, Box } from "@mui/material";
 import { ClassNames } from "@emotion/react";
 
 export default function HoverDropdown() {
@@ -87,15 +87,17 @@ export default function HoverDropdown() {
           <p className="hidden xl:block">Text to hide on big screens</p> */}
 
           <ul
-            className={`absolute mt-14 flex  w-full  p-3  font-medium justify-between rounded-b-xl bg-slate-200 -ml-4   ${
+            className={`absolute mt-14 mb-10 flex  w-full  p-3  font-medium justify-between rounded-b-xl bg-slate-200 -ml-4   ${
               open ? "block" : "hidden"
             }`}
           >
-            <div className=" flex flex-row flex-wrap gap-4 p-2 mt-1 ">
+            <div className=" flex flex-row flex-wrap gap-8 p-2  ">
               {subCat.map((e: any) => (
-                <Link href="#" underline="hover" color="#555555">
-                  {e.subtitle}
-                </Link>
+                <Box className="flex">
+                  <Link href="#" underline="hover" color="#555555">
+                    {e.subtitle}
+                  </Link>
+                </Box>
               ))}
             </div>
           </ul>
