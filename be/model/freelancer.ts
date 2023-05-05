@@ -13,7 +13,7 @@ interface IFreelancer {
 }
 const freelancerSchema = new Schema(
   {
-    user: {
+    User: {
       type: Schema.Types.ObjectId,
       required: true,
       ref: "User",
@@ -53,7 +53,14 @@ const freelancerSchema = new Schema(
       type: String,
       required: true,
     },
+    Service: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Service",
+      },
+    ],
   },
+
   { timestamps: true }
 );
 
