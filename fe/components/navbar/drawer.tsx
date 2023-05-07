@@ -22,7 +22,7 @@ const DrawerComp = () => {
         PaperProps={{
           sx: {
             width: 240,
-            backgroundColor: "#E3FDFD",
+            backgroundColor: "#B9CDDA",
           },
         }}
         anchor="right"
@@ -32,10 +32,7 @@ const DrawerComp = () => {
         <NestedList />
         <List sx={{ padding: "1rem" }}>
           {pages.map((page, index) => (
-            <ListItemButton
-              sx={{ borderBottom: "1px solid black" }}
-              key={index}
-            >
+            <ListItemButton sx={{ borderBottom: "1px solid gray" }} key={index}>
               <ListItemText sx={{ color: "#555555" }}>{page}</ListItemText>
             </ListItemButton>
           ))}

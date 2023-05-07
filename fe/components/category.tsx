@@ -62,6 +62,42 @@ export default function HoverDropdown() {
         { subtitle: "Дэлгэцийн сурталчилгаа" },
       ],
     },
+    {
+      title: "Видео ба анимэйшн",
+      subCategory: [
+        { subtitle: "Видео эдит" },
+        { subtitle: "Хөдөлгөөнт GIF" },
+        { subtitle: "Слайд видео" },
+        { subtitle: "3D бичлэг" },
+        { subtitle: "Хадмал & Тайлбар" },
+        { subtitle: "Дууны видео" },
+        { subtitle: "Вишуал эффект" },
+        { subtitle: "Тайлбарлагч видео" },
+        { subtitle: "Апп & Вэбсайт танилцуулга" },
+        { subtitle: "Анимэйшн" },
+        { subtitle: "Оршил & Төгсгөлийн видео" },
+        { subtitle: "Богино видео сурталчилгаа" },
+        { subtitle: "Трейлер видео" },
+      ],
+    },
+    {
+      title: "Программ хөгжүүлэлт",
+      subCategory: [
+        { subtitle: "WordPress" },
+        { subtitle: "Вэбсайт програмчлал" },
+        { subtitle: "Дэлгэцийн аппликэйшн" },
+        { subtitle: "Өгөгдлийн сан" },
+        { subtitle: "Системийн дизайн" },
+        { subtitle: "Онлайн худалдаа хөгжүүлэлт" },
+        { subtitle: "Хэрэглэгчийн тест" },
+        { subtitle: "Вэбсайт програмчлал" },
+        { subtitle: "Чатбот" },
+        { subtitle: "Тоглоомны хөгжүүлэлт" },
+        { subtitle: "Эмбэддэд систем" },
+        { subtitle: "Кибер аюулгүй байдал" },
+        { subtitle: "Утасны аппликэйшн" },
+      ],
+    },
   ];
 
   return (
