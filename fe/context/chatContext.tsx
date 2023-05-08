@@ -52,6 +52,16 @@ const ChatProvider = ({ children }: any) => {
       own: true,
     },
   ]);
+  const [grpChat, setGrpChat] = useState({
+    grpId: "1",
+    messages: [
+      { sender: "1", message: "hi1" },
+      { sender: "2", message: "hi2" },
+      { sender: "3", message: "hi3" },
+      { sender: "5", message: "hi5" },
+      { sender: "4", message: "hi4" },
+    ],
+  });
 
   const [textValue, setTextValue] = useState("");
   const [textValueB, setTextValueB] = useState("");
@@ -75,6 +85,8 @@ const ChatProvider = ({ children }: any) => {
         setTextValue,
         textValueB,
         setTextValueB,
+        grpChat,
+        setGrpChat,
       }}
     >
       {children}
