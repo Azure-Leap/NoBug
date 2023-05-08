@@ -9,7 +9,7 @@ interface IUser {
   phoneNumber: String;
   createdAt: Date;
 }
-const userSchema = new Schema<IUser>(
+const userSchema = new Schema(
   {
     name: {
       type: String,
@@ -28,6 +28,48 @@ const userSchema = new Schema<IUser>(
     role: {
       type: String,
       ENUM: ["Client", "Freelancer"],
+    },
+    freelancer: {
+      type: {
+        phone: {
+          type: String,
+        },
+        avatar: {
+          type: String,
+        },
+        job_title: {
+          type: String,
+        },
+        skills: {
+          type: [],
+        },
+        rating: {
+          type: Number,
+        },
+        hourly_rate: {
+          type: Number,
+        },
+        availability: {
+          type: String,
+        },
+        worked_projects: {
+          type: [],
+        },
+        region: {
+          type: String,
+        },
+        Service: [
+          {
+            type: Schema.Types.ObjectId,
+            ref: "Service",
+          },
+        ],
+      },
+    },
+    client: {
+      type: {
+        company_name: { String },
+      },
     },
   },
   { timestamps: true }

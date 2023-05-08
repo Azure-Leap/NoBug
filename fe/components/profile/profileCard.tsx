@@ -9,6 +9,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CircleIcon from "@mui/icons-material/Circle";
+import ReplyIcon from "@mui/icons-material/Reply";
 
 const ProfileCard = () => {
   // Popover start
@@ -193,6 +194,9 @@ const ProfileCard = () => {
             }}
           >
             <Button
+              onClick={() => {
+                router.push("/chat/4");
+              }}
               sx={{
                 textTransform: "capitalize",
                 backgroundColor: "white!important",
@@ -210,6 +214,9 @@ const ProfileCard = () => {
               onMouseEnter={handlePopoverOpen}
               onMouseLeave={handlePopoverClose}
               sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
                 textTransform: "capitalize",
                 backgroundColor: "rgba(43,92,243)!important",
                 color: "white",
@@ -218,6 +225,7 @@ const ProfileCard = () => {
                 px: 2,
               }}
             >
+              <ReplyIcon />
               Share Profile
             </Button>
             <Popover
