@@ -98,11 +98,59 @@ export default function HoverDropdown() {
         { subtitle: "Утасны аппликэйшн" },
       ],
     },
+    {
+      title: "Дуу ба аудио бичилт",
+      subCategory: [
+        { subtitle: "Дуу оруулалт" },
+        { subtitle: "Миксинг & Мастеринг" },
+        { subtitle: "Дууны үг зохиогчид" },
+        { subtitle: "Аудио сурталчилгаа" },
+        { subtitle: "Дууны хөг тааруулах" },
+        { subtitle: "Synth Presets" },
+        { subtitle: "Продюсер & Хөгжмийн найруулагчид" },
+        { subtitle: "Хөгжимчид" },
+        { subtitle: "Бийт хийх" },
+        { subtitle: "Харилцан яриа эдитлэх" },
+        { subtitle: "ДDJ миксинг" },
+      ],
+    },
+    {
+      title: "Лайфстайл",
+      subCategory: [
+        { subtitle: "Дуу оруулалт" },
+        { subtitle: "Миксинг & Мастеринг" },
+        { subtitle: "Дууны үг зохиогчид" },
+        { subtitle: "Аудио сурталчилгаа" },
+        { subtitle: "Дууны хөг тааруулах" },
+        { subtitle: "Synth Presets" },
+        { subtitle: "Продюсер & Хөгжмийн найруулагчид" },
+        { subtitle: "Хөгжимчид" },
+        { subtitle: "Бийт хийх" },
+        { subtitle: "Харилцан яриа эдитлэх" },
+        { subtitle: "ДDJ миксинг" },
+      ],
+    },
+    {
+      title: "Бизнес",
+      subCategory: [
+        { subtitle: "Дуу оруулалт" },
+        { subtitle: "Миксинг & Мастеринг" },
+        { subtitle: "Дууны үг зохиогчид" },
+        { subtitle: "Аудио сурталчилгаа" },
+        { subtitle: "Дууны хөг тааруулах" },
+        { subtitle: "Synth Presets" },
+        { subtitle: "Продюсер & Хөгжмийн найруулагчид" },
+        { subtitle: "Хөгжимчид" },
+        { subtitle: "Бийт хийх" },
+        { subtitle: "Харилцан яриа эдитлэх" },
+        { subtitle: "ДDJ миксинг" },
+      ],
+    },
   ];
 
   return (
     <div className="bg-slate-100 -mt-4">
-      <div className="max-w-screen-xl flex  items-center p-4 ">
+      <div className="max-w-screen-xl flex  items-center p-3 ">
         <div onMouseLeave={() => setOpen(false)} className="flex">
           {categoryData.map((categoryData, index) => (
             <Link
@@ -113,7 +161,7 @@ export default function HoverDropdown() {
                 setOpen(true);
                 setSubCat(categoryData.subCategory);
               }}
-              className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
+              className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3"
               sx={{ color: "#333333" }}
             >
               {categoryData.title}

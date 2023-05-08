@@ -23,6 +23,7 @@ import DrawerComp from "./drawer";
 import Image from "next/image";
 import HoverDropdown from "../category";
 import { useRouter } from "next/router";
+import { WidthFull } from "@mui/icons-material";
 const settings = [
   { title: "Profile", logo: <AccountBoxIcon /> },
   { title: "Post offer", logo: <AccessTimeIcon /> },
@@ -108,7 +109,10 @@ const NavBar = () => {
                   </Tabs>
                   <Box sx={{ flexGrow: 0 }}>
                     <Tooltip title="Open settings">
-                      <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <IconButton
+                        onClick={handleOpenUserMenu}
+                        sx={{ p: 1, ml: -5 }}
+                      >
                         <Avatar
                           alt="Remy Sharp"
                           src="/static/images/avatar/2.jpg"
@@ -133,12 +137,17 @@ const NavBar = () => {
                     >
                       {settings.map((setting) => (
                         <MenuItem
-                          sx={{ p: 2 }}
+                          sx={{
+                            p: 2,
+                            maxwidth: "350px",
+                            minWidth: "300px",
+                            borderBottom: "1px solid gray",
+                          }}
                           key={setting.title}
                           onClick={handleCloseUserMenu}
                         >
                           {setting.logo}
-                          <Typography textAlign="center">
+                          <Typography textAlign="center" padding={1}>
                             {setting.title}
                           </Typography>
                         </MenuItem>
