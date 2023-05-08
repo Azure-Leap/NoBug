@@ -4,7 +4,8 @@ import { Box } from "@mui/material";
 import OneChat from "./oneChat";
 
 const MainChat = () => {
-  const { chatArr, setChatArr }: any = useContext(ChatContext);
+  const { chatArr, grpChat, setChatArr }: any = useContext(ChatContext);
+  console.log(grpChat.messages);
 
   const myDivRef = useRef(null);
 
@@ -34,8 +35,8 @@ const MainChat = () => {
           p: 2,
         }}
       >
-        {chatArr.map((e: any) => (
-          <OneChat message={e.message} own={e.own} />
+        {grpChat.messages.map((e: any) => (
+          <OneChat message={e} />
         ))}
       </Box>
     </Box>
