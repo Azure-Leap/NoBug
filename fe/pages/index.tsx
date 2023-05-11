@@ -6,14 +6,15 @@ import ExpertFreelancer from "@/components/expertFreelander";
 import PopularCat from "@/components/popularCat";
 import CommendPart from "@/components/commendPart";
 import Hero from "@/components/hero section/hero";
+import { useContext } from "react";
+import { CategoryContext } from "@/context/categoryContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ data }: any) {
-  console.log(
-    "ahshhahahahsijdhsljfhjsakhfljsakhfljkasdhflkjashflaskjdfh",
-    data.freelancer
-  );
+export default function Home({ data, categoriesData }: any) {
+  const { setCategoriesData }: any = useContext(CategoryContext);
+  setCategoriesData(categoriesData.category);
+
   return (
     <>
       <Box
@@ -43,11 +44,16 @@ export default function Home({ data }: any) {
 // }
 
 export async function getServerSideProps() {
-  const res = await fetch("http://localhost:8000/freelancer");
-  const data = await res.json();
+  const data = await fetch("http://localhost:8000/freelancer").then((res) =>
+    res.json()
+  );
+  const categoriesData = await fetch("http://localhost:8000/categories").then(
+    (res) => res.json()
+  );
   return {
     props: {
       data,
+      categoriesData,
     },
   };
 }
