@@ -29,9 +29,6 @@ export default function HoverDropdown({ categories }: any) {
               {e.title}
             </Link>
           ))}
-          {/* <p className="hidden md:block">Text to hide on small screens</p>
-          <p className="hidden xl:block">Text to hide on big screens</p> */}
-
           <ul
             className={`absolute mt-14 mb-10 flex  w-full  p-3  font-medium justify-between rounded-b-xl bg-slate-200 -ml-4   ${
               open ? "block" : "hidden"
