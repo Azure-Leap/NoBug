@@ -24,6 +24,7 @@ import Image from "next/image";
 import HoverDropdown from "../category";
 import { useRouter } from "next/router";
 import { WidthFull } from "@mui/icons-material";
+import NestedList from "../mobileCat";
 const settings = [
   { title: "Profile", logo: <AccountBoxIcon /> },
   { title: "Post offer", logo: <AccessTimeIcon /> },
@@ -47,7 +48,7 @@ const NavBar = () => {
 
   return (
     <>
-      <Box sx={{ height: "70px", backgroundColor: "white" }}>
+      <Box sx={{ height: "70px", backgroundColor: "white", width: "100vw" }}>
         <React.Fragment>
           <AppBar
             sx={{
@@ -161,6 +162,7 @@ const NavBar = () => {
         </React.Fragment>
       </Box>
       <HoverDropdown />
+      <NestedList />
     </>
   );
 };

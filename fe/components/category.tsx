@@ -11,7 +11,7 @@ export default function HoverDropdown({ categories }: any) {
   console.log(categoriesData);
 
   return (
-    <div className="bg-slate-100 -mt-4">
+    <div className="bg-slate-100 -mt-4  hidden md:block">
       <div className="max-w-screen-xl flex  items-center p-3 ">
         <div onMouseLeave={() => setOpen(false)} className="flex">
           {categoriesData?.map((e: any, index: any) => (
@@ -23,7 +23,7 @@ export default function HoverDropdown({ categories }: any) {
                 setOpen(true);
                 setSubCat(e.subCategory);
               }}
-              className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-3"
+              className=" flex flex-wrap items-center justify-between mx-auto p-3"
               sx={{ color: "#333333" }}
             >
               {e.title}
