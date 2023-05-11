@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 import { SocialIcon } from "react-social-icons";
+import { UserContext } from "@/context/userContext";
 
 const Footer = () => {
   const footerMenu = [

@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import { Box } from "@mui/system";
+// import { CookiesProvider } from "react-cookie";
+
 import ExpertFreelancer from "@/components/expertFreelander";
 import PopularCat from "@/components/popularCat";
 import CommendPart from "@/components/commendPart";
@@ -42,10 +44,12 @@ export default function Home({ data, categoriesData }: any) {
 // }
 
 export async function getServerSideProps() {
-  const res = await fetch("https://skill-hive-1giq.onrender.com/freelancer");
-  const categories = await fetch("http://localhost:8000/categories");
-  const data = await res.json();
-  const categoriesData = await categories.json();
+  const data = await fetch("http://localhost:8000/freelancer").then((res) =>
+    res.json()
+  );
+  const categoriesData = await fetch("http://localhost:8000/categories").then(
+    (res) => res.json()
+  );
   return {
     props: {
       data,

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { FreelancerInterface } from "@/interfaces/interfaces";
 
 // mui
 import { Box } from "@mui/system";
@@ -8,10 +9,35 @@ import Skills from "@/components/profile/skills";
 import SideBar from "@/components/profile/sideBar";
 import Portfolio from "@/components/profile/portfolio/portfolio";
 import Offers from "@/components/profile/offers";
+import axios from "axios";
+import ProfileImageModal from "@/components/profile/profileImageModal/profileImageModal";
+import { truncate } from "fs/promises";
 
 const Profile = () => {
+  const [isModal, setIsModal] = useState(false);
   const router = useRouter();
+  const [profileData, setProfileData] = useState<FreelancerInterface>();
   const { id } = router.query;
+
+  const toggleModal = () => {
+    setIsModal(!isModal);
+  };
+
+  const getFreelancerData = async () => {
+    try {
+      const { data } = await axios.get(
+        `http://localhost:8000/freelancer/${id}`
+      );
+      setProfileData(data.freelancer[0]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getFreelancerData();
+  }, [id]);
+
   return (
     <Box
       sx={{
@@ -30,7 +56,7 @@ const Profile = () => {
           gap: { xs: "40px", md: "20px" },
         }}
       >
-        <ProfileCard />
+        <ProfileCard profileData={profileData} toggleModal={toggleModal} />
         <SideBar />
       </Box>
       <Box
@@ -41,10 +67,16 @@ const Profile = () => {
           width: { xs: "100%", md: "70%" },
         }}
       >
-        <Skills />
-        <Portfolio />
+        <Skills profileData={profileData} />
+        <Portfolio profileData={profileData} />
         <Offers />
       </Box>
+      <ProfileImageModal
+        profileData={profileData}
+        isModal={isModal}
+        setIsModal={setIsModal}
+        toggleModal={toggleModal}
+      />
     </Box>
   );
 };

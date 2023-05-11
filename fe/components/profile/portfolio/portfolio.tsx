@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import PortfolioModal from "./portfolioModal";
 
-const Portfolio = () => {
+const Portfolio = ({ profileData }: any) => {
   const [active, setActive] = useState(1);
   const [open, setOpen] = useState(false);
   const [data, setData] = useState([

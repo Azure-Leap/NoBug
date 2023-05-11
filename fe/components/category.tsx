@@ -35,7 +35,7 @@ export default function HoverDropdown({ categories }: any) {
             }`}
           >
             <div className=" flex flex-row flex-wrap gap-8 p-2  ">
-              {subCat.map((e: any) => (
+              {subCat?.map((e: any) => (
                 <Box className="flex">
                   <Link href="#" underline="hover" color="#555555">
                     {e.subtitle}
