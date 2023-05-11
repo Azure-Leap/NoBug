@@ -1,10 +1,25 @@
-import { useState } from "react";
-import { Typography, Grid, Link } from "@mui/material";
-import { ClassNames } from "@emotion/react";
+import * as React from "react";
+import List from "@mui/material/List";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import Collapse from "@mui/material/Collapse";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
+import { Link } from "@mui/material";
 
-export default function HoverDropdown() {
-  const [open, setOpen] = useState(false);
-  const [subCat, setSubCat] = useState<any>([]);
+import {
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from "@mui/material";
+
+export default function NestedList() {
+  const [opensub, setopensub] = React.useState(false);
+  const handleClick = () => {
+    setopensub(!opensub);
+  };
+
   const categoryData = [
     {
       title: "График дизайн",
@@ -60,24 +75,6 @@ export default function HoverDropdown() {
         { subtitle: "Подкаст маркетинг" },
         { subtitle: "Имэйл маркетинг" },
         { subtitle: "Дэлгэцийн сурталчилгаа" },
-      ],
-    },
-    {
-      title: "Видео ба анимэйшн",
-      subCategory: [
-        { subtitle: "Видео эдит" },
-        { subtitle: "Хөдөлгөөнт GIF" },
-        { subtitle: "Слайд видео" },
-        { subtitle: "3D бичлэг" },
-        { subtitle: "Хадмал & Тайлбар" },
-        { subtitle: "Дууны видео" },
-        { subtitle: "Вишуал эффект" },
-        { subtitle: "Тайлбарлагч видео" },
-        { subtitle: "Апп & Вэбсайт танилцуулга" },
-        { subtitle: "Анимэйшн" },
-        { subtitle: "Оршил & Төгсгөлийн видео" },
-        { subtitle: "Богино видео сурталчилгаа" },
-        { subtitle: "Трейлер видео" },
       ],
     },
     {
@@ -143,48 +140,56 @@ export default function HoverDropdown() {
         { subtitle: "Хөгжимчид" },
         { subtitle: "Бийт хийх" },
         { subtitle: "Харилцан яриа эдитлэх" },
-        { subtitle: "ДDJ миксинг" },
+        { subtitle: "DJ миксинг" },
       ],
     },
   ];
 
   return (
-    <div className="bg-slate-100 -mt-4  hidden md:block">
-      <div className="max-w-screen-xl flex  items-center p-3 ">
-        <div onMouseLeave={() => setOpen(false)} className="flex">
+    <List
+      className="block lg:hidden md:hidden xl:hidden l:hidden"
+      sx={{ width: "100vw", bgcolor: "background.paper" }}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+    >
+      <ListItemButton onClick={handleClick}>
+        <ListItemText sx={{ color: "#747474" }} primary="Browse by Category" />
+        {opensub ? (
+          <ExpandLess sx={{ color: "#747474" }} />
+        ) : (
+          <ExpandMore sx={{ color: "#747474" }} />
+        )}
+      </ListItemButton>
+      <Collapse
+        in={opensub}
+        timeout="auto"
+        unmountOnExit
+        sx={{ width: "100vw" }}
+      >
+        <div className="100vw" color="#747474">
           {categoryData.map((categoryData, index) => (
-            <Link
-              key={index}
-              href="#"
-              underline="none"
-              onMouseOver={() => {
-                setOpen(true);
-                setSubCat(categoryData.subCategory);
-              }}
-              className=" flex flex-wrap items-center justify-between mx-auto p-3"
-              sx={{ color: "#333333" }}
-            >
-              {categoryData.title}
-            </Link>
+            <Accordion elevation={0}>
+              <AccordionSummary
+                expandIcon={<ExpandMore />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+                color="#747474"
+              >
+                <Typography color="#747474">{categoryData.title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <div className=" flex flex-col flex-wrap gap-4 p-2  ">
+                  {categoryData.subCategory.map((e: any) => (
+                    <Link href="#" underline="hover" color="#747474">
+                      {e.subtitle}
+                    </Link>
+                  ))}
+                </div>
+              </AccordionDetails>
+            </Accordion>
           ))}
-          {/* <p className="hidden md:block">Text to hide on small screens</p>
-          <p className="hidden xl:block">Text to hide on big screens</p> */}
-
-          <ul
-            className={`absolute mt-14 flex  w-full  p-3  font-medium justify-between rounded-b-xl bg-slate-200 -ml-4   ${
-              open ? "block" : "hidden"
-            }`}
-          >
-            <div className=" flex flex-row flex-wrap gap-4 p-2 mt-1 ">
-              {subCat.map((e: any) => (
-                <Link href="#" underline="hover" color="#555555">
-                  {e.subtitle}
-                </Link>
-              ))}
-            </div>
-          </ul>
         </div>
-      </div>
-    </div>
+      </Collapse>
+    </List>
   );
 }
