@@ -9,6 +9,7 @@ interface IUser {
   phoneNumber: String;
   createdAt: Date;
 }
+
 const userSchema = new Schema(
   {
     name: {
@@ -23,6 +24,7 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
+      select: false,
       required: [true, "Хэрэглэгчийн password ийг заавал бөглөнө үү!!!"],
     },
     role: {
@@ -46,19 +48,25 @@ const userSchema = new Schema(
         rating: {
           type: Number,
         },
+        portfolio: {
+          type: [String],
+        },
         hourly_rate: {
           type: Number,
         },
         availability: {
-          type: String,
+          type: Boolean,
         },
         worked_projects: {
           type: [],
         },
+        about_me: {
+          type: String,
+        },
         region: {
           type: String,
         },
-        Service: [
+        service: [
           {
             type: Schema.Types.ObjectId,
             ref: "Service",

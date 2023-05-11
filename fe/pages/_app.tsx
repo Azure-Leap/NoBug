@@ -6,6 +6,8 @@ import type { AppProps } from "next/app";
 import { Roboto, Aladin } from "next/font/google";
 import UserProvider from "@/context/userContext";
 import ChatProvider from "@/context/chatContext";
+import ProfileProvider from "@/context/profileContext";
+import UploadProvider from "@/context/uploadContext";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -23,13 +25,17 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <UserProvider>
-        <ChatProvider>
-          <main className={roboto.className}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </main>
-        </ChatProvider>
+        <ProfileProvider>
+          <UploadProvider>
+            <ChatProvider>
+              <main className={roboto.className}>
+                <Layout>
+                  <Component {...pageProps} />
+                </Layout>
+              </main>
+            </ChatProvider>
+          </UploadProvider>
+        </ProfileProvider>
       </UserProvider>
     </ThemeProvider>
   );

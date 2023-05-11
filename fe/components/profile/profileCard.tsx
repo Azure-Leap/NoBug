@@ -11,7 +11,8 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CircleIcon from "@mui/icons-material/Circle";
 import ReplyIcon from "@mui/icons-material/Reply";
 
-const ProfileCard = () => {
+const ProfileCard = ({ profileData, toggleModal }: any) => {
+  console.log(profileData);
   // Popover start
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [popoverText, setPopOverText] = useState<String>("Copy Profile");
@@ -75,23 +76,49 @@ const ProfileCard = () => {
             backgroundColor: "white",
             overflow: "hidden",
             p: 1,
+            zIndex: 2,
           }}
         >
           <Box
+            onClick={toggleModal}
             sx={{
-              width: "180px",
-              aspectRatio: "1/1",
+              posiition: "relative",
+              width: "100%",
+              height: "100%",
               borderRadius: "50%",
               backgroundColor: "white",
               overflow: "hidden",
-              zIndex: "1",
+              ":hover": {
+                cursor: "pointer",
+                img: {
+                  filter: "brightness(50%)",
+                },
+                ".viewProfile": {
+                  display: "block",
+                },
+              },
             }}
           >
+            <Typography
+              className="viewProfile"
+              sx={{
+                display: "none",
+                fontWeight: "500",
+                color: "white",
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%,-50%)",
+                zIndex: "2",
+              }}
+            >
+              View Profile
+            </Typography>
             <Image
               width={400}
               height={400}
               alt="zurag"
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80"
+              src={profileData?.freelancer.avatar}
               className="h-full w-full object-cover"
             />
           </Box>
@@ -136,7 +163,7 @@ const ProfileCard = () => {
             }}
           >
             <Typography sx={{ fontWeight: "bold", fontSize: "25px" }}>
-              Amanda Smith
+              {profileData?.name}
             </Typography>
             {toggle ? (
               <FavoriteIcon
@@ -183,7 +210,7 @@ const ProfileCard = () => {
                   marginRight: "10px",
                 }}
               />
-              Graphic Designer
+              {profileData?.freelancer.job_title}
             </Typography>
           </Box>
           <Box

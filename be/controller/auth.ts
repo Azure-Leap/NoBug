@@ -1,8 +1,10 @@
 import { Request, Response, NextFunction } from "express";
+import freelancer from "../model/freelancer";
 import User from "../model/user";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import freelancer from "../model/freelancer";
+import sendEmail from "../utils/sendEmail";
+import generateCode from "../utils/confirmation";
 
 const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -44,7 +46,6 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 
   try {
     const hashedPassword = bcrypt.hashSync(password, 10);
-
     const user = await User.create({
       name,
       email,
@@ -58,4 +59,16 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { register, login };
+const authMail = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const OPT = generateCode();
+    console.log("OPT", OPT);
+    const r = await sendEmail("Tushig", "huluguu0202@gmail.com", OPT);
+    console.log("RES", r);
+    res.send("Hello API Sent Email");
+  } catch (error) {
+    next(error);
+  }
+};
+
+export { register, login, authMail };

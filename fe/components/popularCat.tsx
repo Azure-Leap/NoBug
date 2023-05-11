@@ -88,7 +88,7 @@ const PopularCat = (): any => {
         py: 4,
       }}
     >
-      <Box sx={{ backgroundColor: "white" }}>
+      <Box>
         <Typography
           sx={{
             fontWeight: "500",

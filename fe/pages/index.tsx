@@ -1,5 +1,7 @@
 import { Inter } from "next/font/google";
 import { Box } from "@mui/system";
+// import { CookiesProvider } from "react-cookie";
+
 import ExpertFreelancer from "@/components/expertFreelander";
 import PopularCat from "@/components/popularCat";
 import CommendPart from "@/components/commendPart";
@@ -8,6 +10,10 @@ import Hero from "@/components/hero section/hero";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data }: any) {
+  console.log(
+    "ahshhahahahsijdhsljfhjsakhfljsakhfljkasdhflkjashflaskjdfh",
+    data.freelancer
+  );
   return (
     <>
       <Box
@@ -37,7 +43,7 @@ export default function Home({ data }: any) {
 // }
 
 export async function getServerSideProps() {
-  const res = await fetch("https://skill-hive-1giq.onrender.com/freelancer");
+  const res = await fetch("http://localhost:8000/freelancer");
   const data = await res.json();
   return {
     props: {

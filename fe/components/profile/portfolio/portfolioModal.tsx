@@ -141,34 +141,33 @@ export default function PortfolioModal({
               }}
             >
               {data.map((e: any, index: any) => (
-                <>
-                  <Box
-                    onClick={() => {
-                      setActive(index);
+                <Box
+                  key={index}
+                  onClick={() => {
+                    setActive(index);
+                  }}
+                  sx={{
+                    width: { xs: "40%", md: "20%" },
+                    flex: "none",
+                  }}
+                >
+                  <Image
+                    key={index}
+                    src={e}
+                    alt={e}
+                    width={200}
+                    height={200}
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      objectFit: "cover",
+                      filter:
+                        index === active
+                          ? "brightness(100%)"
+                          : "brightness(50%)",
                     }}
-                    sx={{
-                      width: { xs: "40%", md: "20%" },
-                      flex: "none",
-                    }}
-                  >
-                    <Image
-                      key={index}
-                      src={e}
-                      alt={e}
-                      width={200}
-                      height={200}
-                      style={{
-                        height: "100%",
-                        width: "100%",
-                        objectFit: "cover",
-                        filter:
-                          index === active
-                            ? "brightness(100%)"
-                            : "brightness(50%)",
-                      }}
-                    />
-                  </Box>
-                </>
+                  />
+                </Box>
               ))}
             </Box>
           </Box>

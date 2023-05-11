@@ -12,12 +12,14 @@ function SignUpForm() {
   const routeTo = (url: string) => {
     router.replace(url);
   };
+
   // const [state, setState] = React.useState({
   //   name: "",
   //   email: "",
   //   password: "",
   //   role: "freelancer",
   // });
+
   const handleChange = (evt: any) => {
     const value = evt.target.value;
     setSignUpData({

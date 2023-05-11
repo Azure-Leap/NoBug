@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useContext } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -20,10 +20,8 @@ import { Box } from "@mui/system";
 import { Button, Typography } from "@mui/material";
 
 export default function ExpertFreelancer({ data }: any) {
+  console.log();
   const router = useRouter();
-  const handleClick = (e: any) => {
-    router.push(`/profile/${e._id}`);
-  };
 
   return (
     <Box
@@ -139,7 +137,7 @@ export default function ExpertFreelancer({ data }: any) {
                         <Image
                           width={400}
                           height={400}
-                          src={e.avatar}
+                          src={e.freelancer.avatar}
                           alt={e.name}
                           className="w-full h-full object-cover "
                         />
@@ -199,7 +197,7 @@ export default function ExpertFreelancer({ data }: any) {
                         >
                           Rating
                         </Typography>
-                        <Typography>{e.rating}</Typography>
+                        <Typography>{e.freelancer.rating}</Typography>
                       </Box>
                       <Box
                         sx={{
@@ -257,7 +255,7 @@ export default function ExpertFreelancer({ data }: any) {
                             overflow: "scroll",
                           }}
                         >
-                          {e.skills.map((el: any, index: any) => (
+                          {e.freelancer.skills.map((el: any, index: any) => (
                             <Typography
                               key={index}
                               sx={{
@@ -282,7 +280,7 @@ export default function ExpertFreelancer({ data }: any) {
                         </Box>
                         <Button
                           onClick={() => {
-                            handleClick(e);
+                            router.push(`/profile/${e.freelancer._id}`);
                           }}
                           sx={{
                             width: "200px",
