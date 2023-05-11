@@ -36,21 +36,8 @@ const createCategory = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { title, sub_category, description } = req.body;
-  console.log(title, sub_category, description);
-
   try {
-    if (!title || !sub_category || !description) {
-      res.status(201).json({
-        success: false,
-        message: "title, sub_category, description хоосон байна.",
-      });
-    }
-    const category = await Category.create({
-      title,
-      sub_category,
-      description,
-    });
+    const category = await Category.create(req.body);
     res.status(201).json({
       success: true,
       message: "Шинэ category амжилттай үүслээ",
