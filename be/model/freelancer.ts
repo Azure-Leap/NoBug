@@ -1,4 +1,3 @@
-import { timeStamp } from "console";
 import { Schema, model } from "mongoose";
 
 interface IFreelancer {
@@ -14,18 +13,14 @@ interface IFreelancer {
 }
 const freelancerSchema = new Schema(
   {
-    name: {
-      type: String,
-      required: [true, "Хэрэглэгчийн нэрийг заавал бөглөнө үү!!!"],
+    User: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
     },
-    email: {
+    phone: {
       type: String,
-      unique: true,
-      required: [true, "Хэрэглэгчийн emailийг заавал бөглөнө үү!!!"],
-    },
-    password: {
-      type: String,
-      required: [true, "Хэрэглэгчийн password ийг заавал бөглөнө үү!!!"],
+      required: [true, "Хэрэглэгчийн утасны дугаарыг ийг заавал бөглөнө үү!!!"],
     },
     avatar: {
       type: String,
@@ -58,7 +53,14 @@ const freelancerSchema = new Schema(
       type: String,
       required: true,
     },
+    Service: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Service",
+      },
+    ],
   },
+
   { timestamps: true }
 );
 

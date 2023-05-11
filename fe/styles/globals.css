@@ -32,6 +32,16 @@ body {
     auto;
 }
 
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+input[type="search"]::-moz-search-cancel-button {
+  display: none;
+}
+input[type="search"]::-ms-clear {
+  display: none;
+}
+
 .tile--emoji-cursor {
   background-color: #4267b2;
 }

@@ -2,17 +2,13 @@ import { timeStamp } from "console";
 import { Schema, model } from "mongoose";
 
 const categorySchema = new Schema({
-  title: {
-    type: String,
-    require: true,
-  },
-  sub_category: {
-    type: [String],
-    require: true,
-  },
-  description: {
-    type: String,
-    require: true,
+  title: { type: String, required: true },
+  subCategory: {
+    type: [
+      {
+        subtitle: { type: String, required: true },
+      },
+    ],
   },
 });
 

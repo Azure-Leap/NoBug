@@ -4,8 +4,14 @@ import { ThemeProvider } from "@emotion/react";
 import { createTheme } from "@mui/material";
 import type { AppProps } from "next/app";
 import { Roboto, Aladin } from "next/font/google";
+import UserProvider from "@/context/userContext";
+import ChatProvider from "@/context/chatContext";
+import CategoryProvider from "@/context/categoryContext";
 
-const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"] });
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
 const aladin = Aladin({ subsets: ["latin"], weight: ["400"] });
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -17,11 +23,17 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider theme={theme}>
-      <main className={roboto.className}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </main>
+      <UserProvider>
+        <CategoryProvider>
+          <ChatProvider>
+            <main className={roboto.className}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </main>
+          </ChatProvider>
+        </CategoryProvider>
+      </UserProvider>
     </ThemeProvider>
   );
 }
