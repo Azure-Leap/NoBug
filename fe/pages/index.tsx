@@ -4,10 +4,15 @@ import ExpertFreelancer from "@/components/expertFreelander";
 import PopularCat from "@/components/popularCat";
 import CommendPart from "@/components/commendPart";
 import Hero from "@/components/hero section/hero";
+import { useContext } from "react";
+import { CategoryContext } from "@/context/categoryContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ data }: any) {
+export default function Home({ data, categoriesData }: any) {
+  const { setCategoriesData }: any = useContext(CategoryContext);
+  setCategoriesData(categoriesData.category);
+
   return (
     <>
       <Box
@@ -44,6 +49,7 @@ export async function getServerSideProps() {
   return {
     props: {
       data,
+      categoriesData,
     },
   };
 }
