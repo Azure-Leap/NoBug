@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 const UploadProfileImage = () => {
   const { uploadImage }: any = useContext(UploadContext);
   const test = (e: any) => {
-    console.log(e);
+    console.log(e.target.value);
   };
   return (
     <Box
@@ -30,10 +30,16 @@ const UploadProfileImage = () => {
         }}
         variant="contained"
         component="label"
-        onChange={test}
       >
         Upload Photo
-        <input type="file" hidden />
+        <input
+          type="file"
+          hidden
+          accept="image/png, image/gif, image/jpeg"
+          onChange={(e) => {
+            test(e);
+          }}
+        />
       </Button>
       <Box
         sx={{
