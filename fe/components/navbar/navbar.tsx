@@ -87,25 +87,25 @@ const NavBar = () => {
                     <Tab
                       sx={{
                         color: "#212A3E",
-                        ":hover": { color: "white" },
+                        ":hover": { color: "#808080" },
                       }}
                       label="POST MOMENT"
                     />
                     <Tab
                       sx={{
                         color: "#212A3E",
-                        ":hover": { color: "white" },
+                        ":hover": { color: "#808080" },
                       }}
                       label="HOW IT WORK"
                     />
                     <Tab
                       onClick={() => router.push("/auth/logIn")}
-                      sx={{ color: "#212A3E", ":hover": { color: "white" } }}
+                      sx={{ color: "#212A3E", ":hover": { color: "#808080" } }}
                       label="LOG IN"
                     />
                     <Tab
                       onClick={() => router.push("/auth/signup")}
-                      sx={{ color: "#212A3E", ":hover": { color: "white" } }}
+                      sx={{ color: "#212A3E", ":hover": { color: "#808080" } }}
                       label="SIGN UP"
                     />
                   </Tabs>
