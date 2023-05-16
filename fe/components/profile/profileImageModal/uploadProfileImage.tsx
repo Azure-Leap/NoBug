@@ -14,10 +14,10 @@ const UploadProfileImage = () => {
         flexDirection: "column",
         gap: "10px",
         width: "150px",
+        backgroundColor: "green",
       }}
     >
       <Button
-        // onClick={uploadImage}
         sx={{
           display: "flex",
           justifyContent: "center",

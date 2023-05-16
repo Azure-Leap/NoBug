@@ -10,9 +10,12 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CircleIcon from "@mui/icons-material/Circle";
 import ReplyIcon from "@mui/icons-material/Reply";
+import EditProfile from "./editProfile";
 
 const ProfileCard = ({ profileData, toggleModal }: any) => {
-  console.log(profileData);
+  const router = useRouter();
+  const [isEditProfile, SetIsEditProfile] = useState<boolean>(false);
+  const [toggle, setToggle] = useState(false);
   // Popover start
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [popoverText, setPopOverText] = useState<String>("Copy Profile");
@@ -28,9 +31,9 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
 
   const open = Boolean(anchorEl);
   // Popover end
-
-  const router = useRouter();
-  const [toggle, setToggle] = useState(false);
+  const toggleEditProfile = () => {
+    SetIsEditProfile(!isEditProfile);
+  };
 
   const like = () => {
     setToggle(!toggle);
@@ -80,7 +83,7 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
           }}
         >
           <Box
-            onClick={toggleModal}
+            onClick={() => toggleModal("ProfileImage")}
             sx={{
               posiition: "relative",
               width: "100%",
@@ -136,17 +139,38 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
           px: { xs: 2, sm: 10 },
         }}
       >
-        <MoreVertIcon
+        <Box
           sx={{
             position: "absolute",
             right: "40px",
             top: "30px",
-            scale: "1.2",
-            ":hover": {
-              cursor: "pointer",
-            },
           }}
-        />
+        >
+          <MoreVertIcon
+            onClick={toggleEditProfile}
+            sx={{
+              scale: "1.2",
+              ":hover": {
+                cursor: "pointer",
+              },
+            }}
+          />
+          <Box
+            sx={{
+              position: "relative",
+              width: "100%",
+              height: "0px",
+            }}
+          >
+            <Box sx={{ position: "absolute", right: "100%" }}>
+              <EditProfile
+                toggleModal={toggleModal}
+                isEditProfile={isEditProfile}
+                SetIsEditProfile={SetIsEditProfile}
+              />
+            </Box>
+          </Box>
+        </Box>
         <Box
           sx={{
             display: "flex",

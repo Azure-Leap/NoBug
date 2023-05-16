@@ -23,6 +23,21 @@ const UserProvider = ({ children }: any) => {
     setSignUpData({ ...signUpData, role: e });
   };
 
+  const editUser = async (event: any) => {
+    console.log(event);
+    // event.preventDefault();
+    try {
+      const res = await axios.put(
+        "http://localhost:8000/users/6459eced991e3e926bea2542",
+        {
+          avatar: event.data,
+        }
+      );
+      console.log(res);
+    } catch (err) {
+      console.log("err", err);
+    }
+  };
   const signUp = async (event: any) => {
     event.preventDefault();
     try {
@@ -62,6 +77,7 @@ const UserProvider = ({ children }: any) => {
         whatRole,
         signInData,
         setSignInData,
+        editUser,
       }}
     >
       {children}

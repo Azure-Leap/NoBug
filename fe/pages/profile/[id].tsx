@@ -4,7 +4,7 @@ import { FreelancerInterface } from "@/interfaces/interfaces";
 
 // mui
 import { Box } from "@mui/system";
-import ProfileCard from "@/components/profile/profileCard";
+import ProfileCard from "@/components/profile/profileCard/profileCard";
 import Skills from "@/components/profile/skills";
 import SideBar from "@/components/profile/sideBar";
 import Portfolio from "@/components/profile/portfolio/portfolio";
@@ -12,15 +12,21 @@ import Offers from "@/components/profile/offers";
 import axios from "axios";
 import ProfileImageModal from "@/components/profile/profileImageModal/profileImageModal";
 import { truncate } from "fs/promises";
+import EditProfileModal from "@/components/profile/profileCard/editProfileModal";
 
 const Profile = () => {
-  const [isModal, setIsModal] = useState(false);
   const router = useRouter();
+  const [isPModal, setIsPModal] = useState(false);
+  const [isEditModal, setIsEditModal] = useState(false);
   const [profileData, setProfileData] = useState<FreelancerInterface>();
   const { id } = router.query;
 
-  const toggleModal = () => {
-    setIsModal(!isModal);
+  const toggleModal = (e: any) => {
+    if (e === "ProfileImage") {
+      setIsPModal(!isPModal);
+    } else if (e === "EditProfile") {
+      setIsEditModal(!isEditModal);
+    }
   };
 
   const getFreelancerData = async () => {
@@ -73,8 +79,13 @@ const Profile = () => {
       </Box>
       <ProfileImageModal
         profileData={profileData}
-        isModal={isModal}
-        setIsModal={setIsModal}
+        isModal={isPModal}
+        setIsModal={setIsPModal}
+        toggleModal={toggleModal}
+      />
+      <EditProfileModal
+        isModal={isEditModal}
+        setIsModal={setIsEditModal}
         toggleModal={toggleModal}
       />
     </Box>
