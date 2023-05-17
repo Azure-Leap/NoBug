@@ -20,7 +20,6 @@ import { Box } from "@mui/system";
 import { Button, Typography } from "@mui/material";
 
 export default function ExpertFreelancer({ data }: any) {
-  console.log();
   const router = useRouter();
 
   return (

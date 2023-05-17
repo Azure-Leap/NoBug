@@ -19,7 +19,6 @@ import {
 export default function NestedList() {
   const { subCat, setSubCat, open, setOpen, categoriesData }: any =
     useContext(CategoryContext);
-  console.log(categoriesData);
   const [opensub, setopensub] = React.useState(false);
   const handleClick = () => {
     setopensub(!opensub);

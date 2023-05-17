@@ -77,7 +77,6 @@ export default function Drop() {
               onClick={() => {
                 setOpen(true);
                 setCat(categoryData.title);
-                console.log(categoryData.title);
               }}
               className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
               sx={{ color: "#333333" }}

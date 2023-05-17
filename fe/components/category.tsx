@@ -8,7 +8,6 @@ export default function HoverDropdown({ categories }: any) {
   // const [subCat, setSubCat] = useState<any>([]);
   const { subCat, setSubCat, open, setOpen, categoriesData }: any =
     useContext(CategoryContext);
-  console.log(categoriesData);
 
   return (
     <div className="bg-slate-100 -mt-4  hidden md:block border-b">
