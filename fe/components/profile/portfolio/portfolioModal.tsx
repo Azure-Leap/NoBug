@@ -43,7 +43,7 @@ export default function PortfolioModal({
     } else {
       setActive(active + 1);
     }
-  }, []);
+  }, [active]);
 
   const previous = useCallback(() => {
     if (active <= 0) {
@@ -51,7 +51,7 @@ export default function PortfolioModal({
     } else {
       setActive(active - 1);
     }
-  }, []);
+  }, [active]);
 
   useEffect(() => {
     const handleKeyDown = (event: any) => {
@@ -67,7 +67,7 @@ export default function PortfolioModal({
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [previous, next]);
+  }, [active]);
 
   return (
     <Modal
