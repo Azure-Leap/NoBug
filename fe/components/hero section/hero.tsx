@@ -48,34 +48,33 @@ const Hero = () => {
             height: "100vh",
           }}
         >
-          <Image
-            src="/back.jpg"
-            alt="Mountains with snow"
-            layout="fill"
-            objectFit="cover"
-          />
+          <Image src="/back111.webp" alt="" layout="fill" objectFit="cover" />
         </div>
-        <Typography variant="h3">
-          Монголын анхны Фрийлансерийн цогц платформ
-        </Typography>
+        <Grid sx={{ maxWidth: "75vw" }}>
+          <Typography variant="h4">
+            Монголын анхны Фрийлансерийн цогц платформ
+          </Typography>
+        </Grid>
+
         <Grid
           sx={{ maxWidth: "75vw", marginTop: "2rem", marginBottom: "2rem" }}
         >
-          <Typography variant="h4">
+          <Typography variant="h5">
             Access global talent on the freelancer website trusted by over 1
             million businesses world.
           </Typography>
         </Grid>
-        <Grid xs={3}>
+        <Grid className="hidden md:block">
           <TextField
             id="search"
             type="search"
             value={searchTerm}
             onChange={handleChange}
             sx={{
-              maxWidth: "400px",
-              minWidth: "400px",
-              backgroundColor: "#ECF2FF",
+              margin: "auto",
+              maxWidth: "40vw",
+              minWidth: "30vw",
+              backgroundColor: "#ffffff",
               borderRadius: "7px",
             }}
             InputProps={{

@@ -22,7 +22,7 @@ const DrawerComp = () => {
         PaperProps={{
           sx: {
             width: 240,
-            backgroundColor: "#B9CDDA",
+            backgroundColor: "#ffffff",
           },
         }}
         anchor="right"
@@ -49,7 +49,7 @@ const DrawerComp = () => {
         sx={{ marginLeft: "auto" }}
         onClick={() => setOpenDrawer(!openDrawer)}
       >
-        <MenuIcon sx={{ color: "white" }} />
+        <MenuIcon sx={{ color: "#777777" }} />
       </IconButton>
     </React.Fragment>
   );
