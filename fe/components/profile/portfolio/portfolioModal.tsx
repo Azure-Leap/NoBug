@@ -65,7 +65,7 @@ export default function PortfolioModal({
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [active]);
+  }, [active, previous, next]);
 
   return (
     <Modal
