@@ -97,10 +97,14 @@ const editFreelancer = async (
 ) => {
   const { id } = req.params;
   console.log("id", id);
+  console.log("body", req.body);
   try {
-    const freelancer = await User.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
+    const freelancer = await User.findByIdAndUpdate(
+      id,
+      { $set: req.body.freelancer },
+      { new: true }
+    );
+    console.log("freelancer", freelancer);
     res
       .status(201)
       .json({ message: "freelancer Succesfully updated", freelancer });

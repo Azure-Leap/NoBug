@@ -280,7 +280,7 @@ export default function ExpertFreelancer({ data }: any) {
                         </Box>
                         <Button
                           onClick={() => {
-                            router.push(`/profile/${e.freelancer._id}`);
+                            router.push(`/profile/${e._id}`);
                           }}
                           sx={{
                             width: "200px",

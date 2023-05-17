@@ -9,6 +9,7 @@ import ChatProvider from "@/context/chatContext";
 import ProfileProvider from "@/context/profileContext";
 import UploadProvider from "@/context/uploadContext";
 import CategoryProvider from "@/context/categoryContext";
+import LoadingProvider from "@/context/loadingContext";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -25,21 +26,23 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider theme={theme}>
-      <UserProvider>
-        <CategoryProvider>
-          <ProfileProvider>
-            <UploadProvider>
-              <ChatProvider>
-                <main className={roboto.className}>
-                  <Layout>
-                    <Component {...pageProps} />
-                  </Layout>
-                </main>
-              </ChatProvider>
-            </UploadProvider>
-          </ProfileProvider>
-        </CategoryProvider>
-      </UserProvider>
+      <LoadingProvider>
+        <UserProvider>
+          <CategoryProvider>
+            <ProfileProvider>
+              <UploadProvider>
+                <ChatProvider>
+                  <main className={roboto.className}>
+                    <Layout>
+                      <Component {...pageProps} />
+                    </Layout>
+                  </main>
+                </ChatProvider>
+              </UploadProvider>
+            </ProfileProvider>
+          </CategoryProvider>
+        </UserProvider>
+      </LoadingProvider>
     </ThemeProvider>
   );
 }

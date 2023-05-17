@@ -6,18 +6,12 @@ import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import UploadProfileImage from "./uploadProfileImage";
 import ClearIcon from "@mui/icons-material/Clear";
-import ChooseFile from "./chooseFile";
 
 const ProfileImageModal = ({ profileData, isModal, toggleModal }: any) => {
   const [isFull, setIsFull] = useState<boolean>(false);
-  const [isEdit, setIsEdit] = useState<boolean>(false);
 
   const fullScreenToggle = () => {
     setIsFull(!isFull);
-  };
-
-  const editToggle = () => {
-    setIsEdit(!isEdit);
   };
 
   return (
@@ -36,8 +30,7 @@ const ProfileImageModal = ({ profileData, isModal, toggleModal }: any) => {
     >
       <Box
         onClick={() => {
-          setIsEdit(false);
-          toggleModal(false);
+          toggleModal("ProfileImage");
         }}
         sx={{
           position: "absolute",
@@ -57,9 +50,6 @@ const ProfileImageModal = ({ profileData, isModal, toggleModal }: any) => {
         }}
       >
         <Image
-          onClick={() => {
-            setIsEdit(false);
-          }}
           width={2000}
           height={1000}
           alt="image"
@@ -78,7 +68,9 @@ const ProfileImageModal = ({ profileData, isModal, toggleModal }: any) => {
             sx={{
               ":hover": { cursor: "pointer" },
             }}
-            onClick={toggleModal}
+            onClick={() => {
+              toggleModal("ProfileImage");
+            }}
           />
         </Box>
         <Box
@@ -91,28 +83,6 @@ const ProfileImageModal = ({ profileData, isModal, toggleModal }: any) => {
             color: "white",
           }}
         >
-          <Box sx={{ position: "relative" }}>
-            <EditIcon
-              onClick={editToggle}
-              sx={{
-                ":hover": { cursor: "pointer" },
-              }}
-            />
-            <Box
-              sx={{
-                display: isEdit ? "flex" : "none",
-                position: "absolute",
-                left: "-150px",
-                bottom: "",
-                borderRadius: "10px",
-                backgroundColor: "rgba(255,255,255)",
-                py: 2,
-                px: 2,
-              }}
-            >
-              <UploadProfileImage />
-            </Box>
-          </Box>
           {isFull ? (
             <FullscreenExitIcon
               sx={{
@@ -129,7 +99,6 @@ const ProfileImageModal = ({ profileData, isModal, toggleModal }: any) => {
             />
           )}
         </Box>
-        <ChooseFile />
       </Box>
     </Box>
   );
