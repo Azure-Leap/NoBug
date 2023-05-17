@@ -25,12 +25,13 @@ const UserProvider = ({ children }: any) => {
   };
 
   const editUser = async ({ editData }: any) => {
-    console.log("aa", editData);
+    console.log("editUser", editData);
     // event.preventDefault();
     try {
-      const res = await axios.put(`${BASE_URL}/freelancer/${editData._id}`, {
-        freelancer: editData,
-      });
+      const res = await axios.put(
+        `${BASE_URL}/freelancer/${editData._id}`,
+        editData
+      );
       console.log(res);
     } catch (err) {
       console.log("err", err);
