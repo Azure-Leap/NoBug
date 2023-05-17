@@ -13,13 +13,14 @@ import axios from "axios";
 import ProfileImageModal from "@/components/profile/profileImageModal/profileImageModal";
 import { truncate } from "fs/promises";
 import EditProfileModal from "@/components/profile/profileCard/editProfileModal";
+import { BASE_URL } from "@/variables";
 
-const Profile = () => {
+const Profile = ({ data }: any) => {
   const router = useRouter();
   const [isPModal, setIsPModal] = useState(false);
   const [isEditModal, setIsEditModal] = useState(false);
   const [profileData, setProfileData] = useState<FreelancerInterface>();
-  const { id } = router.query;
+  // const { id } = router.query;
 
   const toggleModal = (e: any) => {
     if (e === "ProfileImage") {
@@ -29,20 +30,20 @@ const Profile = () => {
     }
   };
 
-  const getFreelancerData = async () => {
-    try {
-      const { data } = await axios.get(
-        `http://localhost:8000/freelancer/${id}`
-      );
-      setProfileData(data.freelancer[0]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getFreelancerData = async () => {
+  //   try {
+  //     const { data } = await axios.get(`http://localhost:8000/users/${id}`);
+  //     console.log(data.user);
+  //     setProfileData(data.user);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   useEffect(() => {
-    getFreelancerData();
-  }, [id]);
+    // getFreelancerData();
+    setProfileData(data.user);
+  }, [data.user]);
 
   return (
     <Box
@@ -87,9 +88,22 @@ const Profile = () => {
         isModal={isEditModal}
         setIsModal={setIsEditModal}
         toggleModal={toggleModal}
+        profileData={profileData}
       />
     </Box>
   );
 };
 
 export default Profile;
+
+export async function getServerSideProps(context: any) {
+  const { params } = context;
+  const id = params.id;
+  const { data } = await axios.get(`${BASE_URL}/users/${id}`);
+
+  return {
+    props: {
+      data,
+    },
+  };
+}

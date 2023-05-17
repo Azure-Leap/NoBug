@@ -22,6 +22,7 @@ const nextConfig = {
       "png.pngtree.com",
       "images.unsplash.com",
       "images.unsplash.com",
+      "res.cloudinary.com",
     ],
   },
 };

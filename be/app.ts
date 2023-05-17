@@ -67,7 +67,6 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use(error);
-
 connectDB(MONGO_URI);
 
 app.listen(PORT, () => {

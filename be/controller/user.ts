@@ -51,10 +51,15 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
 const editUser = async (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
   console.log("id", id);
+  console.log("body", req.body);
+
   try {
-    const freelancer = await User.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
+    const freelancer = await User.findByIdAndUpdate(
+      { "freelancer._id": id },
+      {
+        new: true,
+      }
+    );
     res
       .status(201)
       .json({ message: "freelancer Succesfully updated", freelancer });

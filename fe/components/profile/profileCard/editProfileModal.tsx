@@ -1,6 +1,6 @@
 import { Box } from "@mui/system";
 import Image from "next/image";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import ClearIcon from "@mui/icons-material/Clear";
 import { Button, Typography } from "@mui/material";
@@ -8,11 +8,12 @@ import dynamic from "next/dynamic";
 import axios from "axios";
 import { LoadingContext } from "@/context/loadingContext";
 import { UserContext } from "@/context/userContext";
+
 const Avatar = dynamic(() => import("react-avatar-edit"), { ssr: false });
 
-const EditProfileModal = ({ isModal, toggleModal }: any) => {
+const EditProfileModal = ({ isModal, toggleModal, profileData }: any) => {
   const { isLoading, setIsLoading } = useContext(LoadingContext);
-  const [editData, setEditData] = useState<{}>({});
+  const [editData, setEditData] = useState(profileData);
   const { editUser }: any = useContext(UserContext);
   const [profileImg, setProfileImg] = useState(null);
 
@@ -34,13 +35,26 @@ const EditProfileModal = ({ isModal, toggleModal }: any) => {
       const res = await axios.post("http://localhost:8000/upload", {
         files: preview,
       });
-      console.log(res);
-      // setEditData(editData.avatar);
+      setEditData({
+        ...editData,
+        freelancer: {
+          ...editData.freelancer,
+          avatar: res.data.imgUrl.secure_url,
+        },
+      });
+      console.log(editData);
+
       setIsLoading(false);
     } catch (err) {
       console.log("err", err);
+      setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    setEditData(profileData);
+  }, [profileData]);
+
   return (
     <Box
       sx={{
@@ -96,6 +110,7 @@ const EditProfileModal = ({ isModal, toggleModal }: any) => {
               }}
             >
               <Box
+                onClick={() => console.log(editData)}
                 sx={{
                   width: "170px",
                   height: "170px",
@@ -126,14 +141,16 @@ const EditProfileModal = ({ isModal, toggleModal }: any) => {
                 overflow: "hidden",
               }}
             >
-              <Avatar
-                width={400}
-                height={250}
-                imageWidth={400}
-                onCrop={onCrop}
-                onClose={onClose}
-                src={src || ""}
-              />
+              <Box sx={{ width: "400px", height: "250px", objectFit: "cover" }}>
+                <Avatar
+                  width={400}
+                  height={250}
+                  imageWidth={400}
+                  onCrop={onCrop}
+                  onClose={onClose}
+                  src={src || ""}
+                />
+              </Box>
               <Button
                 onClick={() => {
                   setIsLoading(true);
@@ -147,7 +164,9 @@ const EditProfileModal = ({ isModal, toggleModal }: any) => {
         </Box>
         <Button
           onClick={() => {
-            editUser(preview);
+            editUser({ editData });
+            console.log(editData);
+            // console.log(profileData);
           }}
           sx={{ position: "absolute", bottom: "20px", right: "20px" }}
         >

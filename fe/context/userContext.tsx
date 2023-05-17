@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createContext } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { BASE_URL } from "@/variables";
 export const UserContext = createContext({});
 
 const UserProvider = ({ children }: any) => {
@@ -23,28 +24,23 @@ const UserProvider = ({ children }: any) => {
     setSignUpData({ ...signUpData, role: e });
   };
 
-  const editUser = async (event: any) => {
-    console.log(event);
+  const editUser = async ({ editData }: any) => {
+    console.log("aa", editData);
     // event.preventDefault();
     try {
-      const res = await axios.put(
-        "http://localhost:8000/users/6459eced991e3e926bea2542",
-        {
-          avatar: event.data,
-        }
-      );
+      const res = await axios.put(`${BASE_URL}/freelancer/${editData._id}`, {
+        freelancer: editData,
+      });
       console.log(res);
     } catch (err) {
       console.log("err", err);
     }
   };
+
   const signUp = async (event: any) => {
     event.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:8000/auth/register",
-        signUpData
-      );
+      const res = await axios.post(`${BASE_URL}/auth/register`, signUpData);
       console.log(res);
     } catch (err) {
       console.log("err", err);
@@ -54,10 +50,7 @@ const UserProvider = ({ children }: any) => {
   const signIn = async (event: any) => {
     event.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:8000/auth/login",
-        signInData
-      );
+      const res = await axios.post(`${BASE_URL}/auth/login`, signInData);
 
       console.log(res);
       router.push("/");

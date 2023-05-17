@@ -84,25 +84,22 @@ const OneChat = ({ message }: any) => {
 export default OneChat;
 
 // import { ChatContext } from "@/context/chatContext";
-// import { Typography } from "@mui/material";
+// import { formLabelClasses, Typography } from "@mui/material";
 // import { Box } from "@mui/system";
 // import Image from "next/image";
-// import React, { useContext } from "react";
+// import { useRouter } from "next/router";
+// import React, { useContext, useEffect, useState } from "react";
 
-// const OneChat = ({ message, own, showPic }: any) => {
-//   const { chatArr, davhar, setDavhar }: any = useContext(ChatContext);
-
-//   // if (chatArr[chatArr.length - 2].own === own) {
-//   //   setDavhar(true);
-//   //   console.log("baihgu");
-//   // } else {
-//   //   console.log("bain");
-//   // }
+// const OneChat = ({ message }: any) => {
+//   const router = useRouter();
+//   console.log(router.query.id);
+//   console.log(message.sender);
+//   const { chatArr }: any = useContext(ChatContext);
 
 //   return (
 //     <Box
 //       style={
-//         own
+//         message.own
 //           ? { justifyContent: "flex-start", flexDirection: "row-reverse" }
 //           : {}
 //       }
@@ -112,29 +109,27 @@ export default OneChat;
 //         gap: "10px",
 //       }}
 //     >
-//       {showPic && (
-//         <Box
-//           style={own ? { display: "none" } : {}}
-//           sx={{
-//             maxWidth: "50px",
-//             minWidth: "50px",
-//             aspectRatio: "1/1",
-//             backgroundColor: "blue",
-//             borderRadius: "50%",
-//             overflow: "hidden",
-//           }}
-//         >
-//           <Image
-//             alt="img"
-//             width={2000}
-//             height={1000}
-//             src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80"
-//             className="h-full w-full object-cover"
-//           />
-//         </Box>
-//       )}
 //       <Box
-//         style={own ? { alignItems: "end" } : { alignItems: "start" }}
+//         style={message.own ? { display: "none" } : {}}
+//         sx={{
+//           maxWidth: "50px",
+//           minWidth: "50px",
+//           aspectRatio: "1/1",
+//           backgroundColor: "blue",
+//           borderRadius: "50%",
+//           overflow: "hidden",
+//         }}
+//       >
+//         <Image
+//           alt="img"
+//           width={2000}
+//           height={1000}
+//           src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80"
+//           className="h-full w-full object-cover"
+//         />
+//       </Box>
+//       <Box
+//         style={message.own ? { alignItems: "end" } : { alignItems: "start" }}
 //         sx={{
 //           display: "flex",
 //           flexDirection: "column",
@@ -142,28 +137,26 @@ export default OneChat;
 //           height: "100%",
 //         }}
 //       >
-//         {message.map((e: any) => (
-//           <Typography
-//             style={
-//               own
-//                 ? {
-//                     backgroundColor: "rgb(32,76,244)",
-//                     color: "white",
-//                   }
-//                 : {
-//                     backgroundColor: "white",
-//                   }
-//             }
-//             sx={{
-//               maxWidth: "400px",
-//               width: "fit-content",
-//               padding: "10px 15px",
-//               borderRadius: "15px",
-//             }}
-//           >
-//             {e}
-//           </Typography>
-//         ))}
+//         <Typography
+//           style={
+//             message.own
+//               ? {
+//                   backgroundColor: "rgb(32,76,244)",
+//                   color: "white",
+//                 }
+//               : {
+//                   backgroundColor: "white",
+//                 }
+//           }
+//           sx={{
+//             maxWidth: "400px",
+//             width: "fit-content",
+//             padding: "10px 15px",
+//             borderRadius: "15px",
+//           }}
+//         >
+//           {message.message}
+//         </Typography>
 //       </Box>
 //     </Box>
 //   );
