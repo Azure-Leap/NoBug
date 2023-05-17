@@ -1,6 +1,6 @@
 # NoBug
 
-Clink link below 
+Clink link
 https://skill-hive.vercel.app/
 
 PRD
