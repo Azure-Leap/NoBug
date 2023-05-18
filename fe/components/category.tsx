@@ -8,10 +8,9 @@ export default function HoverDropdown({ categories }: any) {
   // const [subCat, setSubCat] = useState<any>([]);
   const { subCat, setSubCat, open, setOpen, categoriesData }: any =
     useContext(CategoryContext);
-  console.log(categoriesData);
 
   return (
-    <div className="bg-slate-100 -mt-4  hidden md:block">
+    <div className="bg-slate-100 -mt-4  hidden md:block border-b">
       <div className="max-w-screen-xl flex  items-center p-3 ">
         <div onMouseLeave={() => setOpen(false)} className="flex">
           {categoriesData?.map((e: any, index: any) => (
@@ -30,13 +29,13 @@ export default function HoverDropdown({ categories }: any) {
             </Link>
           ))}
           <ul
-            className={`absolute mt-14 mb-10 flex  w-full  p-3  font-medium justify-between rounded-b-xl bg-slate-200 -ml-4   ${
+            className={`absolute mt-14 mb-10 flex  w-full  p-3  font-medium justify-between rounded-b-xl bg-slate-100 -ml-4   ${
               open ? "block" : "hidden"
             }`}
           >
             <div className=" flex flex-row flex-wrap gap-8 p-2  ">
-              {subCat?.map((e: any) => (
-                <Box className="flex">
+              {subCat?.map((e: any, index: number) => (
+                <Box key={index} className="flex">
                   <Link href="#" underline="hover" color="#555555">
                     {e.subtitle}
                   </Link>

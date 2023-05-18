@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import connectDB from "./config/db";
 import dotenv from "dotenv";
@@ -37,16 +37,18 @@ app.use(
 
 // cloudinary start
 
-app.post("/upload", async (req: any, res: Response) => {
-  // console.log("===>", req.files.image);
-  const result = await cloudinary.v2.uploader.upload(
-    req.files.image.tempFilePath,
-    {
+app.post("/upload", async (req: any, res: Response, next: NextFunction) => {
+  // console.log("===>", req.files);
+  console.log("===>", req.body);
+  try {
+    const result = await cloudinary.v2.uploader.upload(req.body.files, {
       folder: "Skill-Hive",
-    }
-  );
-  console.log("===>", result);
-  res.status(200).json({ message: "Амжилттай хадгаллаа.", imgUrl: "url" });
+    });
+    console.log("===>", result);
+    res.status(200).json({ message: "Амжилттай хадгаллаа.", imgUrl: result });
+  } catch (error) {
+    next(error);
+  }
 });
 
 app.use("/uploads", express.static("uploads"));
@@ -65,7 +67,6 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use(error);
-
 connectDB(MONGO_URI);
 
 app.listen(PORT, () => {

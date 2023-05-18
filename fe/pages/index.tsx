@@ -8,6 +8,7 @@ import CommendPart from "@/components/commendPart";
 import Hero from "@/components/hero section/hero";
 import { useContext } from "react";
 import { CategoryContext } from "@/context/categoryContext";
+import { BASE_URL } from "@/variables";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -44,11 +45,9 @@ export default function Home({ data, categoriesData }: any) {
 // }
 
 export async function getServerSideProps() {
-  const data = await fetch("http://localhost:8000/freelancer").then((res) =>
+  const data = await fetch(`${BASE_URL}/freelancer`).then((res) => res.json());
+  const categoriesData = await fetch(`${BASE_URL}/categories`).then((res) =>
     res.json()
-  );
-  const categoriesData = await fetch("http://localhost:8000/categories").then(
-    (res) => res.json()
   );
   return {
     props: {

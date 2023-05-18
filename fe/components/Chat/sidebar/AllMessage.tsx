@@ -34,8 +34,8 @@ const AllMessage = () => {
           overflow: "scroll",
         }}
       >
-        {arr.map(() => (
-          <OneMessage />
+        {arr.map((e, index) => (
+          <OneMessage key={index} />
         ))}
       </Box>
     </Box>

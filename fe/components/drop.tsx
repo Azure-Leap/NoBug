@@ -77,7 +77,6 @@ export default function Drop() {
               onClick={() => {
                 setOpen(true);
                 setCat(categoryData.title);
-                console.log(categoryData.title);
               }}
               className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"
               sx={{ color: "#333333" }}
@@ -94,8 +93,8 @@ export default function Drop() {
             }`}
           >
             <div className=" flex flex-row flex-wrap gap-4 p-2 mt-1 ">
-              {subCat.map((e: any) => (
-                <Link href="#" underline="hover" color="#555555">
+              {subCat.map((e: any, index: number) => (
+                <Link key={index} href="#" underline="hover" color="#555555">
                   {e.subtitle}
                 </Link>
               ))}
@@ -126,8 +125,8 @@ export default function Drop() {
             }`}
           >
             <div className=" flex flex-row flex-wrap gap-4 p-2 mt-1 ">
-              {subCat.map((e: any) => (
-                <Link href="#" underline="hover" color="#555555">
+              {subCat.map((e: any, index: number) => (
+                <Link key={index} href="#" underline="hover" color="#555555">
                   {e.subtitle}
                 </Link>
               ))}

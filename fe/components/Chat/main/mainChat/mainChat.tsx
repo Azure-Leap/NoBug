@@ -35,9 +35,12 @@ const MainChat = () => {
           p: 2,
         }}
       >
-        {grpChat.messages.map((e: any) => (
-          <OneChat message={e} />
+        {grpChat.messages.map((e: any, index: number) => (
+          <OneChat key={index} message={e} />
         ))}
+        {/* {chatArr.map((e: any) => (
+          <OneChat message={e} />
+        ))} */}
       </Box>
     </Box>
   );

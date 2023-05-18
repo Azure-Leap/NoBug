@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -37,20 +37,22 @@ export default function PortfolioModal({
   setActive,
 }: any) {
   //   const itemWidth = (100 / data.length).toString() + "%";
-  const next = () => {
+  const next = useCallback(() => {
     if (active >= data.length - 1) {
       setActive(0);
     } else {
       setActive(active + 1);
     }
-  };
-  const previous = () => {
+  }, [active]);
+
+  const previous = useCallback(() => {
     if (active <= 0) {
       setActive(data.length - 1);
     } else {
       setActive(active - 1);
     }
-  };
+  }, [active]);
+
   useEffect(() => {
     const handleKeyDown = (event: any) => {
       if (event.key === "ArrowLeft") {

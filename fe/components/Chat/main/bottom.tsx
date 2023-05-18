@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Box } from "@mui/material";
-import { BsImage } from "@react-icons/all-files/Bs/BsImage";
 import { TiLocationArrowOutline } from "@react-icons/all-files/ti/TiLocationArrowOutline";
 import { ChatContext } from "@/context/chatContext";
-import { send } from "process";
 
 const Bottom = () => {
   const { chatArr, setChatArr, send, textValue, setTextValue }: any =
@@ -65,9 +63,7 @@ const Bottom = () => {
                 backgroundColor: "#ebe6e6",
               },
             }}
-          >
-            <BsImage color="grey" fontSize="1.5rem" />
-          </Box>
+          ></Box>
         </Box>
       </Box>
       <Box

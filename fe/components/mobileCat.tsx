@@ -19,7 +19,6 @@ import {
 export default function NestedList() {
   const { subCat, setSubCat, open, setOpen, categoriesData }: any =
     useContext(CategoryContext);
-  console.log(categoriesData);
   const [opensub, setopensub] = React.useState(false);
   const handleClick = () => {
     setopensub(!opensub);
@@ -48,7 +47,7 @@ export default function NestedList() {
       >
         <div className="100vw" color="#747474">
           {categoriesData?.map((e: any, index: any) => (
-            <Accordion elevation={0}>
+            <Accordion key={index} elevation={0}>
               <AccordionSummary
                 expandIcon={<ExpandMore />}
                 aria-controls="panel1a-content"
@@ -59,8 +58,13 @@ export default function NestedList() {
               </AccordionSummary>
               <AccordionDetails>
                 <div className=" flex flex-col flex-wrap gap-4 p-2  ">
-                  {e.subCategory.map((e: any) => (
-                    <Link href="#" underline="hover" color="#747474">
+                  {e.subCategory.map((e: any, index: number) => (
+                    <Link
+                      key={index}
+                      href="#"
+                      underline="hover"
+                      color="#747474"
+                    >
                       {e.subtitle}
                     </Link>
                   ))}

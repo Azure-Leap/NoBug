@@ -13,6 +13,7 @@ import {
   Avatar,
   Menu,
   MenuItem,
+  colors,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
@@ -52,9 +53,8 @@ const NavBar = () => {
         <React.Fragment>
           <AppBar
             sx={{
-              background: "#B9CDDA",
+              background: "#ffffff",
               paddingLeft: "30px",
-              borderBottom: "1px solid #555555",
             }}
           >
             <Toolbar>
@@ -64,6 +64,7 @@ const NavBar = () => {
                 alt=""
                 width={200}
                 height={50}
+                color="black"
               />
               {isMatch ? (
                 <>
@@ -99,7 +100,7 @@ const NavBar = () => {
                       label="HOW IT WORK"
                     />
                     <Tab
-                      onClick={() => router.push("/auth/login")}
+                      onClick={() => router.push("/auth/logIn")}
                       sx={{ color: "#212A3E", ":hover": { color: "white" } }}
                       label="LOG IN"
                     />
@@ -109,6 +110,9 @@ const NavBar = () => {
                       label="SIGN UP"
                     />
                   </Tabs>
+
+                  {/* profile box */}
+
                   <Box sx={{ flexGrow: 0 }}>
                     <Tooltip title="Open settings">
                       <IconButton
