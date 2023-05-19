@@ -6,7 +6,7 @@ import { Box } from "@mui/system";
 import Rating from "@mui/material/Rating";
 
 import Modal from "@mui/material/Modal";
-import ReadMoreModal from "./ReadMoreModal";
+import ReadMoreModal from "../modal/ReadMoreModal";
 
 const SideBar = () => {
   const [open, setOpen] = useState(false);

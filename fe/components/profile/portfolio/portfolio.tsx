@@ -1,20 +1,17 @@
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import React, { useState } from "react";
 import Image from "next/image";
-import PortfolioModal from "./portfolioModal";
+import React, { useContext, useState } from "react";
+import PortfolioModal from "../../modal/portfolio";
+import { Box } from "@mui/system";
+import { Typography } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import { ModalContext } from "@/context/modalContext";
+import { ProfileContext } from "@/context/profileContext";
 
 const Portfolio = ({ profileData }: any) => {
+  const { toggleModal } = useContext(ModalContext);
   const [active, setActive] = useState(1);
   const [open, setOpen] = useState(false);
-  const [data, setData] = useState([
-    "https://img.freepik.com/free-vector/hand-drawn-portfolio-template_52683-79647.jpg",
-    "https://static.vecteezy.com/system/resources/previews/011/645/680/original/architecture-portfolio-and-interior-professional-portfolio-design-template-free-vector.jpg",
-    "https://i.pinimg.com/originals/28/00/81/2800813905b51c032208e97f821c9620.jpg",
-    "https://i0.wp.com/themes.svn.wordpress.org/elegant-portfolio/1.0.5/screenshot.png",
-    "https://elements-cover-images-0.imgix.net/7f715f96-3abe-42e7-94d4-b0618295167a?auto=compress%2Cformat&fit=max&w=900&s=8abc9bb1739ccbfd05e5e56a93f2ad89",
-    "https://blog.flipsnack.com/wp-content/uploads/2021/04/Cover-graphic-design-portfolio-tips.jpg",
-  ]);
+  const { portfolioData } = useContext(ProfileContext);
   const handleClose = () => {
     setOpen(false);
   };
@@ -51,7 +48,7 @@ const Portfolio = ({ profileData }: any) => {
               gap: "10px",
             }}
           >
-            {data.map((e, index: any) => (
+            {portfolioData.map((e: any, index: any) => (
               <Box
                 key={index}
                 onClick={() => {
@@ -101,13 +98,35 @@ const Portfolio = ({ profileData }: any) => {
                 />
               </Box>
             ))}
+            <Box
+              onClick={() => toggleModal("AddPortfolio")}
+              sx={{
+                position: "relative",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "280px",
+                height: "160px",
+                borderRadius: "10px",
+                boxShadow:
+                  "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
+                background:
+                  "linear-gradient(90deg, #7F7FD5  0%, #86A8E7 50%, #91EAE4 100%)",
+                // border: "1px dashed black",
+                ":hover": {
+                  filter: "brightness(90%)",
+                },
+              }}
+            >
+              <AddIcon sx={{ color: "white" }} />
+            </Box>
           </Box>
         </Box>
       </Box>
       <PortfolioModal
         open={open}
         handleClose={handleClose}
-        data={data}
+        data={portfolioData}
         active={active}
         setActive={setActive}
       />

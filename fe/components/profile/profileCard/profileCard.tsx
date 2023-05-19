@@ -15,10 +15,11 @@ import EditProfile from "./editProfile";
 const ProfileCard = ({ profileData, toggleModal }: any) => {
   const router = useRouter();
   const [isEditProfile, SetIsEditProfile] = useState<boolean>(false);
-  const [toggle, setToggle] = useState(false);
+  const [toggleLike, setToggleLike] = useState(false);
+
   // Popover start
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [popoverText, setPopOverText] = useState<String>("Copy Profile");
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
     setPopOverText("Copy Profile");
@@ -31,12 +32,13 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
 
   const open = Boolean(anchorEl);
   // Popover end
+
   const toggleEditProfile = () => {
     SetIsEditProfile(!isEditProfile);
   };
 
   const like = () => {
-    setToggle(!toggle);
+    setToggleLike(!toggleLike);
   };
 
   const handleCopyUrl = async () => {
@@ -63,7 +65,8 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
           position: "relative",
           width: "100%",
           height: { xs: "40%", md: "45%" },
-          background: "linear-gradient(90deg, #2ce59c  0%, #64b3f4 100%)",
+          background:
+            "linear-gradient(90deg, #7F7FD5  0%, #86A8E7 50%, #91EAE4 100%)",
         }}
       >
         <Box
@@ -189,7 +192,7 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
             <Typography sx={{ fontWeight: "bold", fontSize: "25px" }}>
               {profileData?.name}
             </Typography>
-            {toggle ? (
+            {toggleLike ? (
               <FavoriteIcon
                 onClick={() => {
                   like();

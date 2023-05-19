@@ -10,6 +10,7 @@ import ProfileProvider from "@/context/profileContext";
 import UploadProvider from "@/context/uploadContext";
 import CategoryProvider from "@/context/categoryContext";
 import LoadingProvider from "@/context/loadingContext";
+import ModalProvider from "@/context/modalContext";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -32,11 +33,13 @@ export default function App({ Component, pageProps }: AppProps) {
             <ProfileProvider>
               <UploadProvider>
                 <ChatProvider>
-                  <main className={roboto.className}>
-                    <Layout>
-                      <Component {...pageProps} />
-                    </Layout>
-                  </main>
+                  <ModalProvider>
+                    <main className={roboto.className}>
+                      <Layout>
+                        <Component {...pageProps} />
+                      </Layout>
+                    </main>
+                  </ModalProvider>
                 </ChatProvider>
               </UploadProvider>
             </ProfileProvider>

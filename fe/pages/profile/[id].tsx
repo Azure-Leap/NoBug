@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { FreelancerInterface } from "@/interfaces/interfaces";
+import React, { useContext, useEffect, useState } from "react";
+import { BASE_URL } from "@/variables";
 
 // mui
 import { Box } from "@mui/system";
@@ -10,43 +9,21 @@ import SideBar from "@/components/profile/sideBar";
 import Portfolio from "@/components/profile/portfolio/portfolio";
 import Offers from "@/components/profile/offers";
 import axios from "axios";
-import ProfileImageModal from "@/components/profile/profileImageModal/profileImageModal";
-import { truncate } from "fs/promises";
-import EditProfileModal from "@/components/profile/profileCard/editProfileModal";
-import { BASE_URL } from "@/variables";
+import Modal from "@/components/modal/modal";
+import { ProfileContext } from "@/context/profileContext";
+import { ModalContext } from "@/context/modalContext";
 
 const Profile = ({ data }: any) => {
-  const router = useRouter();
-  const [isPModal, setIsPModal] = useState(false);
-  const [isEditModal, setIsEditModal] = useState(false);
-  const [profileData, setProfileData] = useState<FreelancerInterface>();
-  // const { id } = router.query;
-
-  const toggleModal = (e: any) => {
-    if (e === "ProfileImage") {
-      setIsPModal(!isPModal);
-    } else if (e === "EditProfile") {
-      setIsEditModal(!isEditModal);
-    }
-  };
-
-  // const getFreelancerData = async () => {
-  //   try {
-  //     const { data } = await axios.get(`http://localhost:8000/users/${id}`);
-  //     console.log(data.user);
-  //     setProfileData(data.user);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const { profileData, setProfileData } = useContext(ProfileContext);
+  const { isModal, toggleModal, insideModal } = useContext(ModalContext);
 
   useEffect(() => {
-    // getFreelancerData();
     setProfileData(data.user);
   }, [data.user]);
 
   return (
     <Box
+      // onClick={() => toggleModal("")}
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -78,17 +55,11 @@ const Profile = ({ data }: any) => {
         <Portfolio profileData={profileData} />
         <Offers />
       </Box>
-      <ProfileImageModal
-        profileData={profileData}
-        isModal={isPModal}
-        setIsModal={setIsPModal}
+
+      <Modal
+        isModal={isModal}
         toggleModal={toggleModal}
-      />
-      <EditProfileModal
-        isModal={isEditModal}
-        setIsModal={setIsEditModal}
-        toggleModal={toggleModal}
-        profileData={profileData}
+        insideModal={insideModal}
       />
     </Box>
   );
