@@ -12,9 +12,8 @@ import { BASE_URL } from "@/variables";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({ data, categoriesData }: any) {
-  const { setCategoriesData }: any = useContext(CategoryContext);
-  setCategoriesData(categoriesData.category);
+export default function Home({ data }: any) {
+  // const { setCategoriesData }: any = useContext(CategoryContext);
 
   return (
     <>
@@ -46,13 +45,9 @@ export default function Home({ data, categoriesData }: any) {
 
 export async function getServerSideProps() {
   const data = await fetch(`${BASE_URL}/freelancer`).then((res) => res.json());
-  const categoriesData = await fetch(`${BASE_URL}/categories`).then((res) =>
-    res.json()
-  );
   return {
     props: {
       data,
-      categoriesData,
     },
   };
 }

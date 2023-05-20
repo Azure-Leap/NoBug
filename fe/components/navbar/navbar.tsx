@@ -85,6 +85,7 @@ const NavBar = () => {
                     onChange={(e, value) => setValue(value)}
                   >
                     <Tab
+                      onClick={() => router.push("/postmoment")}
                       sx={{
                         color: "#212A3E",
                         ":hover": { color: "white" },
