@@ -11,11 +11,11 @@ export default function HoverDropdown({ categories }: any) {
   console.log(categoriesData);
 
   return (
-    <div className="bg-slate-100 -mt-4  hidden md:block border-b">
-      <div
-        onMouseLeave={() => setOpen(false)}
-        className="max-w-screen-xl flex  items-center p-3 "
-      >
+    <div
+      className="bg-slate-100 -mt-4  hidden md:block border-b"
+      onMouseLeave={() => setOpen(false)}
+    >
+      <div className="max-w-screen-xl flex  items-center p-3 ">
         <div className="flex ">
           {categoriesData?.map((e: any, index: any) => (
             <Link
