@@ -23,7 +23,6 @@ const CategoryProvider = ({ children }: any) => {
   };
 
   useEffect(() => {
-    console.log("asd");
     getCategories();
   }, []);
 
