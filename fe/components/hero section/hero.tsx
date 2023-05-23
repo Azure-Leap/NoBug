@@ -48,7 +48,13 @@ const Hero = () => {
             height: "100vh",
           }}
         >
-          <Image src="/back111.webp" alt="" layout="fill" objectFit="cover" />
+          <Image
+            src="/back44.webp"
+            alt="sdas"
+            fill={true}
+            style={{ objectFit: "contain" }}
+            quality={40}
+          />
         </div>
         <Grid sx={{ maxWidth: "75vw" }}>
           <Typography variant="h4">
@@ -60,8 +66,8 @@ const Hero = () => {
           sx={{ maxWidth: "75vw", marginTop: "2rem", marginBottom: "2rem" }}
         >
           <Typography variant="h5">
-            Access global talent on the freelancer website trusted by over 1
-            million businesses world.
+            Захиалагч болон фрийлансерууд орон зайнаас үл хамааран чанартай
+            ажлыг гүйцэтгэх боломж.
           </Typography>
         </Grid>
         <Grid className="hidden md:block">
