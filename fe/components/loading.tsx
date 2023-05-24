@@ -16,7 +16,7 @@ const Loading = () => {
         width: "100%",
         minHeight: "100vh",
         // backgroundColor: "rgba(50,50,50,0.5)",
-        zIndex: "2222222222",
+        zIndex: "22222222222",
       }}
     >
       <div className="lds-roller">

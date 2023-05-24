@@ -36,7 +36,6 @@ export default function PortfolioModal({
   active,
   setActive,
 }: any) {
-  console.log(data?.[0]);
   //   const itemWidth = (100 / data.length).toString() + "%";
   const next = useCallback(() => {
     if (active >= data.length - 1) {

@@ -29,6 +29,7 @@ const EditProfileModal = () => {
     // setPreview(null);
   };
   const onCrop = (view: any) => {
+    console.log("view", view);
     setPreview(view);
   };
   // for Avatar end

@@ -28,7 +28,11 @@ const API_KEY = process.env.API_KEY;
 const API_SECRET_KEY = process.env.API_SECRET_KEY;
 
 // middlewares
-app.use(express.json());
+app.use(
+  express.json({
+    limit: "10mb",
+  })
+);
 app.use(cors());
 app.use(
   fileUpload({
@@ -40,13 +44,10 @@ app.use(
 // cloudinary start
 
 app.post("/upload", async (req: any, res: Response, next: NextFunction) => {
-  // console.log("===>", req.files);
-  console.log("===>", req.body);
   try {
     const result = await cloudinary.v2.uploader.upload(req.body.files, {
       folder: "Skill-Hive",
     });
-    console.log("===>", result);
     res.status(200).json({ message: "Амжилттай хадгаллаа.", imgUrl: result });
   } catch (error) {
     next(error);

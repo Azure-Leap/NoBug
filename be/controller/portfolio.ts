@@ -11,10 +11,15 @@ const addPortfolio = async (
 
   try {
     const user = await User.findById(id);
-
+    if (!data) {
+      console.log(data);
+      res.status(400).json({
+        success: false,
+        message: "iim id tai user oldsongui",
+      });
+    }
     if (user) {
       user?.freelancer?.portfolio.push(data);
-
       await user?.save();
       console.log(data);
     } else {

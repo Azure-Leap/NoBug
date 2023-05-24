@@ -11,38 +11,38 @@ import axios from "axios";
 import { LoadingContext } from "@/context/loadingContext";
 
 const AddPortfolio = ({}: any) => {
-  const { setIsLoading } = useContext(LoadingContext);
+  const { isLoading, setIsLoading } = useContext(LoadingContext);
   const { profileData } = useContext(ProfileContext);
   const { toggleModal } = useContext(ModalContext);
 
   const [selectedImage, setSelectedImage] = useState<any>(null);
-  const [portfolioUrl, setPortfolioUrl] = useState<any>();
 
-  // const addPortfolio = async () => {
-  //   try {
-  //     const res = await axios.put(
-  //       `http://localhost:8000/portfolio/${profileData._id}`,
-  //       { data: portfolioUrl }
-  //     );
-  //     console.log(res);
-  //     setIsLoading(false);
-  //   } catch (error) {
-  //     setIsLoading(false);
-
-  //     console.log(error);
-  //   }
-  // };
+  const addPortfolio = async (portfolioUrl: any) => {
+    console.log("portfolioUrl", portfolioUrl);
+    try {
+      const res = await axios.put(
+        `http://localhost:8000/portfolio/${profileData._id}`,
+        { data: portfolioUrl }
+      );
+      console.log(res);
+      setIsLoading(false);
+      setSelectedImage(null);
+      toggleModal();
+    } catch (error) {
+      setIsLoading(false);
+      console.log(error);
+    }
+  };
   const uploadPortfolioImg = async (e: any) => {
-    console.log("file", e);
+    console.log("file", selectedImage);
     try {
       const res = await axios.post("http://localhost:8000/upload", {
-        e,
+        files: selectedImage,
       });
-      // setPortfolioUrl(res);
-      console.log(res);
-      // setSelectedImage(null);
-      // toggleModal();
-      // addPortfolio();
+      console.log("res url", res.data.imgUrl.url);
+      if (res.data.imgUrl.url) {
+        addPortfolio(res.data.imgUrl.url);
+      }
     } catch (err) {
       console.log("err", err);
       setIsLoading(false);
@@ -102,7 +102,15 @@ const AddPortfolio = ({}: any) => {
             hidden
             accept="image/*"
             onChange={(e) => {
-              setSelectedImage(e.target.files?.[0]);
+              const file: any = e.target.files?.[0];
+              const fileReader = new FileReader();
+              fileReader.readAsDataURL(file);
+              fileReader.onloadend = () => {
+                console.log("D", fileReader.result);
+                setSelectedImage(fileReader.result);
+              };
+
+              // setSelectedImage(d);
             }}
           />
         </Box>
@@ -120,7 +128,7 @@ const AddPortfolio = ({}: any) => {
           <Image
             width={2000}
             height={1000}
-            src={URL.createObjectURL(selectedImage)}
+            src={selectedImage}
             alt="selected"
             className="h-full w-full"
           />
@@ -146,6 +154,7 @@ const AddPortfolio = ({}: any) => {
             },
           }}
           onClick={() => {
+            setIsLoading(true);
             uploadPortfolioImg(selectedImage);
           }}
         >
