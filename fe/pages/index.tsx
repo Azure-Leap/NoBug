@@ -7,8 +7,6 @@ import Offers from "@/components/offers";
 import { BASE_URL } from "@/variables";
 
 export default function Home({ data, dataServices }: any) {
-  console.log("asdasd", dataServices.service);
-
   return (
     <>
       <Hero />

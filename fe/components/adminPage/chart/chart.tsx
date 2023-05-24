@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { Box, Button } from "@mui/material";
 import { Props } from "react-apexcharts";
@@ -56,21 +56,24 @@ export const Steam = () => {
     },
   };
 
-  const filterData = (e: number) => {
-    if (!e) {
-      e = 7;
-    }
-    const last7Data = salaryData.slice(salaryData.length - e);
-    console.log(last7Data);
-    let catArr = [];
-    let seriesArr = [];
-    for (let i = 0; i < last7Data.length; i++) {
-      catArr.push(last7Data[i].date);
-      seriesArr.push(last7Data[i].salary);
-    }
-    setCatData(catArr);
-    setSeriesData(seriesArr);
-  };
+  const filterData = useCallback(
+    (e: number) => {
+      if (!e) {
+        e = 7;
+      }
+      const last7Data = salaryData.slice(salaryData.length - e);
+      console.log(last7Data);
+      let catArr = [];
+      let seriesArr = [];
+      for (let i = 0; i < last7Data.length; i++) {
+        catArr.push(last7Data[i].date);
+        seriesArr.push(last7Data[i].salary);
+      }
+      setCatData(catArr);
+      setSeriesData(seriesArr);
+    },
+    [salaryData]
+  );
 
   const dataCreater = () => {
     for (let year = 23; year <= 23; year++) {

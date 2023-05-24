@@ -15,7 +15,7 @@ import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import { LoadingContext } from "@/context/loadingContext";
 
-const userForm = () => {
+const FreelancerForm = () => {
   const { setIsLoading } = useContext(LoadingContext);
   const [data, setData] = useState<any>({
     phone: "test",
@@ -28,7 +28,7 @@ const userForm = () => {
     about_me: "test",
     region: { country: { name: "Mongolia", shortcut: "mn" } },
   });
-  const [flag, setFlag] = useState<any>(`https://flagcdn.com/mn.svg`);
+  const [flag, setFlag] = useState(`https://flagcdn.com/mn.svg`);
   const pStyle = { fontSize: "15px", color: "rgba(150,150,150)" };
 
   // style
@@ -506,4 +506,4 @@ const userForm = () => {
   );
 };
 
-export default userForm;
+export default FreelancerForm;

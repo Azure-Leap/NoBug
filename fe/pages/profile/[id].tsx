@@ -29,7 +29,7 @@ const Profile = ({ data }: any) => {
   useEffect(() => {
     setProfileData(data.user);
     getOffersByUser(data.user._id);
-  }, [data.user]);
+  }, [data.user, setProfileData]);
 
   console.log(profileData);
 
