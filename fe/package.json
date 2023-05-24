@@ -21,6 +21,8 @@
     "axios": "^1.4.0",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
+    "font": "^0.0.4",
+    "google": "^2.1.0",
     "install": "^0.13.0",
     "next": "13.3.0",
     "npm": "^9.6.4",
