@@ -22,6 +22,11 @@ const serviceSchema = new Schema(
       type: String,
       required: true,
     },
+    img: {
+      type: [],
+      required: true,
+    },
+
     skills: {
       type: [],
       required: true,
@@ -32,7 +37,7 @@ const serviceSchema = new Schema(
     },
     Freelancer: {
       type: Schema.Types.ObjectId,
-      ref: "Freelancer",
+      ref: "User",
     },
   },
   { timestamps: true }

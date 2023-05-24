@@ -3,7 +3,10 @@ import Service from "../model/services";
 
 const getServices = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const service = await Service.find().populate("Freelancer", "name email");
+    const service = await Service.find().populate(
+      "Freelancer",
+      "freelancer.avatar name _id"
+    );
 
     res.status(201).json({
       success: true,
@@ -17,8 +20,31 @@ const getServices = async (req: Request, res: Response, next: NextFunction) => {
 
 const getService = async (req: Request, res: Response, next: NextFunction) => {
   const { id } = req.params;
-  const service = await Service.findById(id).populate("Freelancer", "name");
+  const service = await Service.findById(id).populate(
+    "Freelancer",
+    "freelancer.avatar name _id"
+  );
   try {
+    res
+      .status(201)
+      .json({ success: true, message: "Service мэдээлэл олдлоо.", service });
+  } catch (error) {
+    next(error);
+  }
+};
+const getServiceByUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const { id } = req.params;
+  console.log(id);
+  try {
+    const service = await Service.find({ Freelancer: id }).populate(
+      "Freelancer",
+      "freelancer.avatar name _id"
+    );
+    console.log(service);
     res
       .status(201)
       .json({ success: true, message: "Service мэдээлэл олдлоо.", service });
@@ -49,17 +75,9 @@ const uptadeService = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { title, description, skills_required, budget, deadline, client_id } =
-    req.body;
   const { id } = req.params;
 
   try {
-    //   if (!title || !description || !skills_required || !budget || !deadline ) {
-    //     res.status(201).json({
-    //       success: false,
-    //       message: "description, skills_required, budget, deadline, client_id хоосон байна.",
-    //     });
-    //   }
     const service = await Service.findByIdAndUpdate(id, req.body);
     res.status(201).json({
       success: true,
@@ -89,4 +107,11 @@ const deleteService = async (
   }
 };
 
-export { getServices, getService, createService, uptadeService, deleteService };
+export {
+  getServices,
+  getService,
+  createService,
+  uptadeService,
+  deleteService,
+  getServiceByUser,
+};

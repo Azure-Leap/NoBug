@@ -14,12 +14,24 @@ import { ProfileContext } from "@/context/profileContext";
 import { ModalContext } from "@/context/modalContext";
 
 const Profile = ({ data }: any) => {
+  const [offerData, setOfferData] = useState<any>();
   const { profileData, setProfileData } = useContext(ProfileContext);
   const { isModal, toggleModal, insideModal } = useContext(ModalContext);
+  const getOffersByUser = async (id: any) => {
+    try {
+      const res = await axios.get(`${BASE_URL}/services/freelancer/${id}`);
+      setOfferData(res.data.service);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     setProfileData(data.user);
+    getOffersByUser(data.user._id);
   }, [data.user]);
+
+  console.log(profileData);
 
   return (
     <Box
@@ -53,7 +65,7 @@ const Profile = ({ data }: any) => {
       >
         <Skills profileData={profileData} />
         <Portfolio profileData={profileData} />
-        <Offers />
+        <Offers offerData={offerData} />
       </Box>
 
       <Modal

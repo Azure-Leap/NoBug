@@ -47,7 +47,7 @@ const Admin = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          width: "50%",
+          width: "100%",
           height: "500px",
           borderRadius: "20px",
           boxShadow: "0px 10px 20px 0px rgba(181,181,181,0.4)",

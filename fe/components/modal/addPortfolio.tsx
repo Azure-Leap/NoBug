@@ -7,11 +7,47 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Image from "next/image";
 import { ProfileContext } from "@/context/profileContext";
 import { ModalContext } from "@/context/modalContext";
+import axios from "axios";
+import { LoadingContext } from "@/context/loadingContext";
 
 const AddPortfolio = ({}: any) => {
-  const [selectedImage, setSelectedImage] = useState<any>(null);
-  const { portfolioData, setPortfolioData } = useContext(ProfileContext);
+  const { setIsLoading } = useContext(LoadingContext);
+  const { profileData } = useContext(ProfileContext);
   const { toggleModal } = useContext(ModalContext);
+
+  const [selectedImage, setSelectedImage] = useState<any>(null);
+  const [portfolioUrl, setPortfolioUrl] = useState<any>();
+
+  // const addPortfolio = async () => {
+  //   try {
+  //     const res = await axios.put(
+  //       `http://localhost:8000/portfolio/${profileData._id}`,
+  //       { data: portfolioUrl }
+  //     );
+  //     console.log(res);
+  //     setIsLoading(false);
+  //   } catch (error) {
+  //     setIsLoading(false);
+
+  //     console.log(error);
+  //   }
+  // };
+  const uploadPortfolioImg = async (e: any) => {
+    console.log("file", e);
+    try {
+      const res = await axios.post("http://localhost:8000/upload", {
+        e,
+      });
+      // setPortfolioUrl(res);
+      console.log(res);
+      // setSelectedImage(null);
+      // toggleModal();
+      // addPortfolio();
+    } catch (err) {
+      console.log("err", err);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Box
@@ -110,12 +146,7 @@ const AddPortfolio = ({}: any) => {
             },
           }}
           onClick={() => {
-            setPortfolioData([
-              ...portfolioData,
-              URL.createObjectURL(selectedImage),
-            ]);
-            setSelectedImage(null);
-            toggleModal();
+            uploadPortfolioImg(selectedImage);
           }}
         >
           <KeyboardBackspaceIcon sx={{ rotate: "90deg" }} />

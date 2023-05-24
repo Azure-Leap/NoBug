@@ -6,12 +6,14 @@ import { Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { ModalContext } from "@/context/modalContext";
 import { ProfileContext } from "@/context/profileContext";
+import { UserContext } from "@/context/userContext";
 
 const Portfolio = ({ profileData }: any) => {
   const { toggleModal } = useContext(ModalContext);
   const [active, setActive] = useState(1);
   const [open, setOpen] = useState(false);
   const { portfolioData } = useContext(ProfileContext);
+  console.log("end", profileData?.freelancer?.portfolio);
   const handleClose = () => {
     setOpen(false);
   };
@@ -48,7 +50,7 @@ const Portfolio = ({ profileData }: any) => {
               gap: "10px",
             }}
           >
-            {portfolioData.map((e: any, index: any) => (
+            {profileData?.freelancer?.portfolio.map((e: any, index: any) => (
               <Box
                 key={index}
                 onClick={() => {
@@ -126,7 +128,7 @@ const Portfolio = ({ profileData }: any) => {
       <PortfolioModal
         open={open}
         handleClose={handleClose}
-        data={portfolioData}
+        data={profileData?.freelancer?.portfolio}
         active={active}
         setActive={setActive}
       />

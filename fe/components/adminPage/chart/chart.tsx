@@ -11,7 +11,7 @@ export const Steam = () => {
   const chartTextColor = "rgba(140,140,140)";
   const series: ApexAxisChartSeries = [
     {
-      name: "Review",
+      name: "Salary",
       data: seriesData,
     },
   ];

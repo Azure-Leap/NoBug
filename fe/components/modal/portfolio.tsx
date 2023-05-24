@@ -36,6 +36,7 @@ export default function PortfolioModal({
   active,
   setActive,
 }: any) {
+  console.log(data?.[0]);
   //   const itemWidth = (100 / data.length).toString() + "%";
   const next = useCallback(() => {
     if (active >= data.length - 1) {
@@ -125,8 +126,8 @@ export default function PortfolioModal({
           <Box sx={{ width: "100%", height: "100%" }}>
             <Box sx={{ width: "100%", height: { xs: "70%", md: "80%" } }}>
               <Image
-                src={data[active]}
-                alt={data[1]}
+                src={data?.[active]}
+                alt={data?.[active]}
                 width={2000}
                 height={1000}
                 className="object-contain w-full h-full"
@@ -142,7 +143,7 @@ export default function PortfolioModal({
                 py: 2,
               }}
             >
-              {data.map((e: any, index: any) => (
+              {data?.map((e: any, index: any) => (
                 <Box
                   key={index}
                   onClick={() => {

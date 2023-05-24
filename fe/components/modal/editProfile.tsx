@@ -39,6 +39,7 @@ const EditProfileModal = () => {
       const res = await axios.post("http://localhost:8000/upload", {
         files: preview,
       });
+      console.log(preview);
       setEditData({
         ...editData,
         freelancer: {

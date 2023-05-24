@@ -1,9 +1,9 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import OfferCard from "../offerCard";
+import OfferCard from "../cards/offerCard";
 
-const Offers = () => {
+const Offers = ({ offerData }: any) => {
   return (
     <Box
       sx={{
@@ -22,7 +22,18 @@ const Offers = () => {
         <Typography sx={{ fontSize: "25px", fontWeight: "500" }}>
           Offers
         </Typography>
-        <OfferCard />
+        <Box
+          sx={{
+            display: "flex",
+            gap: "20px",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          {offerData?.map((e: any, index: any) => (
+            <OfferCard key={index} data={e} />
+          ))}
+        </Box>
       </Box>
     </Box>
   );
