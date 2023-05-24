@@ -1,12 +1,11 @@
 import Image from "next/image";
 import React, { useContext, useState } from "react";
-import PortfolioModal from "../../modal/portfolio";
+import PortfolioModal from "../../../modal/portfolio";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { ModalContext } from "@/context/modalContext";
 import { ProfileContext } from "@/context/profileContext";
-import { UserContext } from "@/context/userContext";
 
 const Portfolio = ({ profileData }: any) => {
   const { toggleModal } = useContext(ModalContext);
@@ -112,8 +111,7 @@ const Portfolio = ({ profileData }: any) => {
                 borderRadius: "10px",
                 boxShadow:
                   "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
-                background:
-                  "linear-gradient(90deg, #7F7FD5  0%, #86A8E7 50%, #91EAE4 100%)",
+                background: "linear-gradient(90deg, #FDC830  0%, #ff930f 100%)",
                 // border: "1px dashed black",
                 ":hover": {
                   filter: "brightness(90%)",

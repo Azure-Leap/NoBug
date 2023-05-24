@@ -6,11 +6,11 @@ import { useRouter } from "next/router";
 
 const OfferCard = ({ data }: any) => {
   const router = useRouter();
-  console.log("dataaa", data.Freelancer);
+
   return (
     <Box
       onClick={() => {
-        router.push(`/offer/${data._id}`);
+        router.push(`/offer/${data?._id}`);
       }}
       sx={{
         width: { xs: "270px", sm: "280px" },
@@ -32,7 +32,7 @@ const OfferCard = ({ data }: any) => {
         <Image
           width={250}
           height={200}
-          src={data.img[0]}
+          src={data?.img[0]}
           alt="zurag"
           className="h-full w-full object-cover"
         />
@@ -59,7 +59,7 @@ const OfferCard = ({ data }: any) => {
           }}
           className="title"
         >
-          {data.title.substring(0, 45) + "..."}
+          {data?.title.substring(0, 45) + "..."}
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <Box
@@ -70,7 +70,7 @@ const OfferCard = ({ data }: any) => {
               overflow: "scroll",
             }}
           >
-            {data.skills.map((el: any, index: any) => (
+            {data?.skills.map((el: any, index: any) => (
               <Typography
                 key={index}
                 sx={{
@@ -122,7 +122,7 @@ const OfferCard = ({ data }: any) => {
                 <Image
                   width={250}
                   height={200}
-                  src={data.Freelancer?.freelancer.avatar}
+                  src={data?.Freelancer?.freelancer.avatar}
                   alt="zurag"
                   className="h-full w-full object-cover"
                 />
@@ -130,7 +130,7 @@ const OfferCard = ({ data }: any) => {
               <Typography
                 sx={{ fontSize: "0.8rem", color: "rgb(153,153,153)" }}
               >
-                {data.Freelancer.name}
+                {data?.Freelancer?.name}
               </Typography>
             </Box>
             <Box
@@ -141,7 +141,7 @@ const OfferCard = ({ data }: any) => {
                 width: "30%",
               }}
             >
-              <Typography>${data.budget}</Typography>
+              <Typography>${data?.budget}</Typography>
             </Box>
           </Box>
         </Box>

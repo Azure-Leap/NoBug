@@ -1,6 +1,6 @@
-import AddPortfolio from "@/components/modal/addPortfolio";
-import EditProfile from "@/components/modal/editProfile";
-import ProfileImage from "@/components/modal/profileImageModal";
+import AddPortfolio from "@/modal/addPortfolio";
+import EditProfile from "@/modal/editProfile";
+import ProfileImage from "@/modal/profileImageModal";
 import React, { useState } from "react";
 import { createContext } from "react";
 

@@ -9,7 +9,7 @@ import SideBar from "@/components/profile/sideBar";
 import Portfolio from "@/components/profile/portfolio/portfolio";
 import Offers from "@/components/profile/offers";
 import axios from "axios";
-import Modal from "@/components/modal/modal";
+import Modal from "@/modal/modal";
 import { ProfileContext } from "@/context/profileContext";
 import { ModalContext } from "@/context/modalContext";
 
@@ -29,7 +29,7 @@ const Profile = ({ data }: any) => {
   useEffect(() => {
     setProfileData(data.user);
     getOffersByUser(data.user._id);
-  }, [data.user]);
+  }, [data.user, setProfileData]);
 
   console.log(profileData);
 
@@ -50,6 +50,7 @@ const Profile = ({ data }: any) => {
           flexDirection: { xs: "column", md: "row" },
           justifyContent: "space-between",
           gap: { xs: "40px", md: "20px" },
+          mb: 5,
         }}
       >
         <ProfileCard profileData={profileData} toggleModal={toggleModal} />

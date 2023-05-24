@@ -66,16 +66,6 @@ const createFreelancer = async (
   res: Response,
   next: NextFunction
 ) => {
-  const {
-    email,
-    name,
-    password,
-    avatar,
-    job_title,
-    skills,
-    hourly_rate,
-    availability,
-  } = req.body;
   console.log(req.body);
   try {
     const freelancer = await User.create(req.body);

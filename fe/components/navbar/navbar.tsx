@@ -60,7 +60,7 @@ const NavBar = () => {
             <Toolbar>
               <Image
                 onClick={() => router.push("/")}
-                src="/logo2.png"
+                src="https://scontent.xx.fbcdn.net/v/t1.15752-9/346120868_925693788732210_6307125096485180765_n.png?_nc_cat=106&ccb=1-7&_nc_sid=aee45a&_nc_ohc=spa6AFWwa7YAX_Op-qV&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdRLy7HeOmBX04HQLvQARjRgkIJSOiMO8RiIX2t9r-wIxw&oe=6495C1FB"
                 alt=""
                 width={200}
                 height={50}

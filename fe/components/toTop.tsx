@@ -27,7 +27,7 @@ const ToTopBtn = () => {
       onClick={scrollToTop}
       sx={{
         position: "fixed",
-        left: "95%",
+        left: "calc(100% - (50px + 20px))",
         bottom: "50px",
         display: { display },
         alignItems: "cetner",
