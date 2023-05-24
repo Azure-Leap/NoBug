@@ -9,11 +9,17 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CircleIcon from "@mui/icons-material/Circle";
+import ReplyIcon from "@mui/icons-material/Reply";
+import ProfileSettings from "./editProfile";
 
-const ProfileCard = () => {
+const ProfileCard = ({ profileData, toggleModal }: any) => {
+  const router = useRouter();
+  const [isSettings, setIsSettings] = useState<boolean>(false);
+  const [toggleLike, setToggleLike] = useState(false);
+
   // Popover start
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [popoverText, setPopOverText] = useState<String>("Copy Profile");
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
     setPopOverText("Copy Profile");
@@ -27,11 +33,12 @@ const ProfileCard = () => {
   const open = Boolean(anchorEl);
   // Popover end
 
-  const router = useRouter();
-  const [toggle, setToggle] = useState(false);
+  const toggleEditProfile = () => {
+    setIsSettings(!isSettings);
+  };
 
   const like = () => {
-    setToggle(!toggle);
+    setToggleLike(!toggleLike);
   };
 
   const handleCopyUrl = async () => {
@@ -47,7 +54,7 @@ const ProfileCard = () => {
     <Box
       sx={{
         width: { xs: "100%", md: "70%" },
-        height: { xs: "500px", sm: "500px" },
+        minHeight: "500px",
         borderRadius: "15px",
         boxShadow: "0px 5px 11px 1px rgba(109,128,135,0.22)",
         overflow: "hidden",
@@ -57,8 +64,9 @@ const ProfileCard = () => {
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: "40%", md: "45%" },
-          background: "linear-gradient(90deg, #2ce59c  0%, #64b3f4 100%)",
+          height: "200px",
+          background:
+            "linear-gradient(90deg, #7F7FD5  0%, #86A8E7 50%, #91EAE4 100%)",
         }}
       >
         <Box
@@ -74,23 +82,49 @@ const ProfileCard = () => {
             backgroundColor: "white",
             overflow: "hidden",
             p: 1,
+            zIndex: 2,
           }}
         >
           <Box
+            onClick={() => toggleModal("ProfileImage")}
             sx={{
-              width: "180px",
-              aspectRatio: "1/1",
+              posiition: "relative",
+              width: "100%",
+              height: "100%",
               borderRadius: "50%",
               backgroundColor: "white",
               overflow: "hidden",
-              zIndex: "1",
+              ":hover": {
+                cursor: "pointer",
+                img: {
+                  filter: "brightness(50%)",
+                },
+                ".viewProfile": {
+                  display: "block",
+                },
+              },
             }}
           >
+            <Typography
+              className="viewProfile"
+              sx={{
+                display: "none",
+                fontWeight: "500",
+                color: "white",
+                position: "absolute",
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%,-50%)",
+                zIndex: "2",
+              }}
+            >
+              View Profile
+            </Typography>
             <Image
               width={400}
               height={400}
               alt="zurag"
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80"
+              src={profileData?.freelancer.avatar}
               className="h-full w-full object-cover"
             />
           </Box>
@@ -102,23 +136,46 @@ const ProfileCard = () => {
           display: "flex",
           flexDirection: "column",
           width: "100%",
-          height: "55%",
+          minHeight: "55%",
+
           position: "relative",
-          paddingY: "100px",
+          paddingTop: "100px",
+          paddingBottom: { xs: "70px", lg: "100px" },
           px: { xs: 2, sm: 10 },
         }}
       >
-        <MoreVertIcon
+        <Box
           sx={{
             position: "absolute",
             right: "40px",
             top: "30px",
-            scale: "1.2",
-            ":hover": {
-              cursor: "pointer",
-            },
           }}
-        />
+        >
+          <MoreVertIcon
+            onClick={toggleEditProfile}
+            sx={{
+              scale: "1.2",
+              ":hover": {
+                cursor: "pointer",
+              },
+            }}
+          />
+          <Box
+            sx={{
+              position: "relative",
+              width: "100%",
+              height: "0px",
+            }}
+          >
+            <Box sx={{ position: "absolute", right: "100%" }}>
+              <ProfileSettings
+                toggleModal={toggleModal}
+                isEditProfile={isSettings}
+                SetIsEditProfile={setIsSettings}
+              />
+            </Box>
+          </Box>
+        </Box>
         <Box
           sx={{
             display: "flex",
@@ -135,9 +192,9 @@ const ProfileCard = () => {
             }}
           >
             <Typography sx={{ fontWeight: "bold", fontSize: "25px" }}>
-              Amanda Smith
+              {profileData?.name}
             </Typography>
-            {toggle ? (
+            {toggleLike ? (
               <FavoriteIcon
                 onClick={() => {
                   like();
@@ -182,7 +239,7 @@ const ProfileCard = () => {
                   marginRight: "10px",
                 }}
               />
-              Graphic Designer
+              {profileData?.freelancer.job_title}
             </Typography>
           </Box>
           <Box
@@ -193,6 +250,9 @@ const ProfileCard = () => {
             }}
           >
             <Button
+              onClick={() => {
+                router.push("/chat/4");
+              }}
               sx={{
                 textTransform: "capitalize",
                 backgroundColor: "white!important",
@@ -210,6 +270,9 @@ const ProfileCard = () => {
               onMouseEnter={handlePopoverOpen}
               onMouseLeave={handlePopoverClose}
               sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
                 textTransform: "capitalize",
                 backgroundColor: "rgba(43,92,243)!important",
                 color: "white",
@@ -218,6 +281,7 @@ const ProfileCard = () => {
                 px: 2,
               }}
             >
+              <ReplyIcon />
               Share Profile
             </Button>
             <Popover

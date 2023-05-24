@@ -1,8 +1,9 @@
 import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { profile } from "console";
 import React from "react";
 
-const Skills = () => {
+const Skills = ({ profileData }: any) => {
   const arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
   return (
@@ -26,7 +27,7 @@ const Skills = () => {
         Skills
       </Typography>
       <Box sx={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
-        {arr.map((i, index: any) => (
+        {profileData?.freelancer.skills.map((i: any, index: number) => (
           <Button
             key={index}
             sx={{
@@ -41,7 +42,7 @@ const Skills = () => {
               },
             }}
           >
-            Product Design
+            {i}
           </Button>
         ))}
       </Box>

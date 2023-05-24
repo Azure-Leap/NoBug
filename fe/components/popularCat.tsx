@@ -11,6 +11,7 @@ import "swiper/css/pagination";
 // import "./styles.css";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
+import CatCard from "./cards/catCard";
 
 const PopularCat = (): any => {
   const data = [
@@ -88,7 +89,7 @@ const PopularCat = (): any => {
         py: 4,
       }}
     >
-      <Box sx={{ backgroundColor: "white" }}>
+      <Box>
         <Typography
           sx={{
             fontWeight: "500",
@@ -145,50 +146,7 @@ const PopularCat = (): any => {
         >
           {data.map((e: any, index) => (
             <SwiperSlide key={index}>
-              <Box
-                sx={{
-                  display: "block",
-                  position: "relative",
-                  width: { xs: "240px" },
-                  aspectRatio: "3/4",
-                  objectFit: "cover",
-                  overflow: "hidden",
-                  borderRadius: "5px",
-                  mx: "auto",
-                }}
-              >
-                <Image
-                  width={400}
-                  height={400}
-                  src={e.src}
-                  alt={e.src}
-                  className="h-full w-full brightness-75 "
-                />
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "5px",
-                    position: "absolute",
-                    top: "1px",
-                    left: "0px",
-                    p: { xs: 1, sm: 3 },
-                  }}
-                >
-                  <Typography
-                    variant="body1"
-                    sx={{
-                      color: "#D0D0D0",
-                      fontSize: "12px",
-                    }}
-                  >
-                    Engage your community
-                  </Typography>
-                  <Typography variant="h6" sx={{ color: "#f5f5f5" }}>
-                    {e.title}
-                  </Typography>
-                </Box>
-              </Box>
+              <CatCard data={e} />
             </SwiperSlide>
           ))}
         </Swiper>

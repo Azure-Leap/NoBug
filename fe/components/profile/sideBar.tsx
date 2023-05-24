@@ -6,7 +6,7 @@ import { Box } from "@mui/system";
 import Rating from "@mui/material/Rating";
 
 import Modal from "@mui/material/Modal";
-import ReadMoreModal from "./ReadMoreModal";
+import ReadMoreModal from "../modal/ReadMoreModal";
 
 const SideBar = () => {
   const [open, setOpen] = useState(false);
@@ -30,7 +30,7 @@ const SideBar = () => {
           flexDirection: "column",
           gap: "50px",
           width: { xs: "100%", md: "25%" },
-          height: "500px",
+          minheight: "450px",
           borderRadius: "15px",
           boxShadow: "0px 5px 11px 1px rgba(109,128,135,0.22)",
           overflow: "hidden",

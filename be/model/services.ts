@@ -1,4 +1,5 @@
-import { Schema, model, } from "mongoose";
+import { Schema, model } from "mongoose";
+import freelancer from "./freelancer";
 
 interface IService {
   title: string;
@@ -6,37 +7,46 @@ interface IService {
   skills: [];
   budget: number;
   deadline: Date;
-  client_id:{
-    type: any,
+  client_id: {
+    type: any;
   };
 }
 
-const serviceSchema = new Schema<IService>({
-  title:{
-    type: String,
-    required: true
+const serviceSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    img: {
+      type: [],
+      required: true,
+    },
+
+    skills: {
+      type: [],
+      required: true,
+    },
+    budget: {
+      type: Number,
+      required: true,
+    },
+    Freelancer: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
-  description:{
-    type: String,
-  },
-  skills:{
-    type: [],
-    required:true
-  },
-  budget:{
-    type: Number,
-    required: true
-  },
-  deadline:{
-    type: Date,
-    required: true
-  },
-  client_id:{
-    type: Schema.Types.ObjectId,
-    ref: "Client"
-  }
-}, {timestamps : true});
+  { timestamps: true }
+);
 
 const service = model("Service", serviceSchema);
+
+// serviceSchema.method("addToFree", async function (id) {
+//   const fr = await freelancer.findOneAndUpdate(id, { service: this._id });
+// });
 
 export default service;

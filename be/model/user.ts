@@ -9,7 +9,8 @@ interface IUser {
   phoneNumber: String;
   createdAt: Date;
 }
-const userSchema = new Schema<IUser>(
+
+const userSchema = new Schema(
   {
     name: {
       type: String,
@@ -23,11 +24,54 @@ const userSchema = new Schema<IUser>(
     },
     password: {
       type: String,
+      select: false,
       required: [true, "Хэрэглэгчийн password ийг заавал бөглөнө үү!!!"],
     },
     role: {
       type: String,
       ENUM: ["Client", "Freelancer"],
+    },
+    freelancer: {
+      type: {
+        phone: {
+          type: String,
+        },
+        avatar: {
+          type: String,
+        },
+        job_title: {
+          type: String,
+        },
+        skills: {
+          type: [],
+        },
+        rating: {
+          type: Number,
+        },
+        portfolio: {
+          type: [String],
+        },
+        hourly_rate: {
+          type: Number,
+        },
+        availability: {
+          type: Boolean,
+        },
+        worked_projects: {
+          type: [],
+        },
+        about_me: {
+          type: String,
+        },
+        region: {
+          type: String,
+        },
+      },
+    },
+    client: {
+      type: {
+        company_name: { String },
+      },
     },
   },
   { timestamps: true }

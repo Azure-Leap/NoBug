@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Typography, Button, Modal, Drawer } from "@mui/material";
 import SideBarFilter from "./sidebarfilter";
-import OfferCard from "../offerCard";
+import OfferCard from "../cards/offerCard";
 import FreelancerSearchBar from "./freelancerSearchBar";
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";

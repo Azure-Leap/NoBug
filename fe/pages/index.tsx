@@ -1,46 +1,34 @@
-import { Inter } from "next/font/google";
-import { Box } from "@mui/system";
-import ExpertFreelancer from "@/components/expertFreelander";
+import Freelancers from "@/components/freelancers";
 import PopularCat from "@/components/popularCat";
 import CommendPart from "@/components/commendPart";
+import Hero from "@/components/hero section/hero";
+import Offers from "@/components/offers";
 
-const inter = Inter({ subsets: ["latin"] });
+import { BASE_URL } from "@/variables";
 
-export default function Home({ data }: any) {
+export default function Home({ data, dataServices }: any) {
+  console.log("asdasd", dataServices.service);
+
   return (
     <>
-      <Box
-        sx={
-          {
-            // width: { xs: "95%", xl: "75%" },
-            // marginX: "auto",
-          }
-        }
-      >
-        <PopularCat />
-        <CommendPart />
-        <ExpertFreelancer data={data.freelancer} />
-      </Box>
+      <Hero />
+      <PopularCat />
+      <CommendPart />
+      <Freelancers data={data.freelancer} />
+      <Offers data={dataServices.service} />
     </>
   );
 }
 
-// export async function getServerSideProps() {
-//   const res = await fetch("http://localhost:8000/freelancer");
-//   const data = await res.json();
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }
-
 export async function getServerSideProps() {
-  const res = await fetch("https://skill-hive-1giq.onrender.com/freelancer");
-  const data = await res.json();
+  const data = await fetch(`${BASE_URL}/freelancer`).then((res) => res.json());
+  const dataServices = await fetch(`${BASE_URL}/services`).then((res) =>
+    res.json()
+  );
   return {
     props: {
       data,
+      dataServices,
     },
   };
 }

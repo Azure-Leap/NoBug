@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -37,20 +37,22 @@ export default function PortfolioModal({
   setActive,
 }: any) {
   //   const itemWidth = (100 / data.length).toString() + "%";
-  const next = () => {
+  const next = useCallback(() => {
     if (active >= data.length - 1) {
       setActive(0);
     } else {
       setActive(active + 1);
     }
-  };
-  const previous = () => {
+  }, [active]);
+
+  const previous = useCallback(() => {
     if (active <= 0) {
       setActive(data.length - 1);
     } else {
       setActive(active - 1);
     }
-  };
+  }, [active]);
+
   useEffect(() => {
     const handleKeyDown = (event: any) => {
       if (event.key === "ArrowLeft") {
@@ -123,8 +125,8 @@ export default function PortfolioModal({
           <Box sx={{ width: "100%", height: "100%" }}>
             <Box sx={{ width: "100%", height: { xs: "70%", md: "80%" } }}>
               <Image
-                src={data[active]}
-                alt={data[1]}
+                src={data?.[active]}
+                alt={data?.[active]}
                 width={2000}
                 height={1000}
                 className="object-contain w-full h-full"
@@ -140,35 +142,34 @@ export default function PortfolioModal({
                 py: 2,
               }}
             >
-              {data.map((e: any, index: any) => (
-                <>
-                  <Box
-                    onClick={() => {
-                      setActive(index);
+              {data?.map((e: any, index: any) => (
+                <Box
+                  key={index}
+                  onClick={() => {
+                    setActive(index);
+                  }}
+                  sx={{
+                    width: { xs: "40%", md: "20%" },
+                    flex: "none",
+                  }}
+                >
+                  <Image
+                    key={index}
+                    src={e}
+                    alt={e}
+                    width={200}
+                    height={200}
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      objectFit: "cover",
+                      filter:
+                        index === active
+                          ? "brightness(100%)"
+                          : "brightness(50%)",
                     }}
-                    sx={{
-                      width: { xs: "40%", md: "20%" },
-                      flex: "none",
-                    }}
-                  >
-                    <Image
-                      key={index}
-                      src={e}
-                      alt={e}
-                      width={200}
-                      height={200}
-                      style={{
-                        height: "100%",
-                        width: "100%",
-                        objectFit: "cover",
-                        filter:
-                          index === active
-                            ? "brightness(100%)"
-                            : "brightness(50%)",
-                      }}
-                    />
-                  </Box>
-                </>
+                  />
+                </Box>
               ))}
             </Box>
           </Box>

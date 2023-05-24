@@ -96,8 +96,8 @@ export default function Dropdown() {
             }`}
           >
             <div className=" flex flex-row flex-wrap gap-4 p-2 mt-1 ">
-              {subCat.map((e: any) => (
-                <Link href="#" underline="hover" color="#555555">
+              {subCat.map((e: any, index: any) => (
+                <Link key={index} href="#" underline="hover" color="#555555">
                   {e.subtitle}
                 </Link>
               ))}

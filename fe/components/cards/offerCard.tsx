@@ -2,16 +2,23 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import Image from "next/image";
 import React from "react";
+import { useRouter } from "next/router";
 
-const OfferCard = () => {
-  const skills = ["Brochure", "Booklet", "Booklet Design", "Design"];
+const OfferCard = ({ data }: any) => {
+  const router = useRouter();
+  console.log("dataaa", data.Freelancer);
   return (
     <Box
+      onClick={() => {
+        router.push(`/offer/${data._id}`);
+      }}
       sx={{
         width: { xs: "270px", sm: "280px" },
+        backgroundColor: "white",
         height: "400px",
         border: "0.1px solid black",
         borderRadius: "10px",
+        overflow: "hidden",
         ":hover": {
           ".title": {
             textDecoration: "underline",
@@ -25,22 +32,34 @@ const OfferCard = () => {
         <Image
           width={250}
           height={200}
-          src="https://maqe-com-4-media-uploads.s3.ap-southeast-1.amazonaws.com/content/uploads/2020/04/07172748/IN_DEsignthinking_Cover-1.png"
+          src={data.img[0]}
           alt="zurag"
           className="h-full w-full object-cover"
         />
       </Box>
-      <Box sx={{ width: "100%", py: 1, px: 2 }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          width: "100%",
+          py: 1,
+          px: 2,
+          paddingBottom: "20px",
+          height: "50%",
+        }}
+      >
         <Typography
           sx={{
             width: "100%",
             height: "40%",
             fontSize: "18px",
             fontWeight: "500",
+            // backgroundColor: "blue",
           }}
           className="title"
         >
-          Design your company`s documents / report / brochure / booklet
+          {data.title.substring(0, 45) + "..."}
         </Typography>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <Box
@@ -51,11 +70,12 @@ const OfferCard = () => {
               overflow: "scroll",
             }}
           >
-            {skills.map((el: any, index: any) => (
+            {data.skills.map((el: any, index: any) => (
               <Typography
                 key={index}
                 sx={{
                   padding: "4px",
+
                   paddingX: "12px",
                   borderRadius: "20px",
                   textAlign: "center",
@@ -102,7 +122,7 @@ const OfferCard = () => {
                 <Image
                   width={250}
                   height={200}
-                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80"
+                  src={data.Freelancer?.freelancer.avatar}
                   alt="zurag"
                   className="h-full w-full object-cover"
                 />
@@ -110,7 +130,7 @@ const OfferCard = () => {
               <Typography
                 sx={{ fontSize: "0.8rem", color: "rgb(153,153,153)" }}
               >
-                Amanda Smith
+                {data.Freelancer.name}
               </Typography>
             </Box>
             <Box
@@ -121,7 +141,7 @@ const OfferCard = () => {
                 width: "30%",
               }}
             >
-              <Typography>$155</Typography>
+              <Typography>${data.budget}</Typography>
             </Box>
           </Box>
         </Box>

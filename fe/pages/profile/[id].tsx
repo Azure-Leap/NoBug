@@ -1,19 +1,41 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React, { useContext, useEffect, useState } from "react";
+import { BASE_URL } from "@/variables";
 
 // mui
 import { Box } from "@mui/system";
-import ProfileCard from "@/components/profile/profileCard";
+import ProfileCard from "@/components/profile/profileCard/profileCard";
 import Skills from "@/components/profile/skills";
 import SideBar from "@/components/profile/sideBar";
 import Portfolio from "@/components/profile/portfolio/portfolio";
 import Offers from "@/components/profile/offers";
+import axios from "axios";
+import Modal from "@/components/modal/modal";
+import { ProfileContext } from "@/context/profileContext";
+import { ModalContext } from "@/context/modalContext";
 
-const Profile = () => {
-  const router = useRouter();
-  const { id } = router.query;
+const Profile = ({ data }: any) => {
+  const [offerData, setOfferData] = useState<any>();
+  const { profileData, setProfileData } = useContext(ProfileContext);
+  const { isModal, toggleModal, insideModal } = useContext(ModalContext);
+  const getOffersByUser = async (id: any) => {
+    try {
+      const res = await axios.get(`${BASE_URL}/services/freelancer/${id}`);
+      setOfferData(res.data.service);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    setProfileData(data.user);
+    getOffersByUser(data.user._id);
+  }, [data.user]);
+
+  console.log(profileData);
+
   return (
     <Box
+      // onClick={() => toggleModal("")}
       sx={{
         display: "flex",
         flexDirection: "column",
@@ -30,7 +52,7 @@ const Profile = () => {
           gap: { xs: "40px", md: "20px" },
         }}
       >
-        <ProfileCard />
+        <ProfileCard profileData={profileData} toggleModal={toggleModal} />
         <SideBar />
       </Box>
       <Box
@@ -41,12 +63,30 @@ const Profile = () => {
           width: { xs: "100%", md: "70%" },
         }}
       >
-        <Skills />
-        <Portfolio />
-        <Offers />
+        <Skills profileData={profileData} />
+        <Portfolio profileData={profileData} />
+        <Offers offerData={offerData} />
       </Box>
+
+      <Modal
+        isModal={isModal}
+        toggleModal={toggleModal}
+        insideModal={insideModal}
+      />
     </Box>
   );
 };
 
 export default Profile;
+
+export async function getServerSideProps(context: any) {
+  const { params } = context;
+  const id = params.id;
+  const { data } = await axios.get(`${BASE_URL}/users/${id}`);
+
+  return {
+    props: {
+      data,
+    },
+  };
+}
