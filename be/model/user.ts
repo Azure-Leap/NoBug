@@ -66,12 +66,6 @@ const userSchema = new Schema(
         region: {
           type: String,
         },
-        service: [
-          {
-            type: Schema.Types.ObjectId,
-            ref: "Service",
-          },
-        ],
       },
     },
     client: {

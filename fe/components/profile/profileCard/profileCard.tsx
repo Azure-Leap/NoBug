@@ -10,11 +10,11 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import CircleIcon from "@mui/icons-material/Circle";
 import ReplyIcon from "@mui/icons-material/Reply";
-import EditProfile from "./editProfile";
+import ProfileSettings from "./editProfile";
 
 const ProfileCard = ({ profileData, toggleModal }: any) => {
   const router = useRouter();
-  const [isEditProfile, SetIsEditProfile] = useState<boolean>(false);
+  const [isSettings, setIsSettings] = useState<boolean>(false);
   const [toggleLike, setToggleLike] = useState(false);
 
   // Popover start
@@ -34,7 +34,7 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
   // Popover end
 
   const toggleEditProfile = () => {
-    SetIsEditProfile(!isEditProfile);
+    setIsSettings(!isSettings);
   };
 
   const like = () => {
@@ -54,7 +54,7 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
     <Box
       sx={{
         width: { xs: "100%", md: "70%" },
-        height: { xs: "500px", sm: "500px" },
+        minHeight: "500px",
         borderRadius: "15px",
         boxShadow: "0px 5px 11px 1px rgba(109,128,135,0.22)",
         overflow: "hidden",
@@ -64,7 +64,7 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
         sx={{
           position: "relative",
           width: "100%",
-          height: { xs: "40%", md: "45%" },
+          height: "200px",
           background:
             "linear-gradient(90deg, #7F7FD5  0%, #86A8E7 50%, #91EAE4 100%)",
         }}
@@ -136,9 +136,11 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
           display: "flex",
           flexDirection: "column",
           width: "100%",
-          height: "55%",
+          minHeight: "55%",
+
           position: "relative",
-          paddingY: "100px",
+          paddingTop: "100px",
+          paddingBottom: { xs: "70px", lg: "100px" },
           px: { xs: 2, sm: 10 },
         }}
       >
@@ -166,10 +168,10 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
             }}
           >
             <Box sx={{ position: "absolute", right: "100%" }}>
-              <EditProfile
+              <ProfileSettings
                 toggleModal={toggleModal}
-                isEditProfile={isEditProfile}
-                SetIsEditProfile={SetIsEditProfile}
+                isEditProfile={isSettings}
+                SetIsEditProfile={setIsSettings}
               />
             </Box>
           </Box>

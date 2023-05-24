@@ -1,53 +1,34 @@
-import { Inter } from "next/font/google";
-import { Box } from "@mui/system";
-// import { CookiesProvider } from "react-cookie";
-
-import ExpertFreelancer from "@/components/expertFreelander";
+import Freelancers from "@/components/freelancers";
 import PopularCat from "@/components/popularCat";
 import CommendPart from "@/components/commendPart";
 import Hero from "@/components/hero section/hero";
-import { useContext } from "react";
-import { CategoryContext } from "@/context/categoryContext";
+import Offers from "@/components/offers";
+
 import { BASE_URL } from "@/variables";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home({ data }: any) {
-  // const { setCategoriesData }: any = useContext(CategoryContext);
+export default function Home({ data, dataServices }: any) {
+  console.log("asdasd", dataServices.service);
 
   return (
     <>
-      <Box
-        sx={
-          {
-            // width: { xs: "95%", xl: "75%" },
-            // marginX: "auto",
-          }
-        }
-      >
-        <Hero />
-        <PopularCat />
-        <CommendPart />
-        <ExpertFreelancer data={data.freelancer} />
-      </Box>
+      <Hero />
+      <PopularCat />
+      <CommendPart />
+      <Freelancers data={data.freelancer} />
+      <Offers data={dataServices.service} />
     </>
   );
 }
-// export async function getServerSideProps() {
-//   const res = await fetch("http://localhost:8000/freelancer");
-//   const data = await res.json();
-//   return {
-//     props: {
-//       data,
-//     },
-//   };
-// }
 
 export async function getServerSideProps() {
   const data = await fetch(`${BASE_URL}/freelancer`).then((res) => res.json());
+  const dataServices = await fetch(`${BASE_URL}/services`).then((res) =>
+    res.json()
+  );
   return {
     props: {
       data,
+      dataServices,
     },
   };
 }

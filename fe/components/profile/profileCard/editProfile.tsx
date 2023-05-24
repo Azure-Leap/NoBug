@@ -1,13 +1,11 @@
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
+import Link from "next/link";
 import React from "react";
 
-const EditProfile = ({ isEditProfile, toggleModal }: any) => {
+const ProfileSettings = ({ isEditProfile, toggleModal }: any) => {
   return (
     <Box
-      onClick={() => {
-        toggleModal("EditProfile");
-      }}
       sx={{
         display: isEditProfile ? "flex" : "none",
         flexDirection: "column",
@@ -18,11 +16,19 @@ const EditProfile = ({ isEditProfile, toggleModal }: any) => {
         borderRadius: "10px",
       }}
     >
-      <Button sx={{ border: "1px solid black", width: "max-content" }}>
+      <Button
+        onClick={() => {
+          toggleModal("EditProfile");
+        }}
+        sx={{ border: "1px solid black", width: "max-content" }}
+      >
         Edit Profile
+      </Button>
+      <Button sx={{ border: "1px solid black", width: "max-content" }}>
+        <Link href="/admin">Dashboard</Link>
       </Button>
     </Box>
   );
 };
 
-export default EditProfile;
+export default ProfileSettings;

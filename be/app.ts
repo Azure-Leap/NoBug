@@ -8,6 +8,8 @@ import userRoutes from "./routes/user";
 import serviceRoutes from "./routes/service";
 import freelancerRoutes from "./routes/freelancer";
 import categoryRoutes from "./routes/category";
+import portfolioRoutes from "./routes/portfolio";
+
 import authRoutes from "./routes/auth";
 import fileUpload from "express-fileupload";
 
@@ -56,11 +58,12 @@ app.use("/uploads", express.static("uploads"));
 // cloudinary end
 
 // Routes
+app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
-app.use("/freelancer", freelancerRoutes);
 app.use("/services", serviceRoutes);
 app.use("/categories", categoryRoutes);
-app.use("/auth", authRoutes);
+app.use("/portfolio", portfolioRoutes);
+app.use("/freelancer", freelancerRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("hello skill hive be");
