@@ -5,6 +5,7 @@ import OfferCard from "../cards/offerCard";
 import FreelancerSearchBar from "./freelancerSearchBar";
 import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { Key } from "@mui/icons-material";
 
 const FreelancersBody = ({ freelancers, setFreelancers }: any) => {
   const [isOpenSidebar, setOpenSidebar] = useState(false);
@@ -164,8 +165,8 @@ const FreelancersBody = ({ freelancers, setFreelancers }: any) => {
               justifyContent: "center",
             }}
           >
-            {filterButton.map(() => (
-              <OfferCard />
+            {filterButton.map((i, index) => (
+              <OfferCard key={index} />
             ))}
           </Box>
         </Box>
