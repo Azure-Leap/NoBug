@@ -65,8 +65,7 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
           position: "relative",
           width: "100%",
           height: "200px",
-          background:
-            "linear-gradient(90deg, #7F7FD5  0%, #86A8E7 50%, #91EAE4 100%)",
+          background: "linear-gradient(90deg, #FDC830  0%, #ff930f 100%)",
         }}
       >
         <Box
@@ -274,7 +273,8 @@ const ProfileCard = ({ profileData, toggleModal }: any) => {
                 alignItems: "center",
                 gap: "10px",
                 textTransform: "capitalize",
-                backgroundColor: "rgba(43,92,243)!important",
+                background:
+                  "linear-gradient(90deg, #FDC830  0%, #ff930f 100%)!important",
                 color: "white",
                 fontSize: "15px",
                 borderRadius: "10px",

@@ -64,7 +64,7 @@ const userSchema = new Schema(
           type: String,
         },
         region: {
-          type: String,
+          type: { name: String, shortcut: String },
         },
       },
     },

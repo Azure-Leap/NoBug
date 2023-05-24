@@ -9,6 +9,7 @@ import { ProfileContext } from "@/context/profileContext";
 import { ModalContext } from "@/context/modalContext";
 import axios from "axios";
 import { LoadingContext } from "@/context/loadingContext";
+import { BASE_URL } from "@/variables";
 
 const AddPortfolio = ({}: any) => {
   const { isLoading, setIsLoading } = useContext(LoadingContext);
@@ -20,10 +21,9 @@ const AddPortfolio = ({}: any) => {
   const addPortfolio = async (portfolioUrl: any) => {
     console.log("portfolioUrl", portfolioUrl);
     try {
-      const res = await axios.put(
-        `http://localhost:8000/portfolio/${profileData._id}`,
-        { data: portfolioUrl }
-      );
+      const res = await axios.put(`${BASE_URL}/portfolio/${profileData._id}`, {
+        data: portfolioUrl,
+      });
       console.log(res);
       setIsLoading(false);
       setSelectedImage(null);
@@ -33,10 +33,11 @@ const AddPortfolio = ({}: any) => {
       console.log(error);
     }
   };
+
   const uploadPortfolioImg = async (e: any) => {
     console.log("file", selectedImage);
     try {
-      const res = await axios.post("http://localhost:8000/upload", {
+      const res = await axios.post(`${BASE_URL}/upload`, {
         files: selectedImage,
       });
       console.log("res url", res.data.imgUrl.url);
@@ -109,8 +110,6 @@ const AddPortfolio = ({}: any) => {
                 console.log("D", fileReader.result);
                 setSelectedImage(fileReader.result);
               };
-
-              // setSelectedImage(d);
             }}
           />
         </Box>

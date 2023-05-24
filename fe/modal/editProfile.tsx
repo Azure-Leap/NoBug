@@ -10,6 +10,7 @@ import { LoadingContext } from "@/context/loadingContext";
 import { UserContext } from "@/context/userContext";
 import { ProfileContext } from "@/context/profileContext";
 import { ModalContext } from "@/context/modalContext";
+import { BASE_URL } from "@/variables";
 
 const Avatar = dynamic(() => import("react-avatar-edit"), { ssr: false });
 
@@ -37,7 +38,7 @@ const EditProfileModal = () => {
   const changeProfile = async () => {
     setProfileImg(preview);
     try {
-      const res = await axios.post("http://localhost:8000/upload", {
+      const res = await axios.post(`${BASE_URL}/upload`, {
         files: preview,
       });
       console.log(preview);
