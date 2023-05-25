@@ -398,7 +398,7 @@ const FreelancerForm = () => {
                 boxShadow:
                   "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px",
                 background:
-                  "linear-gradient(90deg, #7F7FD5  0%, #86A8E7 50%, #91EAE4 100%)",
+                  "linear-gradient(90deg, #FDC830  0%, #ff930f 100%)!important",
                 ":hover": {
                   filter: "brightness(90%)",
                 },
@@ -495,7 +495,8 @@ const FreelancerForm = () => {
           onClick={() => postFreelancer()}
           sx={{
             width: "200px",
-            backgroundColor: "orange!important",
+            background:
+              "linear-gradient(90deg, #FDC830  0%, #ff930f 100%)!important",
             color: "white",
           }}
         >
