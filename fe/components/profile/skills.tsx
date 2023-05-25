@@ -36,7 +36,8 @@ const Skills = ({ profileData }: any) => {
               border: "1.5px solid #e8e8e8",
               borderRadius: "10px",
               ":hover": {
-                backgroundColor: "rgba(43,92,243)!important",
+                background:
+                  "linear-gradient(90deg, #FDC830  0%, #ff930f 100%)!important",
                 color: "white",
                 border: "1.5px solid white",
               },

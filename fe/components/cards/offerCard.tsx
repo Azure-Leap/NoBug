@@ -84,9 +84,10 @@ const OfferCard = ({ data }: any) => {
                   color: "rgb(153,153,153)",
                   flex: "none",
                   ":hover": {
-                    backgroundColor: "rgba(51, 162,191)",
+                    background:
+                      "linear-gradient(90deg, #FDC830  0%, #ff930f 100%)!important",
                     color: "white",
-                    boxShadow: "0px 0px 100px -36px rgba(51, 162,191)",
+                    boxShadow: "0px 0px 20px 0px  rgba(253, 200, 48,0.5)",
                   },
                 }}
               >

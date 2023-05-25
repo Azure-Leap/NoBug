@@ -9,6 +9,7 @@ import serviceRoutes from "./routes/service";
 import freelancerRoutes from "./routes/freelancer";
 import categoryRoutes from "./routes/category";
 import portfolioRoutes from "./routes/portfolio";
+import qrRoutes from "./routes/qr";
 
 import authRoutes from "./routes/auth";
 import fileUpload from "express-fileupload";
@@ -23,9 +24,6 @@ const app = express();
 // ENV
 const MONGO_URI = process.env.MONGO_URI || "";
 const PORT = process.env.PORT;
-const CLOUD_NAME = process.env.CLOUD_NAME;
-const API_KEY = process.env.API_KEY;
-const API_SECRET_KEY = process.env.API_SECRET_KEY;
 
 // middlewares
 app.use(
@@ -61,6 +59,7 @@ app.use("/uploads", express.static("uploads"));
 // Routes
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
+app.use("/qrcode", qrRoutes);
 app.use("/services", serviceRoutes);
 app.use("/categories", categoryRoutes);
 app.use("/portfolio", portfolioRoutes);

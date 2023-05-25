@@ -12,7 +12,7 @@ import { LoadingContext } from "@/context/loadingContext";
 import { BASE_URL } from "@/variables";
 
 const AddPortfolio = ({}: any) => {
-  const { isLoading, setIsLoading } = useContext(LoadingContext);
+  const { setIsLoading } = useContext(LoadingContext);
   const { profileData } = useContext(ProfileContext);
   const { toggleModal } = useContext(ModalContext);
 
