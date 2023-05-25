@@ -15,7 +15,6 @@ const CategoryProvider = ({ children }: any) => {
   const getCategories = async () => {
     try {
       const res = await axios.get(`${BASE_URL}/categories`);
-      console.log("asd", res);
       setCategoriesData(res.data.category);
     } catch (err) {
       console.log("err", err);

@@ -123,13 +123,21 @@ export default function PortfolioModal({
             }}
           />
           <Box sx={{ width: "100%", height: "100%" }}>
-            <Box sx={{ width: "100%", height: { xs: "70%", md: "80%" } }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                backgroundColor: "black",
+                width: "100%",
+                height: { xs: "70%", md: "80%" },
+              }}
+            >
               <Image
                 src={data?.[active]}
                 alt={data?.[active]}
                 width={2000}
                 height={1000}
-                className="object-contain w-full h-full"
+                style={{ objectFit: "contain", width: "auto", height: "100%" }}
               />
             </Box>
             <Box

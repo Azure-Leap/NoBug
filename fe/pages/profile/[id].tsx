@@ -31,11 +31,8 @@ const Profile = ({ data }: any) => {
     getOffersByUser(data.user._id);
   }, [data.user, setProfileData]);
 
-  console.log(profileData);
-
   return (
     <Box
-      // onClick={() => toggleModal("")}
       sx={{
         display: "flex",
         flexDirection: "column",

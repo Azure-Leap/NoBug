@@ -35,7 +35,8 @@ const FreelancerCard = ({ data }: any) => {
             justifyContent: "center",
             aspectRatio: "1/1",
             borderRadius: "50%",
-            backgroundColor: "rgba(51, 162,191)",
+            background:
+              "linear-gradient(90deg, #FDC830  0%, #ff930f 100%)!important",
             padding: "2.5px",
           }}
         >
@@ -173,9 +174,10 @@ const FreelancerCard = ({ data }: any) => {
                     border: "0.9px solid grey",
                     flex: "none",
                     ":hover": {
-                      backgroundColor: "rgba(51, 162,191)",
+                      background:
+                        "linear-gradient(90deg, #FDC830  0%, #ff930f 100%)!important",
                       color: "white",
-                      boxShadow: "0px 0px 100px -36px rgba(51, 162,191)",
+                      boxShadow: "0px 0px 20px 0px  rgba(253, 200, 48,0.5)",
                     },
                   }}
                 >
@@ -195,19 +197,20 @@ const FreelancerCard = ({ data }: any) => {
                   xs: "white",
                   md: "rgb(153,153,153)",
                 },
-                backgroundColor: {
-                  xs: "rgba(51, 162,191)!important",
+                background: {
+                  xs: "linear-gradient(90deg, #FDC830  0%, #ff930f 100%)!important",
                   md: "white!important",
                 },
                 boxShadow: {
-                  xs: "0px 0px 35px 0px rgba(51,162,191,0.5)",
+                  xs: "0px 0px 20px 0px  rgba(253, 200, 48,0.5)",
                   md: "none",
                 },
                 border: "0.9px solid rgb(153,153,153)",
                 ":hover": {
                   color: "white",
-                  backgroundColor: "rgba(51, 162,191)!important",
-                  boxShadow: "0px 0px 35px 0px rgba(51,162,191,0.5)",
+                  background:
+                    "linear-gradient(90deg, #FDC830  0%, #ff930f 100%)!important",
+                  boxShadow: "0px 0px 20px 0px  rgba(253, 200, 48,0.5)",
                 },
               }}
             >

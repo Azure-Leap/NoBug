@@ -12,16 +12,15 @@ const addPortfolio = async (
   try {
     const user = await User.findById(id);
     if (!data) {
-      console.log(data);
       res.status(400).json({
         success: false,
-        message: "iim id tai user oldsongui",
+        message: "data irehed aldaa garlaa",
       });
     }
     if (user) {
       user?.freelancer?.portfolio.push(data);
       await user?.save();
-      console.log(data);
+      console.log("2", data);
     } else {
       res.status(400).json({
         success: false,
@@ -31,7 +30,7 @@ const addPortfolio = async (
 
     res.status(201).json({
       success: true,
-      message: "portfolio amjilttai nemegdlee",
+      message: user,
     });
   } catch (error) {
     next(error);

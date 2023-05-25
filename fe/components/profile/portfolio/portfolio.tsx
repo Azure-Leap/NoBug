@@ -5,14 +5,11 @@ import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { ModalContext } from "@/context/modalContext";
-import { ProfileContext } from "@/context/profileContext";
 
 const Portfolio = ({ profileData }: any) => {
   const { toggleModal } = useContext(ModalContext);
   const [active, setActive] = useState(1);
   const [open, setOpen] = useState(false);
-  const { portfolioData } = useContext(ProfileContext);
-  console.log("end", profileData?.freelancer?.portfolio);
   const handleClose = () => {
     setOpen(false);
   };
