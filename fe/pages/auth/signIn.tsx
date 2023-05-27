@@ -22,20 +22,6 @@ function SignInForm() {
     });
   };
 
-  console.log("state", signInData);
-
-  // const handleOnSubmit = (evt: any) => {
-  //   signIn();
-  //   evt.preventDefault();
-  //   const { email, password } = signInData;
-  //   for (const key in signInData) {
-  //     setSignInData({
-  //       ...signInData,
-  //       [key]: "",
-  //     });
-  //   }
-  // };
-
   return (
     <div className={`${styles.formContainer} ${styles.signInContainer}`}>
       <form

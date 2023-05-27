@@ -43,6 +43,7 @@ const UserProvider = ({ children }: any) => {
     try {
       const res = await axios.post(`${BASE_URL}/auth/register`, signUpData);
       console.log(res);
+      router.push("/freelancerForm");
     } catch (err) {
       console.log("err", err);
     }

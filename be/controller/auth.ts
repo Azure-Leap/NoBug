@@ -7,9 +7,12 @@ import sendEmail from "../utils/sendEmail";
 import generateCode from "../utils/confirmation";
 
 const login = async (req: Request, res: Response, next: NextFunction) => {
+  console.log(req.body);
   try {
-    const user = (await User.findOne({ email: req.body.email })) as any;
-    const freelancers = await freelancer.findById(user._id);
+    const user = (await User.findOne(
+      { email: req.body.email },
+      "+password"
+    )) as any;
 
     if (!user) {
       res.status(200).json({ message: `email or password incorrect` });

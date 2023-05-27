@@ -1,4 +1,5 @@
 import { UserContext } from "@/context/userContext";
+import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 
 import SignInForm from "./signIn";
@@ -7,6 +8,7 @@ import SignUpForm from "./signUp";
 import styles from "./styles.module.css";
 
 export default function App() {
+  const router = useRouter();
   const { whatRole, signUpData }: any = useContext(UserContext);
 
   const [type, setType] = useState("signIn");
